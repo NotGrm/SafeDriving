@@ -26,10 +26,10 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name="Article.findByAuthor",
                 query="SELECT c FROM Article c WHERE c.auteur = :name"),
     @NamedQuery(name="Article.findByTag",
-                query="SELECT c FROM Article c WHERE c.tag = :name"),
-}) 
-@NamedQuery(name = "getArticle", query = "select")
+                query="SELECT c FROM Article c WHERE c.tag = :name")
+})
 @DiscriminatorValue(value="Article")
+
 public class Article implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

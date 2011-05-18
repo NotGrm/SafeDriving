@@ -16,8 +16,7 @@ import javax.persistence.Entity;
  */
 @Entity
 @DiscriminatorValue(value="Personnel")
-public class Personnel extends Personne implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Personnel extends Personne {
 
     private long numPersonnel;
     private Service service;
