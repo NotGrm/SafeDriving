@@ -4,6 +4,8 @@
  */
 package com.safedriving.services;
 
+import com.safedriving.model.Vehicule;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -12,5 +14,15 @@ import javax.ejb.Local;
  */
 @Local
 public interface VehiculeServiceLocal {
+
+    void add(Vehicule vehicule);
+
+    void refresh(Vehicule vehicule);
+
+    void remove(Vehicule vehicule);
+
+    List<Vehicule> getAll();
+
+    Vehicule getById(int id);
     
 }

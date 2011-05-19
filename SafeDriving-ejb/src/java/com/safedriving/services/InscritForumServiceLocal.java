@@ -5,6 +5,7 @@
 package com.safedriving.services;
 
 import com.safedriving.model.InscritForum;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -14,6 +15,16 @@ import javax.ejb.Local;
 @Local
 public interface InscritForumServiceLocal {
 
-    void addInscriptForum(InscritForum inscritForum);
+    void add(InscritForum inscritForum);
+
+    void remove(InscritForum inscritForum);
+
+    void refresh(InscritForum inscritForum);
+
+    InscritForum getById(int id);
+
+    List<InscritForum>  getByNom(String nom);
+
+    InscritForum getByUserName(String username);
     
 }

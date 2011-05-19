@@ -6,7 +6,9 @@ package com.safedriving.servlet;
 
 import com.safedriving.model.Article;
 import com.safedriving.services.ArticleService;
+import com.safedriving.services.ArticleServiceLocal;
 import java.io.IOException;
+import javax.ejb.EJB;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -22,7 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AddArticleServlet extends HttpServlet {
 
-    private ArticleService srv;
+    @EJB
+    private ArticleServiceLocal srv;
     
     /*@EJB(name = "ArticleBean")
     public void setCalculator(ArticleService srv)
@@ -69,16 +72,7 @@ public class AddArticleServlet extends HttpServlet {
         art.setCategorie(categorie);
         art.setTag(tags);
         
-        try {
-        // create initial context:
-        Context ctx = new InitialContext();
-        // find Login home interface:
-        //EARName/BeanName/local
-        srv = (ArticleService) ctx.lookup("SafeDriving-ejb/ArticleBean/local");
-      
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
+        srv.addArticle(art);
         
         //srv = new ArticleService();
         //srv.addArticle(art);

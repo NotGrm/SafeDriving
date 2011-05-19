@@ -4,6 +4,9 @@
  */
 package com.safedriving.services;
 
+import com.safedriving.model.Examen;
+import com.safedriving.model.Personnel;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -12,5 +15,23 @@ import javax.ejb.Local;
  */
 @Local
 public interface ExamenServiceLocal {
+
+    void addExamen(Examen examen);
+
+    void removeExam(Examen examen);
+
+    void refreshExamen(Examen examen);
+
+    List<Examen> getAll();
+
+    Examen getById(int id);
+
+    Examen getEmpty(Examen examen);
+
+    List<Examen> getByType(String type);
+
+    List<Examen> getByLieu(String lieu);
+
+    List<Examen> getByIntervenant(Personnel intervenant);
     
 }

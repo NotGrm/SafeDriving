@@ -5,6 +5,7 @@
 package com.safedriving.services;
 
 import com.safedriving.model.Article;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -19,5 +20,13 @@ public interface ArticleServiceLocal {
 
     void modifieArticle(Article article);
 
-    void getArticle(Article article);
+    Article getArticle(int id);
+
+    List<Article> getAllArticle();
+
+    Article getArticleByTitle(String title);
+
+    Article getArticleByAuthor(String author);
+
+    List<Article> getArticleByTag(String tag);
 }
