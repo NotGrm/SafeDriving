@@ -4,7 +4,7 @@
  */
 package com.safedriving.services;
 
-import com.safedriving.enumeration.TypeSessionPratique;
+import com.safedriving.model.TypeSessionPratique;
 import com.safedriving.model.Lieu;
 import com.safedriving.model.Personnel;
 import com.safedriving.model.Pratique;

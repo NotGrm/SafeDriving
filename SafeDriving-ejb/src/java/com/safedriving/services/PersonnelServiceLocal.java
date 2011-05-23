@@ -4,7 +4,7 @@
  */
 package com.safedriving.services;
 
-import com.safedriving.enumeration.Service;
+import com.safedriving.model.Departement;
 import com.safedriving.model.Personnel;
 import java.util.List;
 import javax.ejb.Local;
@@ -28,6 +28,8 @@ public interface PersonnelServiceLocal {
 
     List<Personnel> getByNom(String nom);
 
-    List<Personnel> getByService(Service service);
+    List<Personnel> getByService(Departement service);
+
+    public com.safedriving.model.Personnel getByCodePersonnel(java.lang.String code);
     
 }

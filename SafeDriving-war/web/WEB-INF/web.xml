@@ -8,6 +8,50 @@
         <servlet-name>AddArticleServlet</servlet-name>
         <servlet-class>com.safedriving.servlet.AddArticleServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddClientServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddClientServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddExamenServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddExamenServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddSessionPratiqueServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddSessionPratiqueServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddSessionTheoriqueServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddSessionTheoriqueServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.HomeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ArticleDetailServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.ArticleDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddLieuServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddLieuServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddVehiculeServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddVehiculeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddTypeExamenServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddTypeExamenServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InscriptionServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.InscriptionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddServiceServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddServiceServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddPersonnelServlet</servlet-name>
         <url-pattern>/AddPersonnel</url-pattern>
@@ -15,6 +59,50 @@
     <servlet-mapping>
         <servlet-name>AddArticleServlet</servlet-name>
         <url-pattern>/AddArticle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddClientServlet</servlet-name>
+        <url-pattern>/AddClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddExamenServlet</servlet-name>
+        <url-pattern>/AddExamen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddSessionPratiqueServlet</servlet-name>
+        <url-pattern>/AddSessionPratique</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddSessionTheoriqueServlet</servlet-name>
+        <url-pattern>/AddSessionTheorique</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ArticleDetailServlet</servlet-name>
+        <url-pattern>/ArticleDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddLieuServlet</servlet-name>
+        <url-pattern>/AddLieu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddVehiculeServlet</servlet-name>
+        <url-pattern>/AddVehicule</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddTypeExamenServlet</servlet-name>
+        <url-pattern>/AddTypeExamen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InscriptionServlet</servlet-name>
+        <url-pattern>/Inscription</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddServiceServlet</servlet-name>
+        <url-pattern>/AddService</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

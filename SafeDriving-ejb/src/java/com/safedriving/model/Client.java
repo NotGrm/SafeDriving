@@ -7,6 +7,7 @@ package com.safedriving.model;
 import java.io.Serializable;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -15,10 +16,12 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue(value="Client")
 public class Client extends Personne implements Serializable {
+    @OneToOne
+    private Formation formation;
     private static final long serialVersionUID = 1L;
     private long numClient;
+    @OneToOne
     private InscritForum compteForum;
-    private SessionFormation session;
 
     public InscritForum getCompteForum() {
         return compteForum;
@@ -34,14 +37,6 @@ public class Client extends Personne implements Serializable {
 
     public void setNumClient(long numClient) {
         this.numClient = numClient;
-    }
-
-    public SessionFormation getSession() {
-        return session;
-    }
-
-    public void setSession(SessionFormation session) {
-        this.session = session;
     }
     
     @Override

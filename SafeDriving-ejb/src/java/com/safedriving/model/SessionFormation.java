@@ -7,13 +7,14 @@ package com.safedriving.model;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -29,10 +30,12 @@ public class SessionFormation implements Serializable {
     private Long id;
     private int nbrMaxPlace;
     private String dateSession;
+    @ManyToOne
     private Lieu lieu;
-    private Personnel intervenant;
-    private List<Lieu> listLieux;   
-    private List<Client> listClient;
+    @ManyToOne
+    private Personnel intervenant;  
+    @OneToMany
+    private List<Client> participants;
 
     public Long getId() {
         return id;
@@ -62,20 +65,12 @@ public class SessionFormation implements Serializable {
         this.lieu = lieu;
     }
 
-    public List<Client> getListClient() {
-        return listClient;
+    public List<Client> getListParticipants() {
+        return participants;
     }
 
-    public void setListClient(List<Client> listClient) {
-        this.listClient = listClient;
-    }
-
-    public List<Lieu> getListLieux() {
-        return listLieux;
-    }
-
-    public void setListLieux(List<Lieu> listLieux) {
-        this.listLieux = listLieux;
+    public void setListParticipants(List<Client> participants) {
+        this.participants = participants;
     }
 
     public int getNbrMaxPlace() {

@@ -4,10 +4,10 @@
  */
 package com.safedriving.model;
 
-import com.safedriving.enumeration.TypeExam;
 import java.io.Serializable;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -17,7 +17,8 @@ import javax.persistence.Entity;
 @DiscriminatorValue(value="Examen")
 public class Examen extends SessionFormation implements Serializable {
     private static final long serialVersionUID = 1L;
-    private TypeExam typeExamen;
+    @ManyToOne
+    private TypeExamen typeExamen;
     private boolean reussi;
 
     public boolean isReussi() {
@@ -28,11 +29,11 @@ public class Examen extends SessionFormation implements Serializable {
         this.reussi = reussi;
     }
 
-    public TypeExam getTypeExamen() {
+    public TypeExamen getTypeExamen() {
         return typeExamen;
     }
 
-    public void setTypeExamen(TypeExam typeExamen) {
+    public void setTypeExamen(TypeExamen typeExamen) {
         this.typeExamen = typeExamen;
     }
 
@@ -40,5 +41,4 @@ public class Examen extends SessionFormation implements Serializable {
     public String toString() {
         return "com.safedriving.model.Examen[ id=" + getId() + " ]";
     }
-    
 }

@@ -5,6 +5,7 @@
 package com.safedriving.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -30,6 +32,16 @@ public class Personne implements Serializable {
     private String adresse;
     private int codePostal;
     private String ville;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateNaissance;
+
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
         
     public int getId() {
         return id;

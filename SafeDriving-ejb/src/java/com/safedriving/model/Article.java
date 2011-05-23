@@ -5,13 +5,16 @@
 package com.safedriving.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -19,27 +22,40 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name="Article.findAll",
-                query="SELECT c FROM Article c"),
-    @NamedQuery(name="Article.findByTitle",
-                query="SELECT c FROM Article c WHERE c.titre = :name"),
-    @NamedQuery(name="Article.findByAuthor",
-                query="SELECT c FROM Article c WHERE c.auteur = :name"),
-    @NamedQuery(name="Article.findByTag",
-                query="SELECT c FROM Article c WHERE c.tag = :name")
+    @NamedQuery(name = "Article.findAll",
+    query = "SELECT c FROM Article c"
+        + " ORDER BY c.datePublication DESC"),
+    @NamedQuery(name = "Article.findByAuthor",
+    query = "SELECT c FROM Article c WHERE c.auteur = :name"),
+    @NamedQuery(name = "Article.findByTag",
+    query = "SELECT c FROM Article c WHERE c.tag = :tag"),
+    @NamedQuery(name = "Article.getById",
+    query = "SELECT c FROM Article c WHERE c.id = :id")
 })
-@DiscriminatorValue(value="Article")
-
+@DiscriminatorValue(value = "Article")
 public class Article implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String titre;
     private String text;
+    @ManyToOne
     private Personnel auteur;
     private String Categorie;
     private String tag;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date datePublication;
+
+    public Date getDatePublication() {
+        return datePublication;
+    }
+
+    public void setDatePublication(Date date) {
+        this.datePublication = date;
+    }
 
     public String getTag() {
         return tag;
@@ -113,5 +129,4 @@ public class Article implements Serializable {
     public String toString() {
         return "com.safedriving.model.Article[ id=" + id + " ]";
     }
-    
 }

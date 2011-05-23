@@ -12,9 +12,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <form action="#" method="POST">
-            <input type="text" name="nom"/>
+        <h1>Ajout d'un employé</h1>
+        <form action="/SafeDriving-war/AddPersonnel" method="POST">
+            Code Personnel : <input type="text" name="code"/>
+            Nom : <input type="text" name="name"/>
+            Prénom : <input type="text" name="firstname"/><br/>
+            Adresse : <input type="text" name="address"/><br/>
+            Code Postal : <input type="text" name="zipcode"/>
+            Ville : <input type="text" name="city"/>
+            
+            <input type="submit" value="Valider"/>
+            
         </form>
     </body>
 </html>

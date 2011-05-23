@@ -21,42 +21,50 @@ public class ArticleService implements ArticleServiceLocal {
     @PersistenceContext
     private EntityManager em;
 
+    @Override
     public void addArticle(Article article) {
         em.persist(article);
     }
 
+    @Override
     public void removeArticle(Article article) {
         em.remove(article);
     }
 
+    @Override
     public void modifieArticle(Article article) {
         em.refresh(article);
     }
 
+    @Override
     public List<Article> getAllArticle() {
-        Query q = em.createNamedQuery("Article.getAll");
+        Query q = em.createNamedQuery("Article.findAll");
         return (List<Article>) q.getResultList();
     }
 
-    public Article getArticle(int id) {
+    @Override
+    public Article getArticle(long id) {
 
         Query q = em.createNamedQuery("Article.getById");
-        q.setParameter("name", id);
-        return (Article) q.getResultList().get(0);
+        q.setParameter("id", id);
+        return (Article) q.getSingleResult();
     }
 
+    @Override
     public Article getArticleByTitle(String title) {
         Query q = em.createNamedQuery("Article.getByTitle");
         q.setParameter("name", title);
-        return (Article) q.getResultList().get(0);
+        return (Article) q.getSingleResult();
     }
 
+    @Override
     public Article getArticleByAuthor(String author) {
         Query q = em.createNamedQuery("Article.getByAuthor");
         q.setParameter("name", author);
         return (Article) q.getResultList().get(0);
     }
 
+    @Override
     public List<Article> getArticleByTag(String tag) {
         Query q = em.createNamedQuery("Article.getById");
         q.setParameter("name", tag);
