@@ -13,8 +13,6 @@ import com.safedriving.services.PersonnelServiceLocal;
 import com.safedriving.services.PratiqueServiceLocal;
 import com.safedriving.services.TypeSessionPratiqueServiceLocal;
 import com.safedriving.services.VehiculeServiceLocal;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
@@ -22,6 +20,7 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -49,6 +48,7 @@ public class AddSessionPratiqueServlet extends HttpServlet {
     @EJB
     TypeSessionPratiqueServiceLocal srvTypePratique;
     
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher rq = req.getRequestDispatcher("addSessionPratique.jsp");
@@ -77,6 +77,7 @@ public class AddSessionPratiqueServlet extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(AddExamenServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        super.doPost(req, resp);
     }
 
     

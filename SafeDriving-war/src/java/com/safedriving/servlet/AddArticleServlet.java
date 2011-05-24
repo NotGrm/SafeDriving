@@ -5,13 +5,12 @@
 package com.safedriving.servlet;
 
 import com.safedriving.model.Article;
-import com.safedriving.services.ArticleService;
+import com.safedriving.model.Personnel;
 import com.safedriving.services.ArticleServiceLocal;
+import com.safedriving.services.PersonnelServiceLocal;
 import java.io.IOException;
+import java.util.Date;
 import javax.ejb.EJB;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,11 +26,8 @@ public class AddArticleServlet extends HttpServlet {
     @EJB
     private ArticleServiceLocal srv;
     
-    /*@EJB(name = "ArticleBean")
-    public void setCalculator(ArticleService srv)
-    {
-        this.srv = srv;
-    }*/
+    @EJB
+    private PersonnelServiceLocal srvPersonnel;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
@@ -45,7 +41,7 @@ public class AddArticleServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        RequestDispatcher rq = request.getRequestDispatcher("/SafeDriving-war/ajoutPokemon.jsp");
+        RequestDispatcher rq = request.getRequestDispatcher("addArticle.jsp");
         rq.forward(request, response);
     }
 
@@ -66,11 +62,15 @@ public class AddArticleServlet extends HttpServlet {
         String author = request.getParameter("author");
         String tags = request.getParameter("tags");
         
+        Personnel pers = srvPersonnel.getByCodePersonnel(author);
+        
         Article art = new Article();
         art.setTitre(title);
         art.setText(text);
         art.setCategorie(categorie);
         art.setTag(tags);
+        art.setDatePublication(new Date());
+        art.setAuteur(pers);
         
         srv.addArticle(art);
         

@@ -4,22 +4,24 @@
  */
 package com.safedriving.model;
 
-import com.safedriving.enumeration.Service;
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Ehres
  */
 @Entity
-@DiscriminatorValue(value="Personnel")
+@DiscriminatorValue(value = "Personnel")
+@NamedQuery(name = "Personnel.GetByCodPers", query = "SELECT c FROM Personnel c WHERE c.codePersonnel = :code")
 public class Personnel extends Personne {
 
-    private long numPersonnel;
-    private Service service;
+    private String codePersonnel;
+    @OneToMany(mappedBy = "auteur")
     private List<Article> listArticle;
 
     public List<Article> getListArticle() {
@@ -30,25 +32,16 @@ public class Personnel extends Personne {
         this.listArticle = listArticle;
     }
 
-    public long getNumPersonnel() {
-        return numPersonnel;
+    public String getCodePersonnel() {
+        return codePersonnel;
     }
 
-    public void setNumPersonnel(long numPersonnel) {
-        this.numPersonnel = numPersonnel;
+    public void setCodePersonnel(String codePersonnel) {
+        this.codePersonnel = codePersonnel;
     }
 
-    public Service getService() {
-        return service;
-    }
-
-    public void setService(Service service) {
-        this.service = service;
-    }
-    
     @Override
     public String toString() {
         return "com.safedriving.model.Personnel[ id=" + getId() + " ]";
     }
-    
 }

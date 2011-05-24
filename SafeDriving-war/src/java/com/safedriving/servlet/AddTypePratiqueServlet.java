@@ -37,8 +37,8 @@ public class AddTypePratiqueServlet extends HttpServlet {
         int nbParticipants = Integer.parseInt(req.getParameter("nb"));
         
         TypeSessionPratique t = new TypeSessionPratique();
-        t.setTypeSessionName(name);
-        t.setNbMaxParticipants(nbParticipants);
+        t.setTypeName(name);
+        t.setMaxAvailablePlaces(nbParticipants);
         
         srv.add(t);
     }

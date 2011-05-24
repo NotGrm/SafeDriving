@@ -24,5 +24,7 @@ public interface VehiculeServiceLocal {
     List<Vehicule> getAll();
 
     Vehicule getById(int id);
+
+    Vehicule getByName(java.lang.String name);
     
 }

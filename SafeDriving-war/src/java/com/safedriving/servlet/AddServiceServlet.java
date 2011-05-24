@@ -4,8 +4,8 @@
  */
 package com.safedriving.servlet;
 
-import com.safedriving.model.Departement;
-import com.safedriving.services.DepartementServiceLocal;
+import com.safedriving.model.WebSiteRole;
+import com.safedriving.services.RoleServiceLocal;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AddServiceServlet extends HttpServlet {
 
     @EJB
-    DepartementServiceLocal srv;
+    RoleServiceLocal srv;
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,12 +31,12 @@ public class AddServiceServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String serviceName = req.getParameter("servicename");
+        String roleName = req.getParameter("servicename");
         
-        Departement departement = new Departement();
-        departement.setDepartementName(serviceName);
+        WebSiteRole role = new WebSiteRole();
+        role.setRoleName(roleName);
         
-        srv.addDepartement(departement);
+        srv.addWebSiteRole(role);
     }
     
     

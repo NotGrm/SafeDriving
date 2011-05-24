@@ -20,7 +20,7 @@ public interface ArticleServiceLocal {
 
     void modifieArticle(Article article);
 
-    Article getArticle(int id);
+    Article getArticle(long id);
 
     List<Article> getAllArticle();
 

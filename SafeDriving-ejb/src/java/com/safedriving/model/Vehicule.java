@@ -20,6 +20,33 @@ public class Vehicule implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String numSerie;
+    private String plaque;
+
+    public String getDateAchat() {
+        return dateAchat;
+    }
+
+    public void setDateAchat(String dateAchat) {
+        this.dateAchat = dateAchat;
+    }
+
+    public String getNumSerie() {
+        return numSerie;
+    }
+
+    public void setNumSerie(String numSerie) {
+        this.numSerie = numSerie;
+    }
+
+    public String getPlaque() {
+        return plaque;
+    }
+
+    public void setPlaque(String plaque) {
+        this.plaque = plaque;
+    }
+    private String dateAchat;
 
     public Long getId() {
         return id;

@@ -21,33 +21,39 @@ public class LieuService implements LieuServiceLocal {
     @PersistenceContext
     private EntityManager em;
 
+    @Override
     public void add(Lieu lieu) {
         em.persist(lieu);
     }
 
+    @Override
     public void remove(Lieu lieu) {
         em.remove(lieu);
     }
 
+    @Override
     public void refresh(Lieu lieu) {
         em.refresh(lieu);
     }
 
+    @Override
     public List<Lieu> getAll() {
         Query q = em.createNamedQuery("Lieu.getAll");
         return q.getResultList();
     }
 
+    @Override
     public Lieu getById(int id) {        
         Query q = em.createNamedQuery("Lieu.getById");
         q.setParameter("name", id);
         return (Lieu) q.getResultList().get(0);
     }
 
+    @Override
     public Lieu getByNom(String nom) {
-        Query q = em.createNamedQuery("Formation.getByNom");
+        Query q = em.createNamedQuery("Lieu.getByNom");
         q.setParameter("name", nom);
-        return (Lieu) q.getResultList().get(0);
+        return (Lieu) q.getSingleResult();
     }
     
     

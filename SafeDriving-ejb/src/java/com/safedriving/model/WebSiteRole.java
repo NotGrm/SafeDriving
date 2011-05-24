@@ -6,20 +6,21 @@ package com.safedriving.model;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
  *
  * @author Ehres
  */
-
 @Entity
-public class TypeExamen implements Serializable {
+public class WebSiteRole implements Serializable {
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    private String name;
-    //THEORIQUE, PRATIQUE_AUTO, PRATIQUE_MOTO;    
-    
+    private String roleName;
+    //SERVIVE_DIRECTION, SERVICE_REDACTION, SERVICE_GESTION_AGENCE, SERVICE_FORMATION;
     public Long getId() {
         return id;
     }
@@ -28,12 +29,12 @@ public class TypeExamen implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     @Override
@@ -44,7 +45,7 @@ public class TypeExamen implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final TypeExamen other = (TypeExamen) obj;
+        final WebSiteRole other = (WebSiteRole) obj;
         if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
             return false;
         }
@@ -53,11 +54,10 @@ public class TypeExamen implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + (this.id != null ? this.id.hashCode() : 0);
+        int hash = 5;
+        hash = 79 * hash + (this.id != null ? this.id.hashCode() : 0);
         return hash;
     }
-    
     
     
 }

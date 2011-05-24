@@ -21,29 +21,38 @@ public class VehiculeService implements VehiculeServiceLocal {
     @PersistenceContext
     EntityManager em;
 
+    @Override
     public void add(Vehicule vehicule) {
         em.persist(vehicule);
     }
 
+    @Override
     public void refresh(Vehicule vehicule) {
         em.refresh(vehicule);
     }
 
+    @Override
     public void remove(Vehicule vehicule) {
         em.remove(vehicule);
     }
 
+    @Override
     public List<Vehicule> getAll() {
         Query q = em.createNamedQuery("Vehicule.getAll");
         return q.getResultList();
     }
 
+    @Override
     public Vehicule getById(int id) {
         Query q = em.createNamedQuery("Vehicule.getById");
         q.setParameter("name", id);
-        return (Vehicule)q.getResultList().get(0);
+        return (Vehicule)q.getSingleResult();
     }
     
-    
+    public Vehicule getByName(String name) {
+        Query q = em.createNamedQuery("Vehicule.getByName");
+        q.setParameter("name", name);
+        return (Vehicule)q.getSingleResult();
+    }
     
 }

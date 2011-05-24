@@ -21,34 +21,33 @@ public class InscritForumService implements InscritForumServiceLocal {
     @PersistenceContext
     private EntityManager em;
 
+    @Override
     public void add(InscritForum inscritForum) {
         em.persist(inscritForum);
     }
 
+    @Override
     public void remove(InscritForum inscritForum) {
         em.remove(inscritForum);
     }
 
+    @Override
     public void refresh(InscritForum inscritForum) {
         em.refresh(inscritForum);
     }
 
+    @Override
     public InscritForum getById(int id) {
         Query q = em.createNamedQuery("InscritForum.getById");
         q.setParameter("name", id);
         return (InscritForum) q.getResultList().get(0);
     }
 
-    public List<InscritForum> getByNom(String nom) {
-        Query q = em.createNamedQuery("InscritForum.getByNom");
-        q.setParameter("name", nom);
-        return q.getResultList();
-    }
-
+    @Override
     public InscritForum getByUserName(String username) {
         Query q = em.createNamedQuery("InscritForum.getByUserName");
-        q.setParameter("name", username);
-        return (InscritForum)q.getResultList().get(0);
+        q.setParameter("username", username);
+        return (InscritForum)q.getSingleResult();
     }
     
     

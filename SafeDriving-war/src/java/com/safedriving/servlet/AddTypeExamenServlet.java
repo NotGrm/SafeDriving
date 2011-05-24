@@ -33,10 +33,10 @@ public class AddTypeExamenServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        String type = req.getParameter("type");
+        String typeName = req.getParameter("type");
         
         TypeExamen typeEx = new TypeExamen();
-        typeEx.setTypeString(type);
+        typeEx.setName(typeName);
         
         srv.addTypeExamen(typeEx);
     }
