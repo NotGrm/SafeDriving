@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%-- <%@page import="javax.servlet.http.HttpSession"%>--%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,7 +18,7 @@
         <div>
             <ul>
                 <li><a href="/SafeDriving-war/">Acceuil</a></li>
-                <li><a href="/SafeDriving-war/AddArticle">Ajout d'un Article</a></li>
+                <li><a href="/SafeDriving-war/auth/AddArticle">Ajout d'un Article</a></li>
                 <li><a href="/SafeDriving-war/AddPersonnel">Ajout d'un employée</a></li>
                 <li><a href="/SafeDriving-war/AddClient">Ajout d'un client</a></li>
                 <li><a href="/SafeDriving-war/AddExamen">Ajout d'un examen</a></li>
@@ -27,6 +28,11 @@
                 <li><a href="/SafeDriving-war/AddLieu">Ajout d'un lieu</a></li>
                 <li><a href="/SafeDriving-war/AddTypeExamen">Ajout d'un type d'examen</a></li>
                 <li><a href="/SafeDriving-war/Inscription">Inscription</a></li>
+                <li><a href="/SafeDriving-war/Login">Login</a></li>
+                <li><a href="/SafeDriving-war/Logout">Logout</a></li>
+                
+                <li> <%= session.getAttribute("username") %><br/></li>
+       
             </ul>
         </div>
         <div>
