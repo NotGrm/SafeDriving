@@ -6,6 +6,7 @@ package com.safedriving.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -22,12 +24,12 @@ import javax.persistence.Temporal;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Article.findAll",
+    @NamedQuery(name = "Article.getAll",
     query = "SELECT c FROM Article c"
         + " ORDER BY c.datePublication DESC"),
-    @NamedQuery(name = "Article.findByAuthor",
+    @NamedQuery(name = "Article.getByAuthor",
     query = "SELECT c FROM Article c WHERE c.auteur = :name"),
-    @NamedQuery(name = "Article.findByTag",
+    @NamedQuery(name = "Article.getByTag",
     query = "SELECT c FROM Article c WHERE c.tag = :tag"),
     @NamedQuery(name = "Article.getById",
     query = "SELECT c FROM Article c WHERE c.id = :id")
@@ -45,9 +47,19 @@ public class Article implements Serializable {
     private Personnel auteur;
     private String Categorie;
     private String tag;
-    
+    @OneToMany
+    private List<Commentaire> commentaires;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date datePublication;
+
+    public List<Commentaire> getCommmentaires() {
+        return commentaires;
+    }
+
+    public void setCommmentaires(List<Commentaire> commentaires) {
+        this.commentaires = commentaires;
+    }
+    
 
     public Date getDatePublication() {
         return datePublication;

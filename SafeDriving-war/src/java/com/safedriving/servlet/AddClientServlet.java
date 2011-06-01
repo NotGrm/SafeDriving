@@ -46,7 +46,7 @@ public class AddClientServlet extends HttpServlet {
         long clientNumber = Long.parseLong(req.getParameter("clientNumber"));
         String accountName = req.getParameter("accountName");
         
-        InscritForum inscrit = srvForum.getByUserName(accountName);
+        InscritForum inscrit = srvForum.getByUsername(accountName);
         
         Client cli = new Client();
         cli.setNom(name);

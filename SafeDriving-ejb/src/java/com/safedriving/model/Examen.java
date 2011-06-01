@@ -8,12 +8,22 @@ import java.io.Serializable;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Ehres
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Examen.getAll",
+    query = "SELECT c FROM Examen c"),
+    @NamedQuery(name = "Examen.getById",
+    query = "SELECT c FROM Examen c WHERE c.id = :id"),
+    @NamedQuery(name = "Examen.getByEmpty",
+    query = "SELECT c FROM Examen c WHERE c.nbrMaxPlace = :name")
+})
 @DiscriminatorValue(value="Examen")
 public class Examen extends SessionFormation implements Serializable {
     private static final long serialVersionUID = 1L;

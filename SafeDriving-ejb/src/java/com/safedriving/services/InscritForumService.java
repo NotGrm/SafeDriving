@@ -37,18 +37,27 @@ public class InscritForumService implements InscritForumServiceLocal {
     }
 
     @Override
-    public InscritForum getById(int id) {
-        Query q = em.createNamedQuery("InscritForum.getById");
-        q.setParameter("name", id);
-        return (InscritForum) q.getResultList().get(0);
+    public InscritForum getById(int id) {        
+        return em.find(InscritForum.class, id);
     }
 
     @Override
-    public InscritForum getByUserName(String username) {
-        Query q = em.createNamedQuery("InscritForum.getByUserName");
+    public InscritForum getByUsername(String username) {
+        Query q = em.createNamedQuery("InscritForum.getByUsername");
         q.setParameter("username", username);
         return (InscritForum)q.getSingleResult();
     }
+
+    @Override
+    public InscritForum getByUsernamePwd(String username, String password) {        
+        Query q = em.createNamedQuery("InscritForum.getByUsernamePwd");
+        q.setParameter("username", username);
+        q.setParameter("password", password);
+        //return (InscritForum)q.getSingleResult();
+        return (InscritForum)q.getResultList().get(0);
+    }
+    
+    
     
     
     

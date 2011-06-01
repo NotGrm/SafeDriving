@@ -5,7 +5,6 @@
 package com.safedriving.services;
 
 import com.safedriving.model.Client;
-import com.safedriving.model.SessionFormation;
 import java.util.List;
 import javax.ejb.Local;
 

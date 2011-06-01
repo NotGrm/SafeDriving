@@ -4,6 +4,7 @@
     Author     : Ehres
 --%>
 
+<%@page import="com.safedriving.model.InscritForum"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%-- <%@page import="javax.servlet.http.HttpSession"%>--%>
@@ -16,23 +17,64 @@
     <body>
         <h1>Hello World!</h1>
         <div>
-            <ul>
-                <li><a href="/SafeDriving-war/">Acceuil</a></li>
-                <li><a href="/SafeDriving-war/auth/AddArticle">Ajout d'un Article</a></li>
-                <li><a href="/SafeDriving-war/AddPersonnel">Ajout d'un employée</a></li>
-                <li><a href="/SafeDriving-war/AddClient">Ajout d'un client</a></li>
-                <li><a href="/SafeDriving-war/AddExamen">Ajout d'un examen</a></li>
-                <li><a href="/SafeDriving-war/AddSessionPratique">Ajout d'une session pratique</a></li>
-                <li><a href="/SafeDriving-war/AddSessionTheorique">Ajout d'une session theorique</a></li>
-                <li><a href="/SafeDriving-war/AddVehicule">Ajout d'un véhicule</a></li>
-                <li><a href="/SafeDriving-war/AddLieu">Ajout d'un lieu</a></li>
-                <li><a href="/SafeDriving-war/AddTypeExamen">Ajout d'un type d'examen</a></li>
-                <li><a href="/SafeDriving-war/Inscription">Inscription</a></li>
-                <li><a href="/SafeDriving-war/Login">Login</a></li>
-                <li><a href="/SafeDriving-war/Logout">Logout</a></li>
+            <ul>                
+                <%
+                InscritForum user;
                 
-                <li> <%= session.getAttribute("username") %><br/></li>
-       
+                try{
+                    user = (InscritForum) session.getAttribute("user");
+                 }catch(Exception e){
+                     user = null;
+                 }
+                %>
+                <li><a href="/SafeDriving-war/">Acceuil</a></li>
+ 
+                <c:choose>
+                    <c:when test="${user != null}">
+                        <c:set var="roleName" value="${user.getRole().roleName}"/>
+                        <c:choose>
+                            <c:when test="${'DIRECTION' == roleName}">
+                                <li><a href="/SafeDriving-war/auth/AddArticle">Ajout d'un Article</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddPersonnel">Ajout d'un employée</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddClient">Ajout d'un client</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddExamen">Ajout d'un examen</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddSessionPratique">Ajout d'une session pratique</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddSessionTheorique">Ajout d'une session theorique</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddVehicule">Ajout d'un véhicule</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddLieu">Ajout d'un lieu</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout d'un type d'examen</a></li>
+                            </c:when>                    
+                            <c:when test="${'REDACTION' == roleName}">
+                                <li><a href="/SafeDriving-war/auth/AddArticle">Ajout d'un Article</a></li>
+                            </c:when>                   
+                            <c:when test="${'GESTION_AGENCE' == roleName}">
+                                <li><a href="/SafeDriving-war/auth/AddPersonnel">Ajout d'un employée</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddClient">Ajout d'un client</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddExamen">Ajout d'un examen</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddSessionPratique">Ajout d'une session pratique</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddSessionTheorique">Ajout d'une session theorique</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddVehicule">Ajout d'un véhicule</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddLieu">Ajout d'un lieu</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout d'un type d'examen</a></li>
+                            </c:when>                
+                            <c:when test="${'SERVICE_FORMATION' == roleName}">
+                                <li><a href="/SafeDriving-war/auth/AddClient">Ajout d'un client</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddSessionPratique">Ajout d'une session pratique</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddSessionTheorique">Ajout d'une session theorique</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddVehicule">Ajout d'un véhicule</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout d'un type d'examen</a></li>
+                            </c:when>    
+                        </c:choose>
+                        <li><a href="/SafeDriving-war/Logout">Logout</a></li>  
+                        <li> <%= user.getUsername()%><br/></li>                          
+                    </c:when> 
+                    <c:when test="${user == null}">
+                        <li><a href="/SafeDriving-war/Inscription">Inscription</a></li>
+                        <li><a href="/SafeDriving-war/Login">Login</a></li>                          
+                    </c:when> 
+                </c:choose>
+                
+
             </ul>
         </div>
         <div>
@@ -41,7 +83,7 @@
                 <c:out value="${article.text}"/>
                 <a href="/SafeDriving-war/ArticleDetail?id=${article.id}">Lire la suite</a>
                 <hr/>
-        </c:forEach>
+            </c:forEach>
         </div>
     </body>
 </html>

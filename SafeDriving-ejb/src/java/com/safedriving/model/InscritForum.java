@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
@@ -22,23 +23,37 @@ import javax.persistence.UniqueConstraint;
  * @author Ehres
  */
 @Entity
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "userName" })})
+@Table(uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"userName"})})
 @DiscriminatorValue(value = "incritForum")
 @NamedQueries({
-    @NamedQuery(name = "InscritForum.getByUserName",
-    query = "SELECT c from InscritForum c where c.userName = :username")
+    @NamedQuery(name = "InscritForum.getById",
+    query = "SELECT c from InscritForum c WHERE c.id = :id"),
+    @NamedQuery(name = "InscritForum.getByUsername",
+    query = "SELECT c from InscritForum AS c WHERE c.username = :username"),
+    @NamedQuery(name = "InscritForum.getByUsernamePwd",
+    query = "SELECT c from InscritForum c WHERE c.username = :username AND c.password = :password")
 })
 public class InscritForum implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private static final long serialVersionUID = 1L;
-    private String userName;
+    private String username;
     private String password;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateInscription;
+    @OneToOne
+    private WebSiteRole role;
+
+    public WebSiteRole getRole() {
+        return role;
+    }
+
+    public void setRole(WebSiteRole role) {
+        this.role = role;
+    }
 
     public String getPassword() {
         return password;
@@ -48,12 +63,12 @@ public class InscritForum implements Serializable {
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Date getDateInscription() {

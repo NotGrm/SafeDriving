@@ -18,7 +18,7 @@ public class LogoutServlet extends HttpServlet {
 
    @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().removeAttribute("username");
-        resp.sendRedirect("/SafeDriving-war/");
+        req.getSession().removeAttribute("user");
+        resp.sendRedirect("/SafeDriving-war");
     }
 }

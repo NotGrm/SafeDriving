@@ -72,7 +72,7 @@ public class AddArticleServlet extends HttpServlet {
         art.setDatePublication(new Date());
         art.setAuteur(pers);
         
-        srv.addArticle(art);
+        srv.add(art);
         
         //srv = new ArticleService();
         //srv.addArticle(art);

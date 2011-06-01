@@ -5,7 +5,6 @@
 package com.safedriving.services;
 
 import com.safedriving.model.Client;
-import com.safedriving.model.SessionFormation;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -53,7 +52,7 @@ public class ClientService implements ClientServiceLocal {
 
     public Client getByNumClient(int num) {
         Query q = em.createNamedQuery("Client.getByNumClient");
-        q.setParameter("name", num);
+        q.setParameter("num", num);
         return (Client) q.getResultList().get(0);
     }
 

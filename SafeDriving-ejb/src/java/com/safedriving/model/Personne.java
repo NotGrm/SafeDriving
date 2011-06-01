@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -34,6 +35,16 @@ public class Personne implements Serializable {
     private String ville;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateNaissance;
+    @OneToOne
+    private InscritForum compteForum;
+
+    public InscritForum getCompteForum() {
+        return compteForum;
+    }
+
+    public void setCompteForum(InscritForum compteForum) {
+        this.compteForum = compteForum;
+    }
 
     public Date getDateNaissance() {
         return dateNaissance;

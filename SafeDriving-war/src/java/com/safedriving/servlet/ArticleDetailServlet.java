@@ -30,7 +30,7 @@ public class ArticleDetailServlet extends HttpServlet {
         
         PrintWriter writer = resp.getWriter();
         
-        Article art = srv.getArticle(id);
+        Article art = srv.getById(id);
         
         req.setAttribute("article", art);
         

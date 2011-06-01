@@ -22,28 +22,28 @@ public class ArticleService implements ArticleServiceLocal {
     private EntityManager em;
 
     @Override
-    public void addArticle(Article article) {
+    public void add(Article article) {
         em.persist(article);
     }
 
     @Override
-    public void removeArticle(Article article) {
+    public void remove(Article article) {
         em.remove(article);
     }
 
     @Override
-    public void modifieArticle(Article article) {
+    public void refresh(Article article) {
         em.refresh(article);
     }
 
     @Override
-    public List<Article> getAllArticle() {
-        Query q = em.createNamedQuery("Article.findAll");
+    public List<Article> getAll() {
+        Query q = em.createNamedQuery("Article.getAll");
         return (List<Article>) q.getResultList();
     }
 
     @Override
-    public Article getArticle(long id) {
+    public Article getById(long id) {
 
         Query q = em.createNamedQuery("Article.getById");
         q.setParameter("id", id);
@@ -51,24 +51,16 @@ public class ArticleService implements ArticleServiceLocal {
     }
 
     @Override
-    public Article getArticleByTitle(String title) {
-        Query q = em.createNamedQuery("Article.getByTitle");
-        q.setParameter("name", title);
-        return (Article) q.getSingleResult();
-    }
-
-    @Override
-    public Article getArticleByAuthor(String author) {
+    public List<Article> getByAuthor(String author) {
         Query q = em.createNamedQuery("Article.getByAuthor");
         q.setParameter("name", author);
-        return (Article) q.getResultList().get(0);
+        return (List<Article>) q.getResultList().get(0);
     }
 
     @Override
-    public List<Article> getArticleByTag(String tag) {
+    public List<Article> getByTag(String tag) {
         Query q = em.createNamedQuery("Article.getById");
         q.setParameter("name", tag);
         return q.getResultList();
     }
-    
 }

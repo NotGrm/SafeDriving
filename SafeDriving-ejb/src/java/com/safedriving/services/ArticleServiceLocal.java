@@ -14,19 +14,17 @@ import javax.ejb.Local;
  */
 @Local
 public interface ArticleServiceLocal {
-    void addArticle(Article article);
+    void add(Article article);
 
-    void removeArticle(Article article);
+    void remove(Article article);
 
-    void modifieArticle(Article article);
+    void refresh(Article article);
 
-    Article getArticle(long id);
+    Article getById(long id);
 
-    List<Article> getAllArticle();
+    List<Article> getAll();
 
-    Article getArticleByTitle(String title);
+    List<Article> getByAuthor(String author);
 
-    Article getArticleByAuthor(String author);
-
-    List<Article> getArticleByTag(String tag);
-}
+    List<Article> getByTag(String tag);
+} 

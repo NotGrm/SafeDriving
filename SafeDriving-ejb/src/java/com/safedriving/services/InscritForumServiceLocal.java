@@ -23,6 +23,8 @@ public interface InscritForumServiceLocal {
 
     InscritForum getById(int id);
 
-    InscritForum getByUserName(String username);
+    InscritForum getByUsername(String username);
+
+    InscritForum getByUsernamePwd(String username, String password);
     
 }

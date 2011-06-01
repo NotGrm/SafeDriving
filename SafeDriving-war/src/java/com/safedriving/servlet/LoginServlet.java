@@ -4,9 +4,10 @@
  */
 package com.safedriving.servlet;
 
+import com.safedriving.model.InscritForum;
+import com.safedriving.services.InscritForumServiceLocal;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,20 +20,32 @@ import javax.servlet.http.HttpSession;
  */
 public class LoginServlet extends HttpServlet {
 
-    private String originalPath ;
+    @EJB
+    private InscritForumServiceLocal srv;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("entré doPost");
-        HttpSession session = req.getSession();        
-        session.setAttribute("username", req.getParameter("username"));
-        resp.sendRedirect(originalPath);
+
+        String userEntry;
+        InscritForum userDb;
+        String password;
+
+        HttpSession session = req.getSession();
+        userEntry = req.getParameter("username");
+        password = req.getParameter("password");
+        try {
+            userDb = srv.getByUsernamePwd(userEntry, password);
+            session.setAttribute("user", userDb);
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } catch (Exception e) {
+            System.out.println("Entré Catch");
+            resp.sendRedirect("Login");
+        }
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("login.jsp").forward(req, resp);        
-        originalPath = req.getParameter("path");
-        
+        req.getRequestDispatcher("login.jsp").forward(req, resp);
+
     }
-    
 }

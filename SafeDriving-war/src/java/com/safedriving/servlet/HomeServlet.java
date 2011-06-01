@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class HomeServlet extends HttpServlet {
 
+
     @EJB
     ArticleServiceLocal srv;
     
@@ -29,7 +30,7 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Article> articles;
         
-        articles = srv.getAllArticle();
+        articles = srv.getAll();
         
         req.setAttribute("articles", articles);
 
@@ -38,3 +39,5 @@ public class HomeServlet extends HttpServlet {
     }
     
 }
+  
+

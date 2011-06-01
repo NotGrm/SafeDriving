@@ -37,7 +37,7 @@ public class InscriptionServlet extends HttpServlet {
         String password = req.getParameter("password");
         
         InscritForum inscrit = new InscritForum();
-        inscrit.setUserName(username);
+        inscrit.setUsername(username);
         inscrit.setPassword(password);
         
         srv.add(inscrit);

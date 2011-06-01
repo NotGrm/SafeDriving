@@ -7,6 +7,8 @@ package com.safedriving.model;
 import java.io.Serializable;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -14,22 +16,16 @@ import javax.persistence.OneToOne;
  * @author Ehres
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Client.getNumClient",
+    query = "SELECT c FROM Client c WHERE c.numClient = :num")
+})
 @DiscriminatorValue(value="Client")
 public class Client extends Personne implements Serializable {
     @OneToOne
     private Formation formation;
     private static final long serialVersionUID = 1L;
     private long numClient;
-    @OneToOne
-    private InscritForum compteForum;
-
-    public InscritForum getCompteForum() {
-        return compteForum;
-    }
-
-    public void setCompteForum(InscritForum compteForum) {
-        this.compteForum = compteForum;
-    }
 
     public long getNumClient() {
         return numClient;
