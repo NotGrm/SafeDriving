@@ -4,12 +4,18 @@
  */
 package com.safedriving.servlet;
 
-import com.safedriving.model.Article;
+import com.safedriving.model.blog.Article;
 import com.safedriving.model.Personnel;
+import com.safedriving.model.blog.Categorie;
+import com.safedriving.model.blog.Tag;
 import com.safedriving.services.ArticleServiceLocal;
+import com.safedriving.services.CategorieServiceLocal;
 import com.safedriving.services.PersonnelServiceLocal;
+import com.safedriving.services.TagServiceLocal;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,6 +34,12 @@ public class AddArticleServlet extends HttpServlet {
     
     @EJB
     private PersonnelServiceLocal srvPersonnel;
+    
+    @EJB
+    private CategorieServiceLocal srvCategorie;
+    
+    @EJB
+    private TagServiceLocal srvTag;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
@@ -40,6 +52,12 @@ public class AddArticleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        List<Categorie> L = srvCategorie.getAllTopLevelCategorie();
+        request.setAttribute("categories", L);
+        
+        List<Tag> Ltag = srvTag.getAllTag();
+        request.setAttribute("tags", Ltag);
         
         RequestDispatcher rq = request.getRequestDispatcher("addArticle.jsp");
         rq.forward(request, response);
@@ -58,24 +76,35 @@ public class AddArticleServlet extends HttpServlet {
         
         String title = request.getParameter("title");
         String text = request.getParameter("text");
-        String categorie = request.getParameter("categorie");
         String author = request.getParameter("author");
         String tags = request.getParameter("tags");
         
-        Personnel pers = srvPersonnel.getByCodePersonnel(author);
-        
         Article art = new Article();
+        
+        String[] categories = request.getParameterValues("selectedCategories");
+        for (String categorie : categories) {
+            long id = Long.parseLong(categorie);
+            
+            System.err.print(id);
+            
+            Categorie c = srvCategorie.getById(id);
+            
+            if(art.getCategories() == null)
+                art.setCategories(new ArrayList<Categorie>());
+            
+            art.getCategories().add(c);
+        }
+        
+        //Personnel pers = srvPersonnel.getByCodePersonnel(author);
+        
+        
         art.setTitre(title);
         art.setText(text);
-        art.setCategorie(categorie);
-        art.setTag(tags);
+        //art.setTag(tags);
         art.setDatePublication(new Date());
-        art.setAuteur(pers);
+        //art.setAuteur(pers);
         
-        srv.add(art);
-        
-        //srv = new ArticleService();
-        //srv.addArticle(art);
+        srv.addArticle(art);
     }
 
     /** 

@@ -28,7 +28,7 @@ public class VehiculeService implements VehiculeServiceLocal {
 
     @Override
     public void refresh(Vehicule vehicule) {
-        em.refresh(vehicule);
+        em.merge(vehicule);
     }
 
     @Override

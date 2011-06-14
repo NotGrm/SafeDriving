@@ -82,7 +82,7 @@ public class AddExamenServlet extends HttpServlet {
         ex.setNbrMaxPlace(places);
         ex.setLieu(lieu);
         
-        srv.addExamen(ex);
+        srv.add(ex);
         
     }
 

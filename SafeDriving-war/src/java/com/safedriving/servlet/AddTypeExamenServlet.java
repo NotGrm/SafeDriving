@@ -38,7 +38,7 @@ public class AddTypeExamenServlet extends HttpServlet {
         TypeExamen typeEx = new TypeExamen();
         typeEx.setName(typeName);
         
-        srv.addTypeExamen(typeEx);
+        srv.add(typeEx);
     }
 
     

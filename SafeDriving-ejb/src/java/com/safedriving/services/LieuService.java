@@ -33,7 +33,7 @@ public class LieuService implements LieuServiceLocal {
 
     @Override
     public void refresh(Lieu lieu) {
-        em.refresh(lieu);
+        em.merge(lieu);
     }
 
     @Override

@@ -29,7 +29,7 @@ public class PersonnelService implements PersonnelServiceLocal {
 
     @Override
     public void refresh(Personnel personnel) {
-        em.refresh(personnel);
+        em.merge(personnel);
     }
 
     @Override

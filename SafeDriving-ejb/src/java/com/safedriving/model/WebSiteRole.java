@@ -9,12 +9,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Ehres
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "WebSiteRole.getAll",
+    query = "SELECT c FROM WebSiteRole c"),
+    @NamedQuery(name = "WebSiteRole.getByRoleName",
+    query = "SELECT c FROM WebSiteRole c WHERE c.roleName = :roleName")
+})
 public class WebSiteRole implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

@@ -26,14 +26,14 @@ public class AgenceService implements AgenceServiceLocal {
     }
 
     public void refresh(Agence agence) {
-        em.refresh(agence);
+        em.merge(agence);
     }
 
     public void remove(Agence agence) {
         em.remove(agence);
     }
 
-    public List<Agence> getAll() {
+    public List<Agence> getAll() {        
         Query q = em.createNamedQuery("Agence.getAll");
         return (List<Agence>) q.getResultList();
     }

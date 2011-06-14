@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Ajout d'un service</h1>
-        <form action="/SafeDriving-war/AddService" method="post">
+        <form action="/SafeDriving-war/auth/AddService" method="post">
             <label  for="servicename">
                 Nom du service : </label>
             <input type="text" name="servicename" id="servicename"/>

@@ -16,11 +16,11 @@ import javax.ejb.Local;
 @Local
 public interface ExamenServiceLocal {
 
-    void addExamen(Examen examen);
+    void add(Examen examen);
 
-    void removeExam(Examen examen);
+    void remove(Examen examen);
 
-    void refreshExamen(Examen examen);
+    void refresh(Examen examen);
 
     List<Examen> getAll();
 

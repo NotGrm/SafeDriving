@@ -31,7 +31,7 @@ public class FormationService implements FormationServiceLocal {
     }
 
     public void refresh(Formation formation) {
-        em.refresh(formation);
+        em.merge(formation);
     }
 
     public List<Formation> getAll() {
@@ -40,9 +40,7 @@ public class FormationService implements FormationServiceLocal {
     }
 
     public Formation getById(int id) {
-        Query q = em.createNamedQuery("Formation.getById");
-        q.setParameter("name", id);
-        return (Formation) q.getResultList().get(0);
+        return em.find(Formation.class, id);
     }
 
     public List<Formation> getByClientId(int id) {

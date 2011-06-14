@@ -17,6 +17,10 @@ import javax.persistence.OneToOne;
  */
 @Entity
 @NamedQueries({
+    @NamedQuery(name = "Client.getById",
+    query = "SELECT c FROM Client c WHERE c.id = :id"),
+    @NamedQuery(name = "Client.getAll",
+    query = "SELECT c FROM Client c"),
     @NamedQuery(name = "Client.getNumClient",
     query = "SELECT c FROM Client c WHERE c.numClient = :num")
 })

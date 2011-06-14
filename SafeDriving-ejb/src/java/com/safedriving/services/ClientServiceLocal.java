@@ -15,11 +15,11 @@ import javax.ejb.Local;
 @Local
 public interface ClientServiceLocal {
 
-    void addClient(Client client);
+    void add(Client client);
 
-    void removeClient(Client client);
+    void remove(Client client);
 
-    void refreshClient(Client client);
+    void refresh(Client client);
 
     Client getById(int id);
 

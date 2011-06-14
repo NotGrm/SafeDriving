@@ -29,7 +29,7 @@ public class PratiqueService implements PratiqueServiceLocal {
     }
 
     public void refresh(Pratique pratique) {
-        em.refresh(pratique);
+        em.merge(pratique);
     }
 
     public void remove(Pratique pratique) {

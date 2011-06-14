@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Ajout d'un employé</h1>
-        <form action="/SafeDriving-war/AddPersonnel" method="POST">
+        <form action="/SafeDriving-war/auth/AddPersonnel" method="POST">
             Code Personnel : <input type="text" name="code"/>
             Nom : <input type="text" name="name"/>
             Prénom : <input type="text" name="firstname"/><br/>

@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Ajout d'un lieu</h1>
-        <form action="/SafeDriving-war/AddLieu" method="POST">
+        <form action="/SafeDriving-war/auth/AddLieu" method="POST">
             Nom : <input type="text" name="name"/>
             Adresse : <input type="text" name="address"/>
             Code Postal : <input type="text" name="zipcode"/>

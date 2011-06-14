@@ -68,6 +68,14 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>com.safedriving.servlet.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddCompteWebServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddCompteWebServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PlanningServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.PlanningServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddPersonnelServlet</servlet-name>
         <url-pattern>/auth/AddPersonnel</url-pattern>
@@ -114,7 +122,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>InscriptionServlet</servlet-name>
-        <url-pattern>/auth/Inscription</url-pattern>
+        <url-pattern>/Inscription</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddServiceServlet</servlet-name>
@@ -127,6 +135,14 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCompteWebServlet</servlet-name>
+        <url-pattern>/auth/AddCompteWeb</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PlanningServlet</servlet-name>
+        <url-pattern>/auth/Planning</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

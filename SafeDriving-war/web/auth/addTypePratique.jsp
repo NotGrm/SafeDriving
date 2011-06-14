@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Ajout d'un type de pratique</h1>
-        <form action="/SafeDriving-war/AddTypePratique" method="post">
+        <form action="/SafeDriving-war/auth/AddTypePratique" method="post">
             Nom :<input type="text" name="name"/>
             Nombre maximum de participants :<input type="text" name="nb"/>            
             <input type="submit" value="Valider"/>

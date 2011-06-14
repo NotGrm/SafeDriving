@@ -30,7 +30,7 @@ public class TypeSessionPratiqueService implements TypeSessionPratiqueServiceLoc
     @Override
     public void refresh(TypeSessionPratique type)
     {
-        em.refresh(type);
+        em.merge(type);
     }
 
     @Override

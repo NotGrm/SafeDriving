@@ -23,17 +23,17 @@ public class TypeExamenService implements TypeExamenServiceLocal {
     private EntityManager em;
 
     @Override
-    public void addTypeExamen(TypeExamen examen) {
+    public void add(TypeExamen examen) {
         em.persist(examen);
     }
 
     @Override
-    public void removeTypeExam(TypeExamen examen) {
+    public void remove(TypeExamen examen) {
         em.remove(examen);
     }
 
     @Override
-    public void refreshTypeExamen(TypeExamen examen) {
+    public void refresh(TypeExamen examen) {
         em.refresh(examen);
     }
 

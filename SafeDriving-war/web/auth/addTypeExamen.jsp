@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Ajout d'un type d'examen</h1>
-        <form action="/SafeDriving-war/AddTypeExamen" method="POST">
+        <form action="/SafeDriving-war/auth/AddTypeExamen" method="POST">
             Type : <input type="text" name="type"/>
             <input type="submit" value="Valider"/>
         </form>

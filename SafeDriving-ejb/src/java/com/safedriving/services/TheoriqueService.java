@@ -28,7 +28,7 @@ public class TheoriqueService implements TheoriqueServiceLocal {
     }
 
     public void refresh(Theorique theorique) {
-        em.persist(theorique);              
+        em.merge(theorique);              
     }
 
     public void remove(Theorique theorique) {

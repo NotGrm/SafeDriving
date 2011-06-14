@@ -32,10 +32,11 @@ public class Filtre implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         InscritForum user = (InscritForum) httpRequest.getSession().getAttribute("user");
         request.setAttribute("path", httpRequest.getRequestURI());
-        
+
         if (user != null) {
             String roleName = user.getRole().getRoleName();
             String nameFonction = httpRequest.getRequestURI().substring(22);
+            System.out.println("Fonction demandé"+nameFonction);
             boolean access = false;
             if (nameFonction.equals("AddArticle")) {
                 if (roleName.equals("DIRECTION") || roleName.equals("REDACTION")) {
@@ -81,6 +82,12 @@ public class Filtre implements Filter {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
                     access = true;
                 }
+            } else if (nameFonction.equals("AddCompteWeb")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
+                    access = true;
+                }
+            }else if (nameFonction.equals("Planning")) {                
+                access = true;                
             }
 
             if (access == true) {

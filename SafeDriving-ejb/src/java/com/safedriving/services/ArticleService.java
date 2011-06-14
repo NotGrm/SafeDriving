@@ -33,7 +33,7 @@ public class ArticleService implements ArticleServiceLocal {
 
     @Override
     public void refresh(Article article) {
-        em.refresh(article);
+        em.merge(article);
     }
 
     @Override
@@ -44,10 +44,7 @@ public class ArticleService implements ArticleServiceLocal {
 
     @Override
     public Article getById(long id) {
-
-        Query q = em.createNamedQuery("Article.getById");
-        q.setParameter("id", id);
-        return (Article) q.getSingleResult();
+        return em.find(Article.class, id);
     }
 
     @Override

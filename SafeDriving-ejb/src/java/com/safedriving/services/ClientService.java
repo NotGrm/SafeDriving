@@ -21,16 +21,16 @@ public class ClientService implements ClientServiceLocal {
     @PersistenceContext
     private EntityManager em;
 
-    public void addClient(Client client) {
+    public void add(Client client) {
         em.persist(client);
     }
 
-    public void removeClient(Client client) {
+    public void remove(Client client) {
         em.remove(client);
     }
 
-    public void refreshClient(Client client) {
-        em.refresh(client);
+    public void refresh(Client client) {
+        em.merge(client);
     }
 
     public List<Client> getAll() {
@@ -40,8 +40,8 @@ public class ClientService implements ClientServiceLocal {
 
     public Client getById(int id) {
         Query q = em.createNamedQuery("Client.getById");
-        q.setParameter("name", id);
-        return (Client) q.getResultList().get(0);
+        q.setParameter("id", id);
+        return (Client)q.getSingleResult();
     }
 
     public List<Client> getByNom(String name) {

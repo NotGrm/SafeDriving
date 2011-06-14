@@ -33,7 +33,7 @@ public class RoleService implements RoleServiceLocal {
 
     @Override
     public void refreshWebSiteRole(WebSiteRole role) {
-        em.refresh(role);
+        em.merge(role);
     }
 
     @Override

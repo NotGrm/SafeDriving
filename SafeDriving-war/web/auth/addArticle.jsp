@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="/SafeDriving-war/AddArticle" method="post">
+        <form action="/SafeDriving-war/auth/AddArticle" method="post">
             <h1>Ajouter un article</h1><br>
             <h2>Titre</h2>
             <input type="text" name="title"/>

@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Ajout d'un véhicule</h1>
-        <form action="/SafeDriving-war/AddVehicule" method="POST">
+        <form action="/SafeDriving-war/auth/AddVehicule" method="POST">
             Numéro de série : <input type="text" name="serialNumber"/>
             Plaque d'immatriculation : <input type="text" name="plaque"/>
             Date d'achat : <input type="text" name="dateAchat"/>

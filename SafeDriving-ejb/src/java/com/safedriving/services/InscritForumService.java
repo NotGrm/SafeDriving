@@ -33,7 +33,7 @@ public class InscritForumService implements InscritForumServiceLocal {
 
     @Override
     public void refresh(InscritForum inscritForum) {
-        em.refresh(inscritForum);
+        em.merge(inscritForum);
     }
 
     @Override

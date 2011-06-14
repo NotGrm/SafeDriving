@@ -13,11 +13,11 @@ import javax.ejb.Local;
 @Local
 public interface TypeExamenServiceLocal {
 
-    public void addTypeExamen(com.safedriving.model.TypeExamen examen);
+    public void add(com.safedriving.model.TypeExamen examen);
 
-    public void removeTypeExam(com.safedriving.model.TypeExamen examen);
+    public void remove(com.safedriving.model.TypeExamen examen);
 
-    public void refreshTypeExamen(com.safedriving.model.TypeExamen examen);
+    public void refresh(com.safedriving.model.TypeExamen examen);
 
     public java.util.List<com.safedriving.model.TypeExamen> getAll();
 

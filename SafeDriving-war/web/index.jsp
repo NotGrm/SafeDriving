@@ -43,9 +43,11 @@
                                 <li><a href="/SafeDriving-war/auth/AddVehicule">Ajout d'un véhicule</a></li>
                                 <li><a href="/SafeDriving-war/auth/AddLieu">Ajout d'un lieu</a></li>
                                 <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout d'un type d'examen</a></li>
+                                <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
                             </c:when>                    
                             <c:when test="${'REDACTION' == roleName}">
                                 <li><a href="/SafeDriving-war/auth/AddArticle">Ajout d'un Article</a></li>
+                                <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
                             </c:when>                   
                             <c:when test="${'GESTION_AGENCE' == roleName}">
                                 <li><a href="/SafeDriving-war/auth/AddPersonnel">Ajout d'un employée</a></li>
@@ -56,6 +58,7 @@
                                 <li><a href="/SafeDriving-war/auth/AddVehicule">Ajout d'un véhicule</a></li>
                                 <li><a href="/SafeDriving-war/auth/AddLieu">Ajout d'un lieu</a></li>
                                 <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout d'un type d'examen</a></li>
+                                <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
                             </c:when>                
                             <c:when test="${'SERVICE_FORMATION' == roleName}">
                                 <li><a href="/SafeDriving-war/auth/AddClient">Ajout d'un client</a></li>
@@ -63,10 +66,14 @@
                                 <li><a href="/SafeDriving-war/auth/AddSessionTheorique">Ajout d'une session theorique</a></li>
                                 <li><a href="/SafeDriving-war/auth/AddVehicule">Ajout d'un véhicule</a></li>
                                 <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout d'un type d'examen</a></li>
+                                <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
+                            </c:when>                
+                            <c:when test="${'FORUM' == roleName}">
+                                <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
                             </c:when>    
                         </c:choose>
                         <li><a href="/SafeDriving-war/Logout">Logout</a></li>  
-                        <li> <%= user.getUsername()%><br/></li>                          
+                        <li> ${user.getUsername()}<br/></li>                          
                     </c:when> 
                     <c:when test="${user == null}">
                         <li><a href="/SafeDriving-war/Inscription">Inscription</a></li>

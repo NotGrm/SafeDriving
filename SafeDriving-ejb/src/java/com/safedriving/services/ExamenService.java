@@ -22,16 +22,16 @@ public class ExamenService implements ExamenServiceLocal {
     @PersistenceContext
     private EntityManager em;
 
-    public void addExamen(Examen examen) {
+    public void add(Examen examen) {
         em.persist(examen);
     }
 
-    public void removeExam(Examen examen) {
+    public void remove(Examen examen) {
         em.remove(examen);
     }
 
-    public void refreshExamen(Examen examen) {
-        em.refresh(examen);
+    public void refresh(Examen examen) {
+        em.merge(examen);
     }
 
     public List<Examen> getAll() {
@@ -40,9 +40,7 @@ public class ExamenService implements ExamenServiceLocal {
     }
 
     public Examen getById(int id) {
-        Query q = em.createNamedQuery("Examen.getById");
-        q.setParameter("name", id);
-        return (Examen) q.getResultList().get(0);
+        return em.find(Examen.class, id);
     }
 
     public Examen getEmpty(Examen examen) {
