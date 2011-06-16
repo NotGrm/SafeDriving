@@ -4,6 +4,7 @@
  */
 package com.safedriving.services;
 
+import com.safedriving.model.InscritForum;
 import com.safedriving.model.Personne;
 import javax.ejb.Local;
 
@@ -15,5 +16,7 @@ import javax.ejb.Local;
 public interface PersonneServiceLocal {
     
     void addPersonne(Personne personne);
+
+    Personne getByCompteForum(InscritForum compte);
     
 }

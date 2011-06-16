@@ -6,6 +6,7 @@ package com.safedriving.servlet;
 
 import com.safedriving.model.Lieu;
 import com.safedriving.model.Personnel;
+import com.safedriving.model.Pratique;
 import com.safedriving.model.TypeSessionPratique;
 import com.safedriving.model.Vehicule;
 import com.safedriving.services.LieuServiceLocal;
@@ -67,7 +68,7 @@ public class AddSessionPratiqueServlet extends HttpServlet {
         
         Lieu l = srvLieu.getByNom(placeName);
         Personnel p = srvPersonnel.getByCodePersonnel(codePersonnel);
-        Vehicule v = srvVehicule.getByName(vehiculeName);
+        Vehicule v = srvVehicule.getBySerial(vehiculeName);
         TypeSessionPratique t = srvTypePratique.getByName(typePratiqueName);
         
         Date date = null;
@@ -77,7 +78,17 @@ public class AddSessionPratiqueServlet extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(AddExamenServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        super.doPost(req, resp);
+        
+        Pratique prat = new Pratique();
+        prat.setDate(date);
+        prat.setIntervenant(p);
+        prat.setLieu(l);
+        prat.setType(t);
+        prat.setVehicule(v);
+        prat.setNbrMaxPlace(nbPlaces);
+        
+        srv.add(prat);
+        
     }
 
     

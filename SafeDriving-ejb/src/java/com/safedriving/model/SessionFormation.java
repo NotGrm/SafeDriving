@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
@@ -25,6 +27,15 @@ import javax.persistence.Temporal;
 @Entity
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TypeSession")
+@NamedQueries({
+    @NamedQuery(name="SessionFormation.getById", 
+        query="Select c from SessionFormation c where c.id = :id"),
+    @NamedQuery(name="SessionFormation.findByIntervenant", 
+        query="Select c from SessionFormation c where c.intervenant = :intervenant"),
+    @NamedQuery(name="SessionFormation.findAllAfterDate", 
+        query="Select c from SessionFormation c where c.dateSession > :date")
+})
+
 public class SessionFormation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -68,11 +79,11 @@ public class SessionFormation implements Serializable {
         this.lieu = lieu;
     }
 
-    public List<Client> getListParticipants() {
+    public List<Client> getParticipants() {
         return participants;
     }
 
-    public void setListParticipants(List<Client> participants) {
+    public void setParticipants(List<Client> participants) {
         this.participants = participants;
     }
 

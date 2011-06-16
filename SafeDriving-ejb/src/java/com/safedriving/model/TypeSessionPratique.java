@@ -6,7 +6,10 @@ package com.safedriving.model;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 /**
  *
@@ -14,8 +17,10 @@ import javax.persistence.Id;
  */
 
 @Entity
+@NamedQuery(name="TypeSessionPratique.getByName", query="Select c from TypeSessionPratique c where c.typeName = :name")
 public class TypeSessionPratique implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String typeName;
     //SESSION_INITIAL, SESSION_PERFECTIONNEMENT;

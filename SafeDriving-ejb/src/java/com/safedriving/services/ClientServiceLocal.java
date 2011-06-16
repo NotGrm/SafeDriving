@@ -21,7 +21,7 @@ public interface ClientServiceLocal {
 
     void refresh(Client client);
 
-    Client getById(int id);
+    Client getById(long id);
 
     List<Client> getAll();
 

@@ -49,9 +49,10 @@ public class VehiculeService implements VehiculeServiceLocal {
         return (Vehicule)q.getSingleResult();
     }
     
-    public Vehicule getByName(String name) {
-        Query q = em.createNamedQuery("Vehicule.getByName");
-        q.setParameter("name", name);
+    @Override
+    public Vehicule getBySerial(String serial) {
+        Query q = em.createNamedQuery("Vehicule.getBySerial");
+        q.setParameter("serial", serial);
         return (Vehicule)q.getSingleResult();
     }
     

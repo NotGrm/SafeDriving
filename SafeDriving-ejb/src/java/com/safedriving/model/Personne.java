@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
@@ -23,6 +24,7 @@ import javax.persistence.Temporal;
 @Entity
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="PersonneType")
+@NamedQuery(name="Personne.getByCompteForum", query="Select c from Personne c where c.compteForum = :compte")
 public class Personne implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

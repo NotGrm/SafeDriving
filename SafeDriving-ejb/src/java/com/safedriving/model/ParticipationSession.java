@@ -34,6 +34,7 @@ public class ParticipationSession implements Serializable {
     private SessionFormation sessionFormation;
     @OneToOne
     private Client client;
+    private int score;
 
     public Client getClient() {
         return client;
@@ -57,6 +58,14 @@ public class ParticipationSession implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     @Override

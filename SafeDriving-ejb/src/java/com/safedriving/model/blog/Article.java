@@ -25,7 +25,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Article.findAll",
+    @NamedQuery(name = "Article.getAll",
     query = "SELECT c FROM Article c"
         + " ORDER BY c.datePublication DESC"),
     @NamedQuery(name = "Article.findByAuthor",

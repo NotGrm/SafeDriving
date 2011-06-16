@@ -44,6 +44,9 @@
                                 <li><a href="/SafeDriving-war/auth/AddLieu">Ajout d'un lieu</a></li>
                                 <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout d'un type d'examen</a></li>
                                 <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddTypePratique">Ajout d'un type Pratique</a></li>
+                                <li><a href="/SafeDriving-war/auth/AddNote">Ajout d'une Note</a></li>
+                                <li><a href="/SafeDriving-war/auth/RegisterToSession">S'inscrire à une session</a></li>
                             </c:when>                    
                             <c:when test="${'REDACTION' == roleName}">
                                 <li><a href="/SafeDriving-war/auth/AddArticle">Ajout d'un Article</a></li>
@@ -67,7 +70,11 @@
                                 <li><a href="/SafeDriving-war/auth/AddVehicule">Ajout d'un véhicule</a></li>
                                 <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout d'un type d'examen</a></li>
                                 <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
-                            </c:when>                
+                            </c:when>      
+                            <c:when test="${'CLIENT' == roleName}">
+                                <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
+                                <li><a href="/SafeDriving-war/auth/RegisterToSession">S'inscrire à une session</a></li>
+                            </c:when>     
                             <c:when test="${'FORUM' == roleName}">
                                 <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
                             </c:when>    

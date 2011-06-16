@@ -76,6 +76,18 @@
         <servlet-name>PlanningServlet</servlet-name>
         <servlet-class>com.safedriving.servlet.PlanningServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddNoteServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddNoteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddTypePratiqueServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddTypePratiqueServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterToSessionServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.RegisterToSessionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddPersonnelServlet</servlet-name>
         <url-pattern>/auth/AddPersonnel</url-pattern>
@@ -99,10 +111,6 @@
     <servlet-mapping>
         <servlet-name>AddSessionTheoriqueServlet</servlet-name>
         <url-pattern>/auth/AddSessionTheorique</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>HomeServlet</servlet-name>
-        <url-pattern>/</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ArticleDetailServlet</servlet-name>
@@ -143,6 +151,22 @@
     <servlet-mapping>
         <servlet-name>PlanningServlet</servlet-name>
         <url-pattern>/auth/Planning</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/Home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddTypePratiqueServlet</servlet-name>
+        <url-pattern>/auth/AddTypePratique</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNoteServlet</servlet-name>
+        <url-pattern>/auth/AddNote</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterToSessionServlet</servlet-name>
+        <url-pattern>/auth/RegisterToSession</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

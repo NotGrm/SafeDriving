@@ -25,6 +25,6 @@ public interface VehiculeServiceLocal {
 
     Vehicule getById(int id);
 
-    Vehicule getByName(java.lang.String name);
+    Vehicule getBySerial(java.lang.String serial);
     
 }

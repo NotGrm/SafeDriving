@@ -5,7 +5,6 @@
 package com.safedriving.servlet;
 
 import com.safedriving.model.blog.Article;
-import com.safedriving.model.Personnel;
 import com.safedriving.model.blog.Categorie;
 import com.safedriving.model.blog.Tag;
 import com.safedriving.services.ArticleServiceLocal;
@@ -104,7 +103,7 @@ public class AddArticleServlet extends HttpServlet {
         art.setDatePublication(new Date());
         //art.setAuteur(pers);
         
-        srv.addArticle(art);
+        srv.add(art);
     }
 
     /** 
