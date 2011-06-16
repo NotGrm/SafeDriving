@@ -4,6 +4,7 @@
  */
 package com.safedriving.model;
 
+import com.safedriving.model.blog.Article;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

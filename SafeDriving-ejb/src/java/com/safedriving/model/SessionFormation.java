@@ -39,6 +39,24 @@ public class SessionFormation implements Serializable {
     private Personnel intervenant;  
     @OneToMany
     private List<Client> participants;
+    private int duree;
+    private int heureDebut;
+
+    public int getHeureDebut() {
+        return heureDebut;
+    }
+
+    public void setHeureDebut(int heureDebut) {
+        this.heureDebut = heureDebut;
+    }
+
+    public int getDuree() {
+        return duree;
+    }
+
+    public void setDure(int duree) {
+        this.duree = duree;
+    }
 
     public Long getId() {
         return id;

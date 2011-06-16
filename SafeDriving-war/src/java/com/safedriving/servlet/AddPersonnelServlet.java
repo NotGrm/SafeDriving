@@ -47,10 +47,11 @@ public class AddPersonnelServlet extends HttpServlet {
         pers.setAdresse(address);
         pers.setCodePostal(zipcode);
         pers.setVille(city);
-        pers.setCodePersonnel(code);
-        
+        pers.setCodePersonnel(code);        
         
         srv.add(pers);
+        
+        resp.sendRedirect("/SafeDriving-war/");
     }
 
     

@@ -53,13 +53,13 @@ public class TheoriqueService implements TheoriqueServiceLocal {
 
     public List<Theorique> getByLieu(Lieu lieu) {
         Query q = em.createNamedQuery("Theorique.getByLieu");
-        q.setParameter("name", lieu);
+        q.setParameter("lieu", lieu);
         return q.getResultList();
     }
 
     public List<Theorique> getByIntervenant(Personnel inter) {
         Query q = em.createNamedQuery("Theorique.getByIntervenant");
-        q.setParameter("name", inter);
+        q.setParameter("inter", inter);
         return q.getResultList();
     }
         

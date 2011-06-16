@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -51,8 +52,8 @@ public class AddSessionPratiqueServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rq = req.getRequestDispatcher("addSessionPratique.jsp");
-        rq.forward(req, resp);
+        req.setAttribute("formateurs", srvPersonnel.getAll());
+        req.getRequestDispatcher("addSessionPratique.jsp").forward(req, resp);
     }
 
     @Override
@@ -77,8 +78,5 @@ public class AddSessionPratiqueServlet extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(AddExamenServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        super.doPost(req, resp);
     }
-
-    
 }

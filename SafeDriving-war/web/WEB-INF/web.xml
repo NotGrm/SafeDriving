@@ -101,10 +101,6 @@
         <url-pattern>/auth/AddSessionTheorique</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>HomeServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>ArticleDetailServlet</servlet-name>
         <url-pattern>/auth/ArticleDetail</url-pattern>
     </servlet-mapping>
@@ -143,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>PlanningServlet</servlet-name>
         <url-pattern>/auth/Planning</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/Home</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

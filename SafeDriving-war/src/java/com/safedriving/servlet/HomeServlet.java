@@ -4,10 +4,9 @@
  */
 package com.safedriving.servlet;
 
-import com.safedriving.model.Article;
+import com.safedriving.model.blog.Article;
 import com.safedriving.services.ArticleServiceLocal;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;

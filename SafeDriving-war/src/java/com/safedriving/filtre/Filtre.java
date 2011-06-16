@@ -36,7 +36,7 @@ public class Filtre implements Filter {
         if (user != null) {
             String roleName = user.getRole().getRoleName();
             String nameFonction = httpRequest.getRequestURI().substring(22);
-            System.out.println("Fonction demandé"+nameFonction);
+            System.out.println("Fonction demandé" + nameFonction);
             boolean access = false;
             if (nameFonction.equals("AddArticle")) {
                 if (roleName.equals("DIRECTION") || roleName.equals("REDACTION")) {
@@ -63,14 +63,14 @@ public class Filtre implements Filter {
                     access = true;
                 }
             } else if (nameFonction.equals("AddSessionPratique")) {
-                if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("SERVICE_FORMATION")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("SERVICE_FORMATION")) {
                     access = true;
                 }
             } else if (nameFonction.equals("AddSessionTheorique")) {
-                if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("SERVICE_FORMATION")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("SERVICE_FORMATION")) {
                     access = true;
                 }
-            } else if (nameFonction.equals("AddTypeExam")) {
+            } else if (nameFonction.equals("AddTypeExamen")) {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("SERVICE_FORMATION")) {
                     access = true;
                 }
@@ -86,8 +86,8 @@ public class Filtre implements Filter {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
                     access = true;
                 }
-            }else if (nameFonction.equals("Planning")) {                
-                access = true;                
+            } else if (nameFonction.equals("Planning")) {
+                access = true;
             }
 
             if (access == true) {

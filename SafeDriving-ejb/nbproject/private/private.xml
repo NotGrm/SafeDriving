@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/Disponibility.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/DisponibilityService.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/DisponibilityServiceLocal.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/ParticipationSession.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/participationSessionService.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/participationSessionServiceLocal.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/ArticleServiceLocal.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/ArticleService.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/blog/Article.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/AgenceService.java</file>
         <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/Agence.java</file>
     </open-files>
 </project-private>
