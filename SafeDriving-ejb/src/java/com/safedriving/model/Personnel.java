@@ -8,7 +8,7 @@ import com.safedriving.model.blog.Article;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
@@ -17,8 +17,14 @@ import javax.persistence.OneToMany;
  * @author Ehres
  */
 @Entity
-@DiscriminatorValue(value = "Personnel")
-@NamedQuery(name = "Personnel.GetByCodPers", query = "SELECT c FROM Personnel c WHERE c.codePersonnel = :code")
+@NamedQueries({
+    @NamedQuery(name = "Personnel.getAll",
+    query = "SELECT c FROM Personnel c"),
+    @NamedQuery(name = "Personnel.getByCodPers", 
+        query = "SELECT c FROM Personnel c WHERE c.codePersonnel = :code"),
+    @NamedQuery(name = "Personnel.getByInscritForum", 
+        query = "SELECT c FROM Personnel c WHERE c.compteForum = :compte")
+})
 public class Personnel extends Personne {
 
     private String codePersonnel;

@@ -20,22 +20,19 @@ public class TypeSessionPratiqueService implements TypeSessionPratiqueServiceLoc
 
     @PersistenceContext
     private EntityManager em;
-    
+
     @Override
-    public void add(TypeSessionPratique type)
-    {
+    public void add(TypeSessionPratique type) {
         em.persist(type);
     }
 
     @Override
-    public void refresh(TypeSessionPratique type)
-    {
+    public void refresh(TypeSessionPratique type) {
         em.merge(type);
     }
 
     @Override
-    public void remove(TypeSessionPratique type)
-    {
+    public void remove(TypeSessionPratique type) {
         em.remove(type);
     }
 
@@ -47,17 +44,13 @@ public class TypeSessionPratiqueService implements TypeSessionPratiqueServiceLoc
 
     @Override
     public TypeSessionPratique getById(long id) {
-        Query q = em.createNamedQuery("TypeSessionPratique.getById");
-        q.setParameter("id", id);
-        return (TypeSessionPratique) q.getSingleResult();
+        return em.find(TypeSessionPratique.class, id);
     }
-    
+
     @Override
-    public TypeSessionPratique getByName(String name)
-    {
-        Query q = em.createNamedQuery("TypeSessionPratique.getByName");
-        q.setParameter("name", name);
+    public TypeSessionPratique getByTypeName(String name) {
+        Query q = em.createNamedQuery("TypeSessionPratique.getByTypeName");
+        q.setParameter("typeName", name);
         return (TypeSessionPratique) q.getSingleResult();
     }
-    
 }

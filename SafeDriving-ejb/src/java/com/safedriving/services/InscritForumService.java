@@ -53,8 +53,7 @@ public class InscritForumService implements InscritForumServiceLocal {
         Query q = em.createNamedQuery("InscritForum.getByUsernamePwd");
         q.setParameter("username", username);
         q.setParameter("password", password);
-        //return (InscritForum)q.getSingleResult();
-        return (InscritForum)q.getResultList().get(0);
+        return (InscritForum)q.getSingleResult();
     }
     
     

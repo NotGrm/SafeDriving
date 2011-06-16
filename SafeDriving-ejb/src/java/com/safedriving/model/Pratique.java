@@ -7,10 +7,9 @@ package com.safedriving.model;
 import java.io.Serializable;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
@@ -18,6 +17,16 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 @DiscriminatorValue(value="Pratique")
+@NamedQueries({
+    @NamedQuery(name = "Pratique.getAll",
+    query = "SELECT c FROM Pratique c"),
+    @NamedQuery(name = "Pratique.GetByLieu", 
+        query = "SELECT c FROM Pratique c WHERE c.lieu = :lieu"),
+    @NamedQuery(name = "Pratique.GetByType", 
+        query = "SELECT c FROM Pratique c WHERE c.type = :type"),
+    @NamedQuery(name = "Pratique.GetByIntervenant", 
+        query = "SELECT c FROM Pratique c WHERE c.intervenant = :inter")
+})
 public class Pratique extends SessionFormation implements Serializable {
     private static final long serialVersionUID = 1L;
     private int Note;

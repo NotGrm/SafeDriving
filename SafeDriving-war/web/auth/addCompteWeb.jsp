@@ -17,11 +17,12 @@
         <p>Est-ce qu'un compte Web Existe ?</p>
         <form name="addCompteWeb" action="/SafeDriving-war/auth/AddCompteWeb" method="POST"> 
             <input type="hidden" name="client" value="${client.id}" />
-            <input type="radio" name="bool" value="yes" checked="checked" /><br/> Oui<br/>
-            pseudo : <input type="text" name="pseudoSearch" value="" <br/>
-            <input type="radio" name="bool" value="no" /><br/> Non<br/>
-            pseudo : <input type="text" name="pseudoAdd" value="" /><br/>
-            password : <input type="password" name="password" value="" /><br/>
+            <input type="hidden" name="employe" value="${employe.id}" />
+            <input type="radio" name="bool" value="yes" checked="checked" />Oui<br/>
+            Pseudo : <input type="text" name="pseudoSearch" value=""/><br/><br/>
+            <input type="radio" name="bool" value="no" />Non<br/>
+            Pseudo : <input type="text" name="pseudoAdd" value="" /><br/>
+            Password : <input type="password" name="password" value="" /><br/>
             <input type="submit" value="Envoyer" />
         </form>
     </body>

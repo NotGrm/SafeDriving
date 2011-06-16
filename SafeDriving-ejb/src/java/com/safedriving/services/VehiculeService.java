@@ -44,14 +44,12 @@ public class VehiculeService implements VehiculeServiceLocal {
 
     @Override
     public Vehicule getById(int id) {
-        Query q = em.createNamedQuery("Vehicule.getById");
-        q.setParameter("name", id);
-        return (Vehicule)q.getSingleResult();
+        return em.find(Vehicule.class, id);
     }
     
-    public Vehicule getByName(String name) {
-        Query q = em.createNamedQuery("Vehicule.getByName");
-        q.setParameter("name", name);
+    public Vehicule getByNumSerie(String name) {
+        Query q = em.createNamedQuery("Vehicule.getByNumSerie");
+        q.setParameter("numSerie", name);
         return (Vehicule)q.getSingleResult();
     }
     

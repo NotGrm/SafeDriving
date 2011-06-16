@@ -44,9 +44,7 @@ public class LieuService implements LieuServiceLocal {
 
     @Override
     public Lieu getById(int id) {        
-        Query q = em.createNamedQuery("Lieu.getById");
-        q.setParameter("name", id);
-        return (Lieu) q.getResultList().get(0);
+        return em.find(Lieu.class, id);
     }
 
     @Override

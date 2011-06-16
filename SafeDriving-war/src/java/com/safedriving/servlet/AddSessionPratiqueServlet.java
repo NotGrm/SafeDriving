@@ -6,6 +6,7 @@ package com.safedriving.servlet;
 
 import com.safedriving.model.Lieu;
 import com.safedriving.model.Personnel;
+import com.safedriving.model.Pratique;
 import com.safedriving.model.TypeSessionPratique;
 import com.safedriving.model.Vehicule;
 import com.safedriving.services.LieuServiceLocal;
@@ -21,6 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -63,20 +65,37 @@ public class AddSessionPratiqueServlet extends HttpServlet {
         String dateString = req.getParameter("date");
         String placeName = req.getParameter("place");
         String codePersonnel = req.getParameter("intervenant");
-        String vehiculeName = req.getParameter("vehiculeName");
+        String vehiculeNumSerie = req.getParameter("vehiculeNumSerie");
         String typePratiqueName = req.getParameter("type");
+        int duree = Integer.parseInt(req.getParameter("duree"));
+        int heureDebut = Integer.parseInt(req.getParameter("heureDebut"));
         
         Lieu l = srvLieu.getByNom(placeName);
         Personnel p = srvPersonnel.getByCodePersonnel(codePersonnel);
-        Vehicule v = srvVehicule.getByName(vehiculeName);
-        TypeSessionPratique t = srvTypePratique.getByName(typePratiqueName);
+        Vehicule v = srvVehicule.getByNumSerie(vehiculeNumSerie);
+        TypeSessionPratique t = srvTypePratique.getByTypeName(typePratiqueName);
         
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");
         Date date = null;
         try {
-            date = DateFormat.getDateInstance(DateFormat.SHORT, Locale.FRENCH).parse(dateString);
+            date = sdf.parse(dateString);
             
         } catch (ParseException ex) {
             Logger.getLogger(AddExamenServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        Pratique pratique = new Pratique();
+        pratique.setDate(date);
+        pratique.setDure(duree);    
+        pratique.setHeureDebut(heureDebut);
+        pratique.setIntervenant(p);
+        pratique.setLieu(l);
+        pratique.setNbrMaxPlace(nbPlaces);
+        pratique.setType(t);
+        pratique.setVehicule(v);
+        
+        srv.add(pratique);
+        
+        resp.sendRedirect("/SafeDriving-war/auth/AddSessionPratique");
     }
 }

@@ -25,5 +25,5 @@ public interface TypeSessionPratiqueServiceLocal {
 
     TypeSessionPratique getById(long id);
 
-    TypeSessionPratique getByName(String name);
+    TypeSessionPratique getByTypeName(String name);
 }

@@ -12,23 +12,23 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Safe-Driving</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Safe-Driving</h1>
         <div>
             <ul>                
                 <%
-                InscritForum user;
-                
-                try{
-                    user = (InscritForum) session.getAttribute("user");
-                 }catch(Exception e){
-                     user = null;
-                 }
+                    InscritForum user;
+
+                    try {
+                        user = (InscritForum) session.getAttribute("user");
+                    } catch (Exception e) {
+                        user = null;
+                    }
                 %>
                 <li><a href="/SafeDriving-war/">Acceuil</a></li>
- 
+
                 <c:choose>
                     <c:when test="${user != null}">
                         <c:set var="roleName" value="${user.getRole().roleName}"/>
@@ -44,6 +44,8 @@
                                 <li><a href="/SafeDriving-war/auth/AddLieu">Ajout d'un lieu</a></li>
                                 <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout d'un type d'examen</a></li>
                                 <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
+                                <li><a href="/SafeDriving-war/auth/ShowClients">Listee des clients</a></li>
+                                <li><a href="/SafeDriving-war/auth/ShowEmployes">Listee des employes</a></li>
                             </c:when>                    
                             <c:when test="${'REDACTION' == roleName}">
                                 <li><a href="/SafeDriving-war/auth/AddArticle">Ajout d'un Article</a></li>
@@ -59,6 +61,8 @@
                                 <li><a href="/SafeDriving-war/auth/AddLieu">Ajout d'un lieu</a></li>
                                 <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout d'un type d'examen</a></li>
                                 <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
+                                <li><a href="/SafeDriving-war/auth/ShowClients">Listee des clients</a></li>
+                                <li><a href="/SafeDriving-war/auth/ShowEmployes">Listee des employes</a></li>
                             </c:when>                
                             <c:when test="${'SERVICE_FORMATION' == roleName}">
                                 <li><a href="/SafeDriving-war/auth/AddClient">Ajout d'un client</a></li>
@@ -74,13 +78,13 @@
                         </c:choose>
                         <li><a href="/SafeDriving-war/Logout">Logout</a></li>  
                         <li> ${user.getUsername()}<br/></li>                          
-                    </c:when> 
-                    <c:when test="${user == null}">
+                        </c:when> 
+                        <c:when test="${user == null}">
                         <li><a href="/SafeDriving-war/Inscription">Inscription</a></li>
                         <li><a href="/SafeDriving-war/Login">Login</a></li>                          
                     </c:when> 
                 </c:choose>
-                
+
 
             </ul>
         </div>

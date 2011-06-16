@@ -27,8 +27,6 @@ import javax.persistence.UniqueConstraint;
     @UniqueConstraint(columnNames = {"userName"})})
 @DiscriminatorValue(value = "incritForum")
 @NamedQueries({
-    @NamedQuery(name = "InscritForum.getById",
-    query = "SELECT c from InscritForum c WHERE c.id = :id"),
     @NamedQuery(name = "InscritForum.getByUsername",
     query = "SELECT c from InscritForum AS c WHERE c.username = :username"),
     @NamedQuery(name = "InscritForum.getByUsernamePwd",

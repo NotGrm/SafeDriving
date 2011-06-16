@@ -62,6 +62,22 @@ public class Filtre implements Filter {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
                     access = true;
                 }
+            } else if (nameFonction.equals("ShowClients")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
+                    access = true;
+                }
+            } else if (nameFonction.equals("ShowEmployes")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
+                    access = true;
+                }
+            } else if (nameFonction.equals("ClientDetail")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
+                    access = true;
+                }
+            }else if (nameFonction.equals("EmployeDetail")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
+                    access = true;
+                }
             } else if (nameFonction.equals("AddSessionPratique")) {
                 if (roleName.equals("DIRECTION") || roleName.equals("SERVICE_FORMATION")) {
                     access = true;

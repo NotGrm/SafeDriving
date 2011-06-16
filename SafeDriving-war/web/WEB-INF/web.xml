@@ -76,6 +76,22 @@
         <servlet-name>PlanningServlet</servlet-name>
         <servlet-class>com.safedriving.servlet.PlanningServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowClientsServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.ShowClientsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowEmployesServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.ShowEmployesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClientDetailServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.ClientDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmployeDetailServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.EmployeDetailServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddPersonnelServlet</servlet-name>
         <url-pattern>/auth/AddPersonnel</url-pattern>
@@ -143,6 +159,22 @@
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/Home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowClientsServlet</servlet-name>
+        <url-pattern>/auth/ShowClients</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowEmployesServlet</servlet-name>
+        <url-pattern>/auth/ShowEmployes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClientDetailServlet</servlet-name>
+        <url-pattern>/auth/ClientDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeDetailServlet</servlet-name>
+        <url-pattern>/auth/EmployeDetail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

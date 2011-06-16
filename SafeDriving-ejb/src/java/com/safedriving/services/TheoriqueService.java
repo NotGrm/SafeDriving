@@ -41,9 +41,7 @@ public class TheoriqueService implements TheoriqueServiceLocal {
     }
 
     public Theorique getById(int id) {
-        Query q = em.createNamedQuery("Theorique.getById");
-        q.setParameter("name", id);
-        return (Theorique) q.getResultList().get(0);
+        return em.find(Theorique.class, id);
     }
 
     public List<Theorique> getByEmpty() {

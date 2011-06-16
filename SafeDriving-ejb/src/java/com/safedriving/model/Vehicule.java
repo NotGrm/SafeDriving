@@ -9,12 +9,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Ehres
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Vehicule.getAll",
+    query = "SELECT c FROM Vehicule c"),
+    @NamedQuery(name = "Vehicule.getById", 
+        query = "SELECT c FROM Vehicule c WHERE c.id = :id"),
+    @NamedQuery(name = "Vehicule.getByNumSerie", 
+        query = "SELECT c FROM Vehicule c WHERE c.numSerie = :numSerie")
+})
 public class Vehicule implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

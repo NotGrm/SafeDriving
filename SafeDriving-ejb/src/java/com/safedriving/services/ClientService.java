@@ -39,9 +39,7 @@ public class ClientService implements ClientServiceLocal {
     }
 
     public Client getById(int id) {
-        Query q = em.createNamedQuery("Client.getById");
-        q.setParameter("id", id);
-        return (Client)q.getSingleResult();
+        return em.find(Client.class, id);
     }
 
     public List<Client> getByNom(String name) {

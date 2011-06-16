@@ -7,6 +7,8 @@ package com.safedriving.model;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
@@ -14,6 +16,14 @@ import javax.persistence.Id;
  */
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "TypeSessionPratique.getAll",
+    query = "SELECT c FROM TypeSessionPratique c"),
+    @NamedQuery(name = "TypeSessionPratique.getById", 
+        query = "SELECT c FROM TypeSessionPratique c WHERE c.id = :id"),
+    @NamedQuery(name = "TypeSessionPratique.getByTypeName", 
+        query = "SELECT c FROM TypeSessionPratique c WHERE c.typeName = :typeName")
+})
 public class TypeSessionPratique implements Serializable {
     @Id
     private Long id;
