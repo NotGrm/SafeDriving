@@ -17,10 +17,10 @@ public interface RoleServiceLocal {
 
     public java.util.List<com.safedriving.model.WebSiteRole> getAll();
 
-    public void refreshWebSiteRole(com.safedriving.model.WebSiteRole role);
+    public void refresh(com.safedriving.model.WebSiteRole role);
 
-    public void removeWebSiteRole(com.safedriving.model.WebSiteRole role);
+    public void remove(com.safedriving.model.WebSiteRole role);
 
-    public void addWebSiteRole(com.safedriving.model.WebSiteRole role);
+    public void add(com.safedriving.model.WebSiteRole role);
     
 }

@@ -36,7 +36,7 @@ public class AddServiceServlet extends HttpServlet {
         WebSiteRole role = new WebSiteRole();
         role.setRoleName(roleName);
         
-        srv.addWebSiteRole(role);
+        srv.add(role);
     }
     
     

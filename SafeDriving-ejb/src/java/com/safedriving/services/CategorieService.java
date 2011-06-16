@@ -39,12 +39,7 @@ public class CategorieService implements CategorieServiceLocal {
 
     @Override
     public Categorie getById(Long id) {
-        Query q = em.createNamedQuery("Categorie.getById");
-        System.err.print(q);
-        q.setParameter("id", id);
-        
-        System.err.print(q.getParameters());
-        return (Categorie) q.getSingleResult();
+        return em.find(Categorie.class, id);
     }
     
     @Override

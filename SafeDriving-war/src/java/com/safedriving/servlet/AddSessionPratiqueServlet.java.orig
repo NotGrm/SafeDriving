@@ -54,8 +54,8 @@ public class AddSessionPratiqueServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rq = req.getRequestDispatcher("addSessionPratique.jsp");
-        rq.forward(req, resp);
+        req.setAttribute("formateurs", srvPersonnel.getAll());
+        req.getRequestDispatcher("addSessionPratique.jsp").forward(req, resp);
     }
 
     @Override
@@ -72,8 +72,13 @@ public class AddSessionPratiqueServlet extends HttpServlet {
         
         Lieu l = srvLieu.getByNom(placeName);
         Personnel p = srvPersonnel.getByCodePersonnel(codePersonnel);
+<<<<<<< HEAD
+        Vehicule v = srvVehicule.getBySerial(vehiculeName);
+        TypeSessionPratique t = srvTypePratique.getByName(typePratiqueName);
+=======
         Vehicule v = srvVehicule.getByNumSerie(vehiculeNumSerie);
         TypeSessionPratique t = srvTypePratique.getByTypeName(typePratiqueName);
+>>>>>>> 72fb4b676fd832d51ce5e7c4dae385fb80b2d0dc
         
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");
         Date date = null;
@@ -84,6 +89,18 @@ public class AddSessionPratiqueServlet extends HttpServlet {
             Logger.getLogger(AddExamenServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+<<<<<<< HEAD
+        Pratique prat = new Pratique();
+        prat.setDate(date);
+        prat.setIntervenant(p);
+        prat.setLieu(l);
+        prat.setType(t);
+        prat.setVehicule(v);
+        prat.setNbrMaxPlace(nbPlaces);
+        
+        srv.add(prat);
+        
+=======
         Pratique pratique = new Pratique();
         pratique.setDate(date);
         pratique.setDure(duree);    
@@ -97,5 +114,6 @@ public class AddSessionPratiqueServlet extends HttpServlet {
         srv.add(pratique);
         
         resp.sendRedirect("/SafeDriving-war/auth/AddSessionPratique");
+>>>>>>> 72fb4b676fd832d51ce5e7c4dae385fb80b2d0dc
     }
 }

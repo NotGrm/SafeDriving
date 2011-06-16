@@ -77,6 +77,7 @@
         <servlet-class>com.safedriving.servlet.PlanningServlet</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>AddNoteServlet</servlet-name>
         <servlet-class>com.safedriving.servlet.AddNoteServlet</servlet-class>
     </servlet>
@@ -87,8 +88,7 @@
     <servlet>
         <servlet-name>RegisterToSessionServlet</servlet-name>
         <servlet-class>com.safedriving.servlet.RegisterToSessionServlet</servlet-class>
-    </servlet>
-    <servlet>
+=======
         <servlet-name>ShowClientsServlet</servlet-name>
         <servlet-class>com.safedriving.servlet.ShowClientsServlet</servlet-class>
     </servlet>
@@ -103,6 +103,7 @@
     <servlet>
         <servlet-name>EmployeDetailServlet</servlet-name>
         <servlet-class>com.safedriving.servlet.EmployeDetailServlet</servlet-class>
+>>>>>>> 72fb4b676fd832d51ce5e7c4dae385fb80b2d0dc
     </servlet>
     <servlet-mapping>
         <servlet-name>AddPersonnelServlet</servlet-name>
@@ -173,6 +174,18 @@
         <url-pattern>/Home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
+        <servlet-name>AddTypePratiqueServlet</servlet-name>
+        <url-pattern>/auth/AddTypePratique</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNoteServlet</servlet-name>
+        <url-pattern>/auth/AddNote</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterToSessionServlet</servlet-name>
+        <url-pattern>/auth/RegisterToSession</url-pattern>
+=======
         <servlet-name>ShowClientsServlet</servlet-name>
         <url-pattern>/auth/ShowClients</url-pattern>
     </servlet-mapping>
@@ -187,6 +200,7 @@
     <servlet-mapping>
         <servlet-name>EmployeDetailServlet</servlet-name>
         <url-pattern>/auth/EmployeDetail</url-pattern>
+>>>>>>> 72fb4b676fd832d51ce5e7c4dae385fb80b2d0dc
     </servlet-mapping>
     <session-config>
         <session-timeout>

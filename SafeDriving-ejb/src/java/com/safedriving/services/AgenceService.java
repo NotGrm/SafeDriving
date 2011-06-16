@@ -39,9 +39,7 @@ public class AgenceService implements AgenceServiceLocal {
     }
     
     public Agence getById(int id) {
-        Query q = em.createNamedQuery("Agence.getById");
-        q.setParameter("id", id);
-        return (Agence)q.getSingleResult();
+        return em.find(Agence.class, id);
     }
 
     public List<Agence> getByNom(String nom) {

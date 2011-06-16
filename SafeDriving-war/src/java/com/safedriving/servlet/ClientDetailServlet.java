@@ -4,12 +4,11 @@
  */
 package com.safedriving.servlet;
 
-import com.safedriving.model.blog.Article;
-import com.safedriving.services.ArticleServiceLocal;
+import com.safedriving.model.Client;
+import com.safedriving.services.ClientServiceLocal;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.ejb.EJB;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,26 +16,20 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Grm
+ * @author Ehres
  */
-public class HomeServlet extends HttpServlet {
-
+public class ClientDetailServlet extends HttpServlet {
 
     @EJB
-    ArticleServiceLocal srv;
+    ClientServiceLocal srvClient;
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Article> articles;
-        
-        articles = srv.getAll();
-        
-        req.setAttribute("articles", articles);
-
-        RequestDispatcher rq = req.getRequestDispatcher("index.jsp");
-        rq.forward(req, resp);
+       int id = Integer.parseInt(req.getParameter("id"));
+        Client cli = srvClient.getById(id);
+        req.setAttribute("client", cli);
+        req.getRequestDispatcher("clientDetail.jsp").forward(req, resp);
     }
-    
-}
-  
 
+   
+}

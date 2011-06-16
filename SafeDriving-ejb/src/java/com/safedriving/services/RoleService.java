@@ -22,17 +22,17 @@ public class RoleService implements RoleServiceLocal {
     private EntityManager em;
 
     @Override
-    public void addWebSiteRole(WebSiteRole role) {
+    public void add(WebSiteRole role) {
         em.persist(role);
     }
 
     @Override
-    public void removeWebSiteRole(WebSiteRole role) {
+    public void remove(WebSiteRole role) {
         em.remove(role);
     }
 
     @Override
-    public void refreshWebSiteRole(WebSiteRole role) {
+    public void refresh(WebSiteRole role) {
         em.merge(role);
     }
 
@@ -44,8 +44,6 @@ public class RoleService implements RoleServiceLocal {
 
     @Override
     public WebSiteRole getById(long id) {
-        Query q = em.createNamedQuery("WebSiteRole.getById");
-        q.setParameter("id", id);
-        return (WebSiteRole) q.getResultList().get(0);
+        return em.find(WebSiteRole.class, id);
     }
 }

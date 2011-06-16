@@ -4,6 +4,7 @@
  */
 package com.safedriving.services;
 
+import com.safedriving.model.InscritForum;
 import com.safedriving.model.Personnel;
 import com.safedriving.model.WebSiteRole;
 import java.util.List;
@@ -21,7 +22,7 @@ public class PersonnelService implements PersonnelServiceLocal {
 
     @PersistenceContext
     EntityManager em;
-    
+
     @Override
     public void add(Personnel personnel) {
         em.persist(personnel);
@@ -45,9 +46,7 @@ public class PersonnelService implements PersonnelServiceLocal {
 
     @Override
     public Personnel getById(int id) {
-        Query q = em.createNamedQuery("Personnel.getById");
-        q.setParameter("name", id);
-        return (Personnel) q.getResultList().get(0);
+        return em.find(Personnel.class, id);
     }
 
     @Override
@@ -56,21 +55,19 @@ public class PersonnelService implements PersonnelServiceLocal {
         q.setParameter("name", nom);
         return q.getResultList();
     }
-    
-    @Override
-    public Personnel getByCodePersonnel(String code)
-    {
-        Query q = em.createNamedQuery("Personnel.GetByCodPers");
-        q.setParameter("code", code);
-        return (Personnel)q.getSingleResult();
-    }
-    
-    
-    
-    
-    
-    
 
+    @Override
+    public Personnel getByCodePersonnel(String code) {
+        Query q = em.createNamedQuery("Personnel.getByCodPers");
+        q.setParameter("code", code);
+        return (Personnel) q.getSingleResult();
+    }
+
+    public Personnel getByCompteForum(InscritForum compte) {
+        Query q = em.createNamedQuery("Personnel.getByCompteForum");
+        q.setParameter("compte", compte);
+        return (Personnel) q.getSingleResult();
+    }
     
     
 }

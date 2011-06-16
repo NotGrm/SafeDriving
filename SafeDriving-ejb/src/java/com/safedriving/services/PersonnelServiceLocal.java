@@ -4,6 +4,7 @@
  */
 package com.safedriving.services;
 
+import com.safedriving.model.InscritForum;
 import com.safedriving.model.Personnel;
 import com.safedriving.model.WebSiteRole;
 import java.util.List;
@@ -29,5 +30,7 @@ public interface PersonnelServiceLocal {
     List<Personnel> getByNom(String nom);
 
     public com.safedriving.model.Personnel getByCodePersonnel(java.lang.String code);
+
+    Personnel getByCompteForum(InscritForum compte);
     
 }

@@ -45,8 +45,6 @@ public class TypeExamenService implements TypeExamenServiceLocal {
 
     @Override
     public TypeExamen getById(long id) {
-        Query q = em.createNamedQuery("TypeExamen.getById");
-        q.setParameter("id", id);
-        return (TypeExamen) q.getResultList().get(0);
+        return em.find(TypeExamen.class, id);
     }
 }

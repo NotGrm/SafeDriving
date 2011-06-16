@@ -47,10 +47,16 @@ public class VehiculeService implements VehiculeServiceLocal {
         return em.find(Vehicule.class, id);
     }
     
+<<<<<<< HEAD
     @Override
     public Vehicule getBySerial(String serial) {
         Query q = em.createNamedQuery("Vehicule.getBySerial");
         q.setParameter("serial", serial);
+=======
+    public Vehicule getByNumSerie(String name) {
+        Query q = em.createNamedQuery("Vehicule.getByNumSerie");
+        q.setParameter("numSerie", name);
+>>>>>>> 72fb4b676fd832d51ce5e7c4dae385fb80b2d0dc
         return (Vehicule)q.getSingleResult();
     }
     

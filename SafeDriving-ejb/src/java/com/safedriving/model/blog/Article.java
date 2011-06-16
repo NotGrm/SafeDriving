@@ -28,9 +28,9 @@ import javax.persistence.Temporal;
     @NamedQuery(name = "Article.getAll",
     query = "SELECT c FROM Article c"
         + " ORDER BY c.datePublication DESC"),
-    @NamedQuery(name = "Article.findByAuthor",
+    @NamedQuery(name = "Article.getByAuthor",
     query = "SELECT c FROM Article c WHERE c.auteur = :name"),
-    @NamedQuery(name = "Article.findByTag",
+    @NamedQuery(name = "Article.getByTag",
     query = "SELECT c FROM Article c WHERE c.tag = :tag"),
     @NamedQuery(name = "Article.getById",
     query = "SELECT c FROM Article c WHERE c.id = :id")

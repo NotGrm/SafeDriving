@@ -42,9 +42,7 @@ public class PratiqueService implements PratiqueServiceLocal {
     }
 
     public Pratique getById(int id) {
-        Query q = em.createNamedQuery("Pratique.getById");
-        q.setParameter("name", id);
-        return (Pratique) q.getResultList().get(0);
+        return em.find(Pratique.class, id);
     }
 
     public List<Pratique> getByEmpty() {
@@ -66,7 +64,7 @@ public class PratiqueService implements PratiqueServiceLocal {
 
     public List<Personnel> getByIntervenant(Personnel inter) {
         Query q = em.createNamedQuery("Pratique.getByIntervenant");
-        q.setParameter("name", inter);
+        q.setParameter("code", inter);
         return q.getResultList();
     }
     
