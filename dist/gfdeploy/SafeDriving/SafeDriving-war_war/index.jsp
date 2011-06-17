@@ -27,7 +27,7 @@
                         user = null;
                     }
                 %>
-                <li><a href="/SafeDriving-war/">Acceuil</a></li>
+                <li><a href="/SafeDriving-war/">Accueil</a></li>
 
                 <c:choose>
                     <c:when test="${user != null}">
@@ -44,14 +44,11 @@
                                 <li><a href="/SafeDriving-war/auth/AddLieu">Ajout d'un lieu</a></li>
                                 <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout d'un type d'examen</a></li>
                                 <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
-<<<<<<< HEAD
                                 <li><a href="/SafeDriving-war/auth/AddTypePratique">Ajout d'un type Pratique</a></li>
                                 <li><a href="/SafeDriving-war/auth/AddNote">Ajout d'une Note</a></li>
                                 <li><a href="/SafeDriving-war/auth/RegisterToSession">S'inscrire à une session</a></li>
-=======
                                 <li><a href="/SafeDriving-war/auth/ShowClients">Listee des clients</a></li>
                                 <li><a href="/SafeDriving-war/auth/ShowEmployes">Listee des employes</a></li>
->>>>>>> 72fb4b676fd832d51ce5e7c4dae385fb80b2d0dc
                             </c:when>                    
                             <c:when test="${'REDACTION' == roleName}">
                                 <li><a href="/SafeDriving-war/auth/AddArticle">Ajout d'un Article</a></li>
@@ -101,6 +98,7 @@
         <div>
             <c:forEach items="${articles}" var="article">
                 <h2><c:out value="${article.titre}"/></h2>
+                <c:out value="${article.text}"/>
                 <c:out value="${article.text}"/>
                 <a href="/SafeDriving-war/ArticleDetail?id=${article.id}">Lire la suite</a>
                 <hr/>

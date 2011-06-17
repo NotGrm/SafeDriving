@@ -72,7 +72,7 @@ public class AddSessionPratiqueServlet extends HttpServlet {
         
         Lieu l = srvLieu.getByNom(placeName);
         Personnel p = srvPersonnel.getByCodePersonnel(codePersonnel);
-        Vehicule v = srvVehicule.getByNumSerie(vehiculeNumSerie);
+        Vehicule v = srvVehicule.getBySerial(vehiculeNumSerie);
         TypeSessionPratique t = srvTypePratique.getByTypeName(typePratiqueName);
         
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");

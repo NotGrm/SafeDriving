@@ -145,6 +145,10 @@
         <url-pattern>/auth/AddTypeExamen</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>AddTypePratiqueServlet</servlet-name>
+        <url-pattern>/auth/AddTypePratique</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>InscriptionServlet</servlet-name>
         <url-pattern>/Inscription</url-pattern>
     </servlet-mapping>
