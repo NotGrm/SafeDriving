@@ -24,8 +24,13 @@ body {
     background-image:     -ms-linear-gradient(top, #003399, #DDDDDD); /* IE10 */
 
     background-attachment: fixed;
+<<<<<<< HEAD
     
     
+=======
+
+    font-weight: bold;
+>>>>>>> 69749ec0905012af16e51992399f9b27b28a4fae
     font-family: Verdana,Arial,Helvetica,sans-serif;
     font-size: 14px;
 }
@@ -49,7 +54,7 @@ nav {
     border : solid 10px #cc0000;
     background-color: whitesmoke;
     display: inline-block;
-    
+
 }
 
 nav ul {  
@@ -89,9 +94,9 @@ section {
     background-image:      -o-linear-gradient(top, #FFFFFF, #CCCCCC); /* Opera 11.10+ */
     background-image:         linear-gradient(top, #FFFFFF, #CCCCCC);
     -webkit-border-radius:5px;
-    
-        width: 60%;
-        margin: 1em;
+
+    width: 60%;
+    margin: 1em;
 }
 
 section nav {
@@ -99,9 +104,43 @@ section nav {
 }
 
 article {
-    
+
     position: relative;
     float: left;
     font-size: 12px;
-    
+
+}
+.planning{
+    width: 900px;
+    height: 400px;
+    border: 1px solid black;
+}
+.semaine{
+    border: 1px solid black;
+}
+#jour{
+    border : 1px solid black;
+    width: 126px;
+    float : left;
+}
+td{
+    height : 40px;
+}
+.horaire{
+    width: 25px;
+    height: 580px;
+    float : left;
+    margin-top: 40px;
+}
+.tablePlanning{
+    width : 850px;
+}
+.tablePlanning.th{
+    margin-bottom: 15px;
+}
+#heures{
+    margin-bottom: 26px;
+}
+.infoTemp{
+    width: 850px;
 }

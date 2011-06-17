@@ -22,7 +22,7 @@ import javax.persistence.OneToMany;
     query = "SELECT c FROM Personnel c"),
     @NamedQuery(name = "Personnel.getByCodPers", 
         query = "SELECT c FROM Personnel c WHERE c.codePersonnel = :code"),
-    @NamedQuery(name = "Personnel.getByInscritForum", 
+    @NamedQuery(name = "Personnel.getByCompteForum", 
         query = "SELECT c FROM Personnel c WHERE c.compteForum = :compte")
 })
 public class Personnel extends Personne {
