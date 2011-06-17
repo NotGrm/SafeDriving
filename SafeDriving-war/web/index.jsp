@@ -13,19 +13,23 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Safe-Driving</title>
+        <link type="text/css" href="css/style.css" rel="stylesheet" />
     </head>
     <body>
         <%@include file="template/header.jsp" %>
-        <h1>Safe-Driving</h1>
-        <%@include file="template/menu.jsp" %>
+
         <section>
+            <%@include file="template/menu.jsp" %>
+
             <c:forEach items="${articles}" var="article">
                 <article>
                     <header>
                         <h2><c:out value="${article.titre}"/></h2>
                         <c:out value="${article.datePublication}"/>
                     </header>
-                    <c:out value="${article.text}"/>
+                    <section>
+                        <c:out value="${article.text}"/>
+                    </section>
                     <footer>
                         <a href="/SafeDriving-war/ArticleDetail?id=${article.id}">Lire la suite</a> 
                     </footer>

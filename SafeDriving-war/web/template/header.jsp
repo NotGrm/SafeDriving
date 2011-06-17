@@ -17,14 +17,17 @@
         user = null;
     }
 %>
-<header>
-    <nav>
+<header class="pageheader">
+    <div>
+        <h1>Safe-Driving</h1>
+    </div>
+    <nav class="header">
         <ul>
-        <li>Accueil</li>
+            <li><a href="/SafeDriving-war/Home"> Accueil</a></li>
         <c:choose>
             <c:when test="${user != null}">
                 <li><a href="/SafeDriving-war/Logout">Logout</a></li>  
-                <li> ${user.getUsername()}</li>                          
+                <li> Log as : ${user.getUsername()}</li>                          
                 </c:when>
                 <c:otherwise>
                 <li><a href="/SafeDriving-war/Inscription">Inscription</a></li>
@@ -33,4 +36,5 @@
         </c:choose>
         </ul>
     </nav>
+    
 </header>
