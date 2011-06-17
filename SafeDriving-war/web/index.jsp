@@ -17,25 +17,23 @@
     </head>
     <body>
         <%@include file="template/header.jsp" %>
-
-        <section>
+        <div id="content">
             <%@include file="template/menu.jsp" %>
-
-            <c:forEach items="${articles}" var="article">
-                <article>
-                    <header>
-                        <h2><c:out value="${article.titre}"/></h2>
-                        <c:out value="${article.datePublication}"/>
-                    </header>
-                    <section>
+            <section>
+                <c:forEach items="${articles}" var="article">
+                    <article>
+                        <header>
+                            <h2><c:out value="${article.titre}"/></h2>
+                            <c:out value="${article.datePublication}"/>
+                        </header>
                         <c:out value="${article.text}"/>
-                    </section>
-                    <footer>
-                        <a href="/SafeDriving-war/ArticleDetail?id=${article.id}">Lire la suite</a> 
-                    </footer>
-                </article>
-            </c:forEach>
-        </section>
+                        <footer>
+                            <a href="/SafeDriving-war/ArticleDetail?id=${article.id}">Lire la suite</a> 
+                        </footer>
+                    </article>
+                </c:forEach>
+            </section>
+        </div>
         <%@include file="template/footer.jsp" %>
     </body>
 </html>

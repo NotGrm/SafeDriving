@@ -11,12 +11,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Detail de l'employé</title>
+        <link type="text/css" href="../css/style.css" rel="stylesheet" />
     </head>
     <body>
         <%@include file="../template/header.jsp" %>
-        <h1>Detail de l'employé</h1>
+        
         <%@include file="../template/menu.jsp" %>
         <section>
+            <h2>Detail de l'employé</h2>
             <p>nom : <c:out value="${employe.nom}  "/></p>
             <p>Prénom : <c:out value="${employe.prenom}  "/></p>
             <p>Adresse : <c:out value="${employe.adresse} "/></p>

@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link type="text/css" href="../css/style.css" rel="stylesheet" />
         <script type="text/javascript">
             function visibilite(thingId)
             {
@@ -34,9 +35,10 @@
     </head>
     <body>
         <%@include file="../template/header.jsp" %>
-        <h1>Ajout d'une note</h1>
+        
         <%@include file="../template/menu.jsp" %>
         <section>
+            <h2>Ajout d'une note</h2>
             <form action="/SafeDriving-war/auth/AddNote" method="POST">
                 <input type="text" name="score" value="" /><br/>
                 <div id="selectionSession">

@@ -11,12 +11,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link type="text/css" href="../css/style.css" rel="stylesheet" />
     </head>
     <body>
         <%@include file="../template/header.jsp" %>
-        <h1>Inscription à une session</h1>
+        
         <%@include file="../template/menu.jsp" %>
         <section>
+            <h2>Inscription à une session</h2>
             <form action="RegisterToSession" method="POST">
                 <c:forEach var="session" items="${Lsession}">
                     <input type="radio" name="session" value="${session.id}">${session.date} // ${session.id}</input><br/>

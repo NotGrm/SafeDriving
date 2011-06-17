@@ -10,14 +10,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link type="text/css" href="../css/style.css" rel="stylesheet" />
     </head>
     <body>
         <%@include file="../template/header.jsp" %>
-        <h1>Ajouter un article</h1>
+
         <%@include file="../template/menu.jsp" %>
         <section>
+            <h2>Ajouter un article</h2>
             <form action="/SafeDriving-war/auth/AddArticle" method="post">
-                <h2>Titre</h2>
+                <h3>Titre</h3>
                 <input type="text" name="title"/>
                 <br/> 
                 <textarea rows="10" cols="50" name="text"> </textarea><br/>

@@ -10,10 +10,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link type="text/css" href="css/style.css" rel="stylesheet" />
         <title>JSP Page</title>
     </head>
     <body>
-        <h1><c:out value="${article.titre}"/> </h1>
-        <c:out value="${article.text}"/>
+        <%@include file="template/header.jsp" %>
+        <div id="content">
+            <%@include file="template/menu.jsp" %>
+            <section>
+                <h2><c:out value="${article.titre}"/> </h2>
+                <c:out value="${article.text}"/>
+            </section>
+        </div>
     </body>
 </html>

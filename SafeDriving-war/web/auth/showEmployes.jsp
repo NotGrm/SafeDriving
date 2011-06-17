@@ -11,12 +11,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Liste des Employés</title>
+        <link type="text/css" href="../css/style.css" rel="stylesheet" />
     </head>
     <body>
         <%@include file="../template/header.jsp" %>
-        <h1>Liste des employés</h1>
+        
         <%@include file="../template/menu.jsp" %>
         <section>
+            <h2>Liste des employés</h2>
             <c:forEach items="${employes}" var="employe">
                 <a href="/SafeDriving-war/auth/EmployeDetail?id=${employe.id}">
                     <c:out value="${employe.nom}"/>

@@ -7,9 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<nav >
-    <ul>
-        <c:if test="${user != null}">
+
+<c:if test="${user != null}">
+    <nav >
+        <ul>
             <c:set var="roleName" value="${user.getRole().roleName}"/>
             <c:choose>
                 <c:when test="${'DIRECTION' == roleName}">
@@ -61,7 +62,8 @@
                 <c:when test="${'FORUM' == roleName}">
                     <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
                 </c:when>    
-            </c:choose>                         
-        </c:if>
-    </ul>
-</nav>
+            </c:choose>   
+
+        </ul>
+    </nav>
+</c:if>

@@ -121,10 +121,6 @@
         <url-pattern>/auth/AddSessionTheorique</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ArticleDetailServlet</servlet-name>
-        <url-pattern>/auth/ArticleDetail</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AddLieuServlet</servlet-name>
         <url-pattern>/auth/AddLieu</url-pattern>
     </servlet-mapping>
@@ -191,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>RegisterToSessionServlet</servlet-name>
         <url-pattern>/auth/RegisterToSession</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ArticleDetailServlet</servlet-name>
+        <url-pattern>/ArticleDetail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

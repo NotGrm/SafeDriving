@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>JSP Page</title>
+        <link type="text/css" href="../css/style.css" rel="stylesheet" />
         <style type="text/css">
             .planning{
                 width: 900px;
@@ -51,9 +52,10 @@
     </head>
     <body>
         <%@include file="../template/header.jsp" %>
-        <h1>Planning</h1>
+        
         <%@include file="../template/menu.jsp" %>
         <section>
+            <h2>Planning</h2>
             <c:choose>
                 <c:when test="${user != null}">
                     <c:set var="roleName" value="${user.getRole().roleName}"/>

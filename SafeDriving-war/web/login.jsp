@@ -10,27 +10,33 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Log in</title>
+        <link type="text/css" href="css/style.css" rel="stylesheet" />
     </head>
     <body>
-        <h1>Log in</h1>
-        <form name="login" action="/SafeDriving-war/Login" method="POST">
-            <table border="0">
-                    <tr>
-                        <td>username : </td>
-                        <td><input type="text" name="username" value="" /></td>
-                    </tr>
-                <tbody>
-                    <tr>
-                        <td>password : </td>
-                        <td><input type="password" name="password" value="" /></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="submit" value="login" /></td>
-                    </tr>
-                </tbody>
-            </table>
-        </form>
-        
+        <%@include file="template/header.jsp" %>
+        <div id="content">
+            <%@include file="template/menu.jsp" %>
+            <section>
+                <h2>Login</h2>
+                <form name="login" action="/SafeDriving-war/Login" method="POST">
+                    <table border="0">
+                        <tr>
+                            <td>username : </td>
+                            <td><input type="text" name="username" value="" /></td>
+                        </tr>
+                        <tbody>
+                            <tr>
+                                <td>password : </td>
+                                <td><input type="password" name="password" value="" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input type="submit" value="login" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </section>
+        </div>
     </body>
 </html>

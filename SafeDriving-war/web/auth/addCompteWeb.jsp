@@ -10,12 +10,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link type="text/css" href="../css/style.css" rel="stylesheet" />
     </head>
     <body>
         <%@include file="../template/header.jsp" %>
-        <h1>Ajout d'un compte web</h1>
+        
         <%@include file="../template/menu.jsp" %>
         <section>
+            <h2>Ajout d'un compte web</h2>
             <p>Est-ce qu'un compte Web Existe ?</p>
             <form name="addCompteWeb" action="/SafeDriving-war/auth/AddCompteWeb" method="POST"> 
                 <input type="hidden" name="client" value="${client.id}" />

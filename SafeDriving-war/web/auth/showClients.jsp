@@ -11,12 +11,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Liste des clients</title>
+        <link type="text/css" href="../css/style.css" rel="stylesheet" />
     </head>
     <body>
         <%@include file="../template/header.jsp" %>
-        <h1>Liste des clients</h1>
         <%@include file="../template/menu.jsp" %>
         <section>
+            <h2>Liste des clients</h2>
+
             <c:forEach items="${clients}" var="client">
                 <a href="/SafeDriving-war/auth/ClientDetail?id=${client.id}">
                     <c:out value="${client.nom}"/>
