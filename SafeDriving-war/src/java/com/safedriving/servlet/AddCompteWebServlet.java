@@ -43,7 +43,7 @@ public class AddCompteWebServlet extends HttpServlet {
             System.out.println("entré if employe");
             Personnel pers = new Personnel();
             String username;
-            String password;
+            String password;            
             int persId;
             WebSiteRole role;
             InscritForum compte = new InscritForum();
@@ -58,7 +58,7 @@ public class AddCompteWebServlet extends HttpServlet {
                 } else if (req.getParameter("bool").equals("no")) {
                     username = req.getParameter("pseudoAdd");
                     password = req.getParameter("password");
-                    role = srvRole.getByRoleName("FORUM");
+                    role = srvRole.getByRoleName(req.getParameter("role"));
                     compte.setUsername(username);
                     compte.setPassword(password);
                     compte.setRole(role);
@@ -93,7 +93,7 @@ public class AddCompteWebServlet extends HttpServlet {
                 } else if (req.getParameter("bool").equals("no")) {
                     username = req.getParameter("pseudoAdd");
                     password = req.getParameter("password");
-                    role = srvRole.getByRoleName("FORUM");
+                    role = srvRole.getByRoleName(req.getParameter("role"));
                     compte.setUsername(username);
                     compte.setPassword(password);
                     compte.setRole(role);

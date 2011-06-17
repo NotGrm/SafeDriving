@@ -22,14 +22,12 @@ public class ClientDetailServlet extends HttpServlet {
 
     @EJB
     ClientServiceLocal srvClient;
-    
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       int id = Integer.parseInt(req.getParameter("id"));
+        long id = Long.parseLong(req.getParameter("id"));
         Client cli = srvClient.getById(id);
         req.setAttribute("client", cli);
         req.getRequestDispatcher("clientDetail.jsp").forward(req, resp);
     }
-
-   
 }

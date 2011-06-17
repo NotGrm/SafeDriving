@@ -5,9 +5,12 @@
 package com.safedriving.servlet;
 
 import com.safedriving.model.Client;
+import com.safedriving.model.WebSiteRole;
 import com.safedriving.services.ClientServiceLocal;
 import com.safedriving.services.InscritForumServiceLocal;
+import com.safedriving.services.WebSiteRoleServiceLocal;
 import java.io.IOException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,6 +28,8 @@ public class AddClientServlet extends HttpServlet {
     ClientServiceLocal srv;
     @EJB
     InscritForumServiceLocal srvForum;
+    @EJB
+    WebSiteRoleServiceLocal srvRole;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -51,17 +56,19 @@ public class AddClientServlet extends HttpServlet {
             zipcode = Integer.parseInt(req.getParameter("zipcode"));
             city = req.getParameter("city");
             clientNumber = Long.parseLong(req.getParameter("clientNumber"));
+            
             accountName = null;
             Client cli = new Client();
+            
             cli.setNom(name);
             cli.setPrenom(firstname);
             cli.setAdresse(address);
             cli.setCodePostal(zipcode);
             cli.setVille(city);
             cli.setNumClient(clientNumber);
-            System.out.println("avant ajout client!");
             srv.add(cli);
-            System.out.println("après ajout client!");                 
+            
+            req.setAttribute("roles", srvRole.getAll());
             req.setAttribute("client", cli);
             req.getRequestDispatcher("addCompteWeb.jsp").forward(req, resp);
         } catch (Exception e) {

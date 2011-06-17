@@ -14,7 +14,7 @@
     </head>
     <body>
         <%@include file="../template/header.jsp" %>
-        
+
         <%@include file="../template/menu.jsp" %>
         <section>
             <h2>Ajout d'un compte web</h2>
@@ -27,6 +27,12 @@
                 <input type="radio" name="bool" value="no" />Non<br/>
                 Pseudo : <input type="text" name="pseudoAdd" value="" /><br/>
                 Password : <input type="password" name="password" value="" /><br/>
+                Role : 
+                <select name="WebSiteRole">
+                    <c:forEach items="${roles}" var="role">
+                        <option value="${role.id}">${role.roleName}</option>
+                    </c:forEach>
+                </select>
                 <input type="submit" value="Envoyer" />
             </form>
         </section>
