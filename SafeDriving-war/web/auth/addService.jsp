@@ -12,12 +12,16 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@include file="../template/header.jsp" %>
         <h1>Ajout d'un service</h1>
-        <form action="/SafeDriving-war/auth/AddService" method="post">
-            <label  for="servicename">
-                Nom du service : </label>
-            <input type="text" name="servicename" id="servicename"/>
-            <input type="submit" value="Valider"/>
-        </form>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <form action="/SafeDriving-war/auth/AddService" method="post">
+                <label  for="servicename">
+                    Nom du service : </label>
+                <input type="text" name="servicename" id="servicename"/>
+                <input type="submit" value="Valider"/>
+            </form>
+        </section>
     </body>
 </html>

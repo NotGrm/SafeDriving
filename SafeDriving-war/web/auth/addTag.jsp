@@ -12,11 +12,15 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <form action="/SafeDriving-war/AddTag" method="post">
-            <label for="tagName">Tag :</label>
-            <input type="text" name="tagName" id="tagName"/>
-            <input type="submit" value="Valider"/>
-        </form>
+        <%@include file="../template/header.jsp" %>
+        <h1>Ajout d'un tag</h1>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <form action="/SafeDriving-war/AddTag" method="post">
+                <label for="tagName">Tag :</label>
+                <input type="text" name="tagName" id="tagName"/>
+                <input type="submit" value="Valider"/>
+            </form>
+        </section>
     </body>
 </html>

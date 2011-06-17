@@ -13,7 +13,11 @@
         <title>Detail du client</title>
     </head>
     <body>
+        <%@include file="../template/header.jsp" %>
         <h1>Detail du client</h1>
-        <p><c:out value="${client.nom} ${client.prenom}"/>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <p><c:out value="${client.nom} ${client.prenom}"/></p>
+        </section>
     </body>
 </html>

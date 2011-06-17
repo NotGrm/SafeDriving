@@ -12,10 +12,14 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@include file="../template/header.jsp" %>
         <h1>Ajout d'un type d'examen</h1>
-        <form action="/SafeDriving-war/auth/AddTypeExamen" method="POST">
-            Type : <input type="text" name="type"/>
-            <input type="submit" value="Valider"/>
-        </form>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <form action="/SafeDriving-war/auth/AddTypeExamen" method="POST">
+                Type : <input type="text" name="type"/>
+                <input type="submit" value="Valider"/>
+            </form>
+        </section>
     </body>
 </html>

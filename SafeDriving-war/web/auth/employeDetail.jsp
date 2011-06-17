@@ -13,18 +13,22 @@
         <title>Detail de l'employé</title>
     </head>
     <body>
+        <%@include file="../template/header.jsp" %>
         <h1>Detail de l'employé</h1>
-        <p>nom : <c:out value="${employe.nom}  "/></p>
-        <p>Prénom : <c:out value="${employe.prenom}  "/></p>
-        <p>Adresse : <c:out value="${employe.adresse} "/></p>
-        <p>Code Postal : <c:out value="${employe.codePostal}"/></p>
-        <p>Date de Naissance : <c:out value="${employe.dateNaissance}"/></p>
-        <p>Ville : <c:out value="${employe.ville}"/></p>
-        <p>UserName : <c:out value="${compteWeb.username}"/></p>
-        </br>
-        <c:if test="${compteWeb == null}">
-            <a href="/SafeDriving-war/auth/EmployeDetail?id=${employe.id}&changeCompteWeb=${true}">Ajouter un Compte Web</a>
-        </c:if>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <p>nom : <c:out value="${employe.nom}  "/></p>
+            <p>Prénom : <c:out value="${employe.prenom}  "/></p>
+            <p>Adresse : <c:out value="${employe.adresse} "/></p>
+            <p>Code Postal : <c:out value="${employe.codePostal}"/></p>
+            <p>Date de Naissance : <c:out value="${employe.dateNaissance}"/></p>
+            <p>Ville : <c:out value="${employe.ville}"/></p>
+            <p>UserName : <c:out value="${compteWeb.username}"/></p>
+            <br/>
+            <c:if test="${compteWeb == null}">
+                <a href="/SafeDriving-war/auth/EmployeDetail?id=${employe.id}&changeCompteWeb=${true}">Ajouter un Compte Web</a>
+            </c:if>
+        </section>
     </body>
 
 </html>

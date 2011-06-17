@@ -52,14 +52,6 @@
         <servlet-name>AddServiceServlet</servlet-name>
         <servlet-class>com.safedriving.servlet.AddServiceServlet</servlet-class>
     </servlet>
-    <filter>
-        <filter-name>Filtre</filter-name>
-        <filter-class>com.safedriving.filtre.Filtre</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>Filtre</filter-name>
-        <url-pattern>/auth/*</url-pattern>
-    </filter-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.safedriving.servlet.LoginServlet</servlet-class>
@@ -191,6 +183,14 @@
     <servlet-mapping>
         <servlet-name>EmployeDetailServlet</servlet-name>
         <url-pattern>/auth/EmployeDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNoteServlet</servlet-name>
+        <url-pattern>/auth/AddNote</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterToSessionServlet</servlet-name>
+        <url-pattern>/auth/RegisterToSession</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

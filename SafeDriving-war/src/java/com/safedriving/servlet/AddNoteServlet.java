@@ -8,7 +8,6 @@ import com.safedriving.model.Client;
 import com.safedriving.model.InscritForum;
 import com.safedriving.model.ParticipationSession;
 import com.safedriving.model.Personnel;
-import com.safedriving.model.Pratique;
 import com.safedriving.model.SessionFormation;
 import com.safedriving.services.ClientServiceLocal;
 import com.safedriving.services.PersonneServiceLocal;

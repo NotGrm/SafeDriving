@@ -13,12 +13,16 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <form action="RegisterToSession" method="POST">
-            <c:forEach var="session" items="${Lsession}">
-                <input type="radio" name="session" value="${session.id}">${session.date} // ${session.id}</input><br/>
-            </c:forEach>
-            <input type="submit" value="Valider" />    
-        </form>
+        <%@include file="../template/header.jsp" %>
+        <h1>Inscription à une session</h1>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <form action="RegisterToSession" method="POST">
+                <c:forEach var="session" items="${Lsession}">
+                    <input type="radio" name="session" value="${session.id}">${session.date} // ${session.id}</input><br/>
+                </c:forEach>
+                <input type="submit" value="Valider" />    
+            </form>
+        </section>
     </body>
 </html>

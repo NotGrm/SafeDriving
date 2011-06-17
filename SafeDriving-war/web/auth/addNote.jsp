@@ -33,26 +33,30 @@
 
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <form action="/SafeDriving-war/auth/AddNote" method="POST">
-            <input type="text" name="score" value="" /><br/>
-            <div id="selectionSession">
-                <select name="sessionID" multiple>
-                    <c:forEach var="session" items="${Lsession}">
-                        <option onclick="visibilite('${session.id}')" value="${session.id}">Session du ${session.date}</option>
-                    </c:forEach>
-                </select>
-            </div>
-            <c:forEach var="session" items="${Lsession}">
-                <div id="${session.id}" style="display:none">
-                    <select name="clientID" multiple>
-                        <c:forEach var="participant" items="${session.participants}">
-                            <option value="${participant.id}">${participant.prenom} ${participant.nom}</option>
+        <%@include file="../template/header.jsp" %>
+        <h1>Ajout d'une note</h1>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <form action="/SafeDriving-war/auth/AddNote" method="POST">
+                <input type="text" name="score" value="" /><br/>
+                <div id="selectionSession">
+                    <select name="sessionID" multiple>
+                        <c:forEach var="session" items="${Lsession}">
+                            <option onclick="visibilite('${session.id}')" value="${session.id}">Session du ${session.date}</option>
                         </c:forEach>
                     </select>
                 </div>
-            </c:forEach>
-            <input type="submit" value="Valider" />
-        </form>
+                <c:forEach var="session" items="${Lsession}">
+                    <div id="${session.id}" style="display:none">
+                        <select name="clientID" multiple>
+                            <c:forEach var="participant" items="${session.participants}">
+                                <option value="${participant.id}">${participant.prenom} ${participant.nom}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                </c:forEach>
+                <input type="submit" value="Valider" />
+            </form>
+        </section>
     </body>
 </html>

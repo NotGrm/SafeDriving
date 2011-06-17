@@ -102,7 +102,6 @@ public class Filtre implements Filter {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
                     access = true;
                 }
-<<<<<<< HEAD
             } else if (nameFonction.equals("AddNote")) {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("SERVICE_FORMATION")) {
                     access = true;
@@ -111,8 +110,6 @@ public class Filtre implements Filter {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("CLIENT")){
                     access = true;
                 }
-=======
->>>>>>> 72fb4b676fd832d51ce5e7c4dae385fb80b2d0dc
             } else if (nameFonction.equals("Planning")) {
                 access = true;
             }

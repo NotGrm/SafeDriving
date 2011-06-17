@@ -13,13 +13,17 @@
         <title>Liste des clients</title>
     </head>
     <body>
+        <%@include file="../template/header.jsp" %>
         <h1>Liste des clients</h1>
-        <c:forEach items="${clients}" var="client">
-            <a href="/SafeDriving-war/auth/ClientDetail?id=${client.id}">
-            <c:out value="${client.nom}"/>
-            <c:out value="${client.prenom}"/>
-            </a>
-            <hr/>
-        </c:forEach>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <c:forEach items="${clients}" var="client">
+                <a href="/SafeDriving-war/auth/ClientDetail?id=${client.id}">
+                    <c:out value="${client.nom}"/>
+                    <c:out value="${client.prenom}"/>
+                </a>
+                <hr/>
+            </c:forEach>
+        </section>
     </body>
 </html>

@@ -13,13 +13,17 @@
         <title>Liste des Employés</title>
     </head>
     <body>
+        <%@include file="../template/header.jsp" %>
         <h1>Liste des employés</h1>
-        <c:forEach items="${employes}" var="employe">
-            <a href="/SafeDriving-war/auth/EmployeDetail?id=${employe.id}">
-                <c:out value="${employe.nom}"/>
-                <c:out value="${employe.prenom}"/>
-            </a>
-            <hr/>
-        </c:forEach>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <c:forEach items="${employes}" var="employe">
+                <a href="/SafeDriving-war/auth/EmployeDetail?id=${employe.id}">
+                    <c:out value="${employe.nom}"/>
+                    <c:out value="${employe.prenom}"/>
+                </a>
+                <hr/>
+            </c:forEach>
+        </section>
     </body>
 </html>

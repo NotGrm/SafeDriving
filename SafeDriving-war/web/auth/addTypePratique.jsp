@@ -12,11 +12,15 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@include file="../template/header.jsp" %>
         <h1>Ajout d'un type de pratique</h1>
-        <form action="/SafeDriving-war/auth/AddTypePratique" method="post">
-            Nom :<input type="text" name="name"/>
-            Nombre maximum de participants :<input type="text" name="nb"/>            
-            <input type="submit" value="Valider"/>
-        </form>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <form action="/SafeDriving-war/auth/AddTypePratique" method="post">
+                Nom :<input type="text" name="name"/>
+                Nombre maximum de participants :<input type="text" name="nb"/>            
+                <input type="submit" value="Valider"/>
+            </form>
+        </section>
     </body>
 </html>

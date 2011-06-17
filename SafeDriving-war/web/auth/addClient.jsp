@@ -22,17 +22,21 @@
         </script>
     </head>
     <body>
+        <%@include file="../template/header.jsp" %>
         <h1>Ajout d'un client</h1>
-        <form action="/SafeDriving-war/auth/AddClient" method="POST">
-            Nom : <input type="text" name="name"/><br/>
-            Prénom : <input type="text" name="firstname"/><br/>
-            Adresse : <input type="text" name="address"/><br/>
-            Code Postal : <input type="text" name="zipcode"/><br/>
-            Ville : <input type="text" name="city"/>     <br/>       
-            NumClient : <input type="text" name="clientNumber"/>  <br/>          
-            Date Naissance :<input type="text" name ="date" id="datepicker"/><br/>
-            
-            <input type="submit" value="Valider"/>
-        </form>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <form action="/SafeDriving-war/auth/AddClient" method="POST">
+                Nom : <input type="text" name="name"/><br/>
+                Prénom : <input type="text" name="firstname"/><br/>
+                Adresse : <input type="text" name="address"/><br/>
+                Code Postal : <input type="text" name="zipcode"/><br/>
+                Ville : <input type="text" name="city"/>     <br/>       
+                NumClient : <input type="text" name="clientNumber"/>  <br/>          
+                Date Naissance :<input type="text" name ="date" id="datepicker"/><br/>
+
+                <input type="submit" value="Valider"/>
+            </form>
+        </section>
     </body>
 </html>

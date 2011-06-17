@@ -22,17 +22,21 @@
         </script>
     </head>
     <body>
+        <%@include file="../template/header.jsp" %>
         <h1>Ajout d'une session theorique</h1>
-        <form action="/SafeDriving-war/auth/AddSessionTheorique" method="POST">
-            Nb Places : <input type="text" name="nbPlaces"/>
-            Date :
-            <input type="text" name ="date" id="datepicker"/><br/>
-            Lieu : <input type="text" name="place"/>
-            Intervenant : <input type="text" name="intervenant"/>
-            Difficulté : <input type="text" name="difficult"/>
-            Durée : <input type="text" name="duree"/>
-            Heure de début : <input type="text" name="debut"/>
-            <input type="submit" value="Valider"/>
-        </form>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <form action="/SafeDriving-war/auth/AddSessionTheorique" method="POST">
+                Nb Places : <input type="text" name="nbPlaces"/>
+                Date :
+                <input type="text" name ="date" id="datepicker"/><br/>
+                Lieu : <input type="text" name="place"/>
+                Intervenant : <input type="text" name="intervenant"/>
+                Difficulté : <input type="text" name="difficult"/>
+                Durée : <input type="text" name="duree"/>
+                Heure de début : <input type="text" name="debut"/>
+                <input type="submit" value="Valider"/>
+            </form>
+        </section>
     </body>
 </html>

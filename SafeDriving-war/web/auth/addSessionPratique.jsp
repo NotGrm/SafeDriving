@@ -22,22 +22,22 @@
         </script>
     </head>
     <body>
+        <%@include file="../template/header.jsp" %>
         <h1>Ajout d'une session pratique</h1>
-        <form action="/SafeDriving-war/auth/AddSessionPratique" method="POST">
-            Nb Places : <input type="text" name="nbPlaces"/>
-            Date : 
-            <input type="text" name ="date" id="datepicker"/><br/>
-            Lieu : <input type="text" name="place"/>
-            Intervenant : <input type="text" name="intervenant"/>
-<<<<<<< HEAD
-            Véhicule : <input type="text" name="vehiculeName"/>
-=======
-            Véhicule : <input type="text" name="vehiculeNumSerie"/>
->>>>>>> 72fb4b676fd832d51ce5e7c4dae385fb80b2d0dc
-            Type : <input type="text" name="type"/>
-            Durée : <input type="text" name="duree"/>
-            Heure de début : <input type="text" name="heureDebut"/>
-            <input type="submit" value="Valider"/>
-        </form>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <form action="/SafeDriving-war/auth/AddSessionPratique" method="POST">
+                Nb Places : <input type="text" name="nbPlaces"/>
+                Date : 
+                <input type="text" name ="date" id="datepicker"/><br/>
+                Lieu : <input type="text" name="place"/>
+                Intervenant : <input type="text" name="intervenant"/>
+                Véhicule : <input type="text" name="vehiculeNumSerie"/>
+                Type : <input type="text" name="type"/>
+                Durée : <input type="text" name="duree"/>
+                Heure de début : <input type="text" name="heureDebut"/>
+                <input type="submit" value="Valider"/>
+            </form>
+        </section>
     </body>
 </html>

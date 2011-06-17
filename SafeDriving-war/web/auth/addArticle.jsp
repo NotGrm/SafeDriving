@@ -12,17 +12,21 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="/SafeDriving-war/auth/AddArticle" method="post">
-            <h1>Ajouter un article</h1><br>
-            <h2>Titre</h2>
-            <input type="text" name="title"/>
-            <br/> 
-            <textarea rows="10" cols="50" name="text"> </textarea><br/>
-            <br/>
-            Auteur : <input type="text" name="author"/>
-            Categorie : <input type="text" name="categorie"/><br/>
-            Tags : <input type="text" name="tags"/><br>
-            <input type="submit" value="Valider"/>
-        </form>
+        <%@include file="../template/header.jsp" %>
+        <h1>Ajouter un article</h1>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <form action="/SafeDriving-war/auth/AddArticle" method="post">
+                <h2>Titre</h2>
+                <input type="text" name="title"/>
+                <br/> 
+                <textarea rows="10" cols="50" name="text"> </textarea><br/>
+                <br/>
+                Auteur : <input type="text" name="author"/>
+                Categorie : <input type="text" name="categorie"/><br/>
+                Tags : <input type="text" name="tags"/><br>
+                <input type="submit" value="Valider"/>
+            </form>
+        </section>
     </body>
 </html>

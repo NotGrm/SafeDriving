@@ -12,13 +12,17 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@include file="../template/header.jsp" %>
         <h1>Ajout d'un lieu</h1>
-        <form action="/SafeDriving-war/auth/AddLieu" method="POST">
-            Nom : <input type="text" name="name"/>
-            Adresse : <input type="text" name="address"/>
-            Code Postal : <input type="text" name="zipcode"/>
-            Ville : <input type="text" name="city"/>
-            <input type="submit" value="Valider"/>
-        </form>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <form action="/SafeDriving-war/auth/AddLieu" method="POST">
+                Nom : <input type="text" name="name"/>
+                Adresse : <input type="text" name="address"/>
+                Code Postal : <input type="text" name="zipcode"/>
+                Ville : <input type="text" name="city"/>
+                <input type="submit" value="Valider"/>
+            </form>
+        </section>
     </body>
 </html>

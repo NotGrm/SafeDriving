@@ -13,6 +13,7 @@ import com.safedriving.model.Pratique;
 import com.safedriving.model.Theorique;
 import com.safedriving.services.ClientServiceLocal;
 import com.safedriving.services.InscritForumServiceLocal;
+import com.safedriving.services.PersonneServiceLocal;
 import com.safedriving.services.PersonnelServiceLocal;
 import com.safedriving.services.PratiqueServiceLocal;
 import com.safedriving.services.TheoriqueServiceLocal;
@@ -39,7 +40,8 @@ public class PlanningServlet extends HttpServlet {
     @EJB
     PratiqueServiceLocal srvPratique;
     @EJB
-    PersonnelServiceLocal srvPersonnel;
+    PersonneServiceLocal srvPersonne;
+    //PersonnelServiceLocal srvPersonnel;
     @EJB
     InscritForumServiceLocal srvCompteWeb;
     @EJB
@@ -66,8 +68,7 @@ public class PlanningServlet extends HttpServlet {
         String strToday = new String();
 
         InscritForum compte = (InscritForum) req.getSession().getAttribute("user");
-        //Personnel employe = (Personnel) srvPersonnel.getByCompteForum(compte);
-        Personne pers = srvPersonnel.getByCompteForum(compte);
+        Personne pers = srvPersonne.getByCompteForum(compte);
 
         try {
             String strNumWeek = req.getParameter("week");
@@ -276,16 +277,16 @@ public class PlanningServlet extends HttpServlet {
         pratiques = srvPratique.getAll();
         /*
         if (pers instanceof Personnel) {
-            setAttributeHoraireTheoriquePersonnel(theoriques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
-            setAttributeHorairePratiquePersonnel(pratiques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
+        setAttributeHoraireTheoriquePersonnel(theoriques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
+        setAttributeHorairePratiquePersonnel(pratiques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
         } else if (pers instanceof Client) {
-            setAttributeHoraireTheoriqueClient(theoriques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
-            setAttributeHorairePratiqueClient(pratiques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
+        setAttributeHoraireTheoriqueClient(theoriques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
+        setAttributeHorairePratiqueClient(pratiques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
         }*/
-        if(compte.getRole().equals(srvRole.getByRoleName("FORUM"))){
+        if (compte.getRole().equals(srvRole.getByRoleName("FORUM"))) {
             setAttributeHoraireTheoriqueClient(theoriques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
             setAttributeHorairePratiqueClient(pratiques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
-        }else if (compte.getRole().equals(srvRole.getByRoleName("SERVICE_FORMATION"))){
+        } else if (compte.getRole().equals(srvRole.getByRoleName("SERVICE_FORMATION"))) {
             setAttributeHoraireTheoriquePersonnel(theoriques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
             setAttributeHorairePratiquePersonnel(pratiques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
         }

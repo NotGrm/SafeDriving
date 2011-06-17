@@ -15,94 +15,23 @@
         <title>Safe-Driving</title>
     </head>
     <body>
+        <%@include file="template/header.jsp" %>
         <h1>Safe-Driving</h1>
-        <div>
-            <ul>                
-                <%
-                    InscritForum user;
-
-                    try {
-                        user = (InscritForum) session.getAttribute("user");
-                    } catch (Exception e) {
-                        user = null;
-                    }
-                %>
-                <li><a href="/SafeDriving-war/">Accueil</a></li>
-
-                <c:choose>
-                    <c:when test="${user != null}">
-                        <c:set var="roleName" value="${user.getRole().roleName}"/>
-                        <c:choose>
-                            <c:when test="${'DIRECTION' == roleName}">
-                                <li><a href="/SafeDriving-war/auth/AddArticle">Ajout d'un Article</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddPersonnel">Ajout d'un employée</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddClient">Ajout d'un client</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddExamen">Ajout d'un examen</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddSessionPratique">Ajout d'une session pratique</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddSessionTheorique">Ajout d'une session theorique</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddVehicule">Ajout d'un véhicule</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddLieu">Ajout d'un lieu</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout d'un type d'examen</a></li>
-                                <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddTypePratique">Ajout d'un type Pratique</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddNote">Ajout d'une Note</a></li>
-                                <li><a href="/SafeDriving-war/auth/RegisterToSession">S'inscrire à une session</a></li>
-                                <li><a href="/SafeDriving-war/auth/ShowClients">Listee des clients</a></li>
-                                <li><a href="/SafeDriving-war/auth/ShowEmployes">Listee des employes</a></li>
-                            </c:when>                    
-                            <c:when test="${'REDACTION' == roleName}">
-                                <li><a href="/SafeDriving-war/auth/AddArticle">Ajout d'un Article</a></li>
-                                <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
-                            </c:when>                   
-                            <c:when test="${'GESTION_AGENCE' == roleName}">
-                                <li><a href="/SafeDriving-war/auth/AddPersonnel">Ajout d'un employée</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddClient">Ajout d'un client</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddExamen">Ajout d'un examen</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddSessionPratique">Ajout d'une session pratique</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddSessionTheorique">Ajout d'une session theorique</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddVehicule">Ajout d'un véhicule</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddLieu">Ajout d'un lieu</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout d'un type d'examen</a></li>
-                                <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
-                                <li><a href="/SafeDriving-war/auth/ShowClients">Listee des clients</a></li>
-                                <li><a href="/SafeDriving-war/auth/ShowEmployes">Listee des employes</a></li>
-                            </c:when>                
-                            <c:when test="${'SERVICE_FORMATION' == roleName}">
-                                <li><a href="/SafeDriving-war/auth/AddClient">Ajout d'un client</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddSessionPratique">Ajout d'une session pratique</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddSessionTheorique">Ajout d'une session theorique</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddVehicule">Ajout d'un véhicule</a></li>
-                                <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout d'un type d'examen</a></li>
-                                <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
-                            </c:when>      
-                            <c:when test="${'CLIENT' == roleName}">
-                                <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
-                                <li><a href="/SafeDriving-war/auth/RegisterToSession">S'inscrire à une session</a></li>
-                            </c:when>     
-                            <c:when test="${'FORUM' == roleName}">
-                                <li><a href="/SafeDriving-war/auth/Planning">Planning</a></li>
-                            </c:when>    
-                        </c:choose>
-                        <li><a href="/SafeDriving-war/Logout">Logout</a></li>  
-                        <li> ${user.getUsername()}<br/></li>                          
-                        </c:when> 
-                        <c:when test="${user == null}">
-                        <li><a href="/SafeDriving-war/Inscription">Inscription</a></li>
-                        <li><a href="/SafeDriving-war/Login">Login</a></li>                          
-                    </c:when> 
-                </c:choose>
-
-
-            </ul>
-        </div>
-        <div>
+        <%@include file="template/menu.jsp" %>
+        <section>
             <c:forEach items="${articles}" var="article">
-                <h2><c:out value="${article.titre}"/></h2>
-                <c:out value="${article.text}"/>
-                <c:out value="${article.text}"/>
-                <a href="/SafeDriving-war/ArticleDetail?id=${article.id}">Lire la suite</a>
-                <hr/>
+                <article>
+                    <header>
+                        <h2><c:out value="${article.titre}"/></h2>
+                        <c:out value="${article.datePublication}"/>
+                    </header>
+                    <c:out value="${article.text}"/>
+                    <footer>
+                        <a href="/SafeDriving-war/ArticleDetail?id=${article.id}">Lire la suite</a> 
+                    </footer>
+                </article>
             </c:forEach>
-        </div>
+        </section>
+        <%@include file="template/footer.jsp" %>
     </body>
 </html>

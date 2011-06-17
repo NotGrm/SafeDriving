@@ -13,18 +13,21 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <form action="/SafeDriving-war/AddCategorie" method="post">
-            <input type="text" name="categorieName"/>
-            
-            <select name="parent">
-                <option value="0"></option>
-                <c:forEach var="cat" items="${categories}">
-                    <option value="${cat.id}">${cat.name}</option>
-                </c:forEach>
-            </select>
-            
-            <input type="submit" value="Valider"/>
-        </form>
+        <%@include file="../template/header.jsp" %>
+        <h1>Ajout d'une categorie</h1>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <form action="/SafeDriving-war/AddCategorie" method="post">
+                <input type="text" name="categorieName"/>
+
+                <select name="parent">
+                    <option value="0"></option>
+                    <c:forEach var="cat" items="${categories}">
+                        <option value="${cat.id}">${cat.name}</option>
+                    </c:forEach>
+                </select>
+                <input type="submit" value="Valider"/>
+            </form>
+        </section>
     </body>
 </html>

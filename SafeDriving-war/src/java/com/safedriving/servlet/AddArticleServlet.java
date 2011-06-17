@@ -4,6 +4,7 @@
  */
 package com.safedriving.servlet;
 
+import com.safedriving.model.Personnel;
 import com.safedriving.model.blog.Article;
 import com.safedriving.model.blog.Categorie;
 import com.safedriving.model.blog.Tag;
@@ -80,7 +81,7 @@ public class AddArticleServlet extends HttpServlet {
         
         Article art = new Article();
         
-        String[] categories = request.getParameterValues("selectedCategories");
+        /*String[] categories = request.getParameterValues("selectedCategories");
         for (String categorie : categories) {
             long id = Long.parseLong(categorie);
             
@@ -92,16 +93,16 @@ public class AddArticleServlet extends HttpServlet {
                 art.setCategories(new ArrayList<Categorie>());
             
             art.getCategories().add(c);
-        }
+        }*/
         
-        //Personnel pers = srvPersonnel.getByCodePersonnel(author);
+        Personnel pers = srvPersonnel.getByCodePersonnel(author);
         
         
         art.setTitre(title);
         art.setText(text);
         //art.setTag(tags);
         art.setDatePublication(new Date());
-        //art.setAuteur(pers);
+        art.setAuteur(pers);
         
         srv.add(art);
     }

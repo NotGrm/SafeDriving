@@ -12,18 +12,21 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@include file="../template/header.jsp" %>
         <h1>Ajout d'un compte web</h1>
-        
-        <p>Est-ce qu'un compte Web Existe ?</p>
-        <form name="addCompteWeb" action="/SafeDriving-war/auth/AddCompteWeb" method="POST"> 
-            <input type="hidden" name="client" value="${client.id}" />
-            <input type="hidden" name="employe" value="${employe.id}" />
-            <input type="radio" name="bool" value="yes" checked="checked" />Oui<br/>
-            Pseudo : <input type="text" name="pseudoSearch" value=""/><br/><br/>
-            <input type="radio" name="bool" value="no" />Non<br/>
-            Pseudo : <input type="text" name="pseudoAdd" value="" /><br/>
-            Password : <input type="password" name="password" value="" /><br/>
-            <input type="submit" value="Envoyer" />
-        </form>
+        <%@include file="../template/menu.jsp" %>
+        <section>
+            <p>Est-ce qu'un compte Web Existe ?</p>
+            <form name="addCompteWeb" action="/SafeDriving-war/auth/AddCompteWeb" method="POST"> 
+                <input type="hidden" name="client" value="${client.id}" />
+                <input type="hidden" name="employe" value="${employe.id}" />
+                <input type="radio" name="bool" value="yes" checked="checked" />Oui<br/>
+                Pseudo : <input type="text" name="pseudoSearch" value=""/><br/><br/>
+                <input type="radio" name="bool" value="no" />Non<br/>
+                Pseudo : <input type="text" name="pseudoAdd" value="" /><br/>
+                Password : <input type="password" name="password" value="" /><br/>
+                <input type="submit" value="Envoyer" />
+            </form>
+        </section>
     </body>
 </html>
