@@ -13,46 +13,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>JSP Page</title>
         <link type="text/css" href="../css/style.css" rel="stylesheet" />
-        <style type="text/css">
-            .planning{
-                width: 900px;
-                height: 400px;
-                border: 1px solid black;
-            }
-            .semaine{
-                border: 1px solid black;
-            }
-            #jour{
-                border : 1px solid black;
-                width: 126px;
-                float : left;
-            }
-            td{
-                height : 40px;
-            }
-            .horaire{
-                width: 25px;
-                height: 580px;
-                float : left;
-                margin-top: 40px;
-            }
-            .tablePlanning{
-                width : 850px;
-            }
-            .tablePlanning.th{
-                margin-bottom: 15px;
-            }
-            #heures{
-                margin-bottom: 26px;
-            }
-            .infoTemp{
-                width: 850px;
-            }
-        </style>
     </head>
     <body>
         <%@include file="../template/header.jsp" %>
-        
+
         <%@include file="../template/menu.jsp" %>
         <section>
             <h2>Planning</h2>
@@ -62,14 +26,31 @@
                     <c:choose>
                         <c:when test="${'DIRECTION' == roleName || 'SERVICE_FORMATION' == roleName}">
                             <a href="/SafeDriving-war/auth/AddSessionPratique">Ajouter une session pratique à cette semaine</a>    <a href="/SafeDriving-war/auth/AddSessionTheorique">Ajouter une session Théorique à cette semaine</a>
+                            <form name="formateurs" action="/SafeDriving-war/auth/Planning">
+                                Formateur :
+                                <select name="formateur">
+                                    <option>${currentPersonne.nom}  ${currentPersonne.prenom}</option>
+                                    <c:forEach items="${formateurs}" var="formateur">
+                                        <option value="${formateur.id}">${formateur.nom} ${formateur.prenom}</option>
+                                    </c:forEach>
+                                </select>
+                                <input type="submit" value="Filtrer" />
+                            </form>
+                                    
+                            <p>                
+                                <a href="/SafeDriving-war/auth/Planning?week=${weekOfYear-1}&formateur=${currentPersonne.id}"><< Semaine précédente</a> ${month} ${year} Semaine numero ${weekOfYear} <a href="/SafeDriving-war/auth/Planning?week=${weekOfYear+1}&formateur=${currentPersonne.id}">Semaine suivante >></a>
+                            </p>
                         </c:when>
+                        <c:otherwise>
+                            <p>                
+                                <a href="/SafeDriving-war/auth/Planning?week=${weekOfYear-1}"><< Semaine précédente</a> ${month} ${year} Semaine numero ${weekOfYear} <a href="/SafeDriving-war/auth/Planning?week=${weekOfYear+1}">Semaine suivante >></a>
+                            </p>
+                        </c:otherwise>
                     </c:choose>
                 </c:when>
             </c:choose>
             <div class="infoTemp">
-                <p>                
-                    <a href="/SafeDriving-war/auth/Planning?week=${weekOfYear-1}"><< Semaine précédente</a> ${month} ${year} Semaine numero ${weekOfYear} <a href="/SafeDriving-war/auth/Planning?week=${weekOfYear+1}">Semaine suivante >></a>
-                </p>
+
 
             </div>
             <div class="horaire">
@@ -109,14 +90,6 @@
                             Vendredi <br/>
                             ${friday}
                         </th>
-                        <th>
-                            Samedi <br/>
-                            ${saturday}
-                        </th>
-                        <th>
-                            Dimanche <br/>
-                            ${sunday}
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -126,8 +99,6 @@
                         <td>${wednesday89}</td>
                         <td>${thursday89}</td>
                         <td>${friday89}</td>
-                        <td>${saturday89}</td>
-                        <td>${sunday89}</td>
                     </tr>
                     <tr>
                         <td>${monday910}</td>
@@ -135,8 +106,6 @@
                         <td>${wednesday910}</td>
                         <td>${thursday910}</td>
                         <td>${friday910}</td>
-                        <td>${saturday910}</td>
-                        <td>${sunday910}</td>
                     </tr>
                     <tr>
                         <td>${monday1011}</td>
@@ -144,8 +113,6 @@
                         <td>${wednesday1011}</td>
                         <td>${thursday1011}</td>
                         <td>${friday1011}</td>
-                        <td>${saturday1011}</td>
-                        <td>${sunday1112}</td>
                     </tr>
                     <tr>
                         <td>${monday1112}</td>
@@ -153,12 +120,8 @@
                         <td>${wednesday1112}</td>
                         <td>${thursday1112}</td>
                         <td>${friday1112}</td>
-                        <td>${saturday1112}</td>
-                        <td>${sunday1112}</td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -171,8 +134,6 @@
                         <td>${wednesday1314}</td>
                         <td>${thursday1314}</td>
                         <td>${friday1314}</td>
-                        <td>${saturday1314}</td>
-                        <td>${sunday1314}</td>
                     </tr>
                     <tr>
                         <td>${monday1415}</td>
@@ -180,8 +141,6 @@
                         <td>${wednesday1415}</td>
                         <td>${thursday1415}</td>
                         <td>${friday1415}</td>
-                        <td>${saturday1415}</td>
-                        <td>${sunday1415}</td>
                     </tr>
                     <tr>
                         <td>${monday1516}</td>
@@ -189,8 +148,6 @@
                         <td>${wednesday1516}</td>
                         <td>${thursday1516}</td>
                         <td>${friday1516}</td>
-                        <td>${saturday1516}</td>
-                        <td>${sunday1516}</td>
                     </tr>
                     <tr>
                         <td>${monday1617}</td>
@@ -198,8 +155,6 @@
                         <td>${wednesday1617}</td>
                         <td>${thursday1617}</td>
                         <td>${friday1617}</td>
-                        <td>${saturday1617}</td>
-                        <td>${sunday1617}</td>
                     </tr>
                     <tr>
                         <td>${monday1718}</td>
@@ -207,8 +162,6 @@
                         <td>${wednesday1718}</td>
                         <td>${thursday1718}</td>
                         <td>${friday1718}</td>
-                        <td>${saturday1718}</td>
-                        <td>${sunday1718}</td>
                     </tr>
                     <tr>
                         <td>${monday1819}</td>
@@ -216,8 +169,6 @@
                         <td>${wednesday1819}</td>
                         <td>${thursday1819}</td>
                         <td>${friday1819}</td>
-                        <td>${saturday1819}</td>
-                        <td>${sunday1819}</td>
                     </tr>
                 </tbody>
             </table>

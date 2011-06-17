@@ -4,13 +4,13 @@
  */
 package com.safedriving.servlet;
 
-import com.safedriving.model.Client;
 import com.safedriving.model.InscritForum;
 import com.safedriving.model.ParticipationSession;
 import com.safedriving.model.Personne;
 import com.safedriving.model.Personnel;
 import com.safedriving.model.Pratique;
 import com.safedriving.model.Theorique;
+import com.safedriving.model.WebSiteRole;
 import com.safedriving.services.ClientServiceLocal;
 import com.safedriving.services.InscritForumServiceLocal;
 import com.safedriving.services.PersonneServiceLocal;
@@ -41,7 +41,8 @@ public class PlanningServlet extends HttpServlet {
     PratiqueServiceLocal srvPratique;
     @EJB
     PersonneServiceLocal srvPersonne;
-    //PersonnelServiceLocal srvPersonnel;
+    @EJB
+    PersonnelServiceLocal srvPersonnel;
     @EJB
     InscritForumServiceLocal srvCompteWeb;
     @EJB
@@ -54,6 +55,7 @@ public class PlanningServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Calendar cal = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
         int today = cal.get(Calendar.DAY_OF_WEEK);
         int monday = 0, tuesday = 0, wednesday = 0, thursday = 0, friday = 0, saturday = 0, sunday = 0;
         int tabJour[] = {monday, tuesday, wednesday, thursday, friday, saturday, sunday};
@@ -66,23 +68,43 @@ public class PlanningServlet extends HttpServlet {
         List<Pratique> pratiques = new ArrayList<Pratique>();
         String listMonth[] = {"Jan", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
         String strToday = new String();
+        InscritForum compte = new InscritForum();
+        WebSiteRole role = srvRole.getByRoleName("SERVICE_FORMATION");
+        List<InscritForum> comptes = srvCompteWeb.getByRole(role);
+        List<Personnel> formateurs = new ArrayList<Personnel>();
+        Personne pers = new Personne();
 
-        InscritForum compte = (InscritForum) req.getSession().getAttribute("user");
-        Personne pers = srvPersonne.getByCompteForum(compte);
+        try {
+            System.out.println("select.id : " + Long.parseLong(req.getParameter("formateur")));
+            pers = srvPersonnel.getById(Integer.parseInt(req.getParameter("formateur")));
+            compte = pers.getCompteForum();
+            System.out.println("srvCompteWeb.getById OK : " + compte.getUsername());
+        } catch (Exception e) {
+            System.out.println("erreur : " + e.getMessage());
+            compte = (InscritForum) req.getSession().getAttribute("user");
+            System.out.println("compte.nom : " + compte.getUsername());
+            pers = srvPersonne.getByCompteForum(compte);
+            System.out.println("compte.size : " + comptes.size());
+        }
+
+        for (int i = 0; i < comptes.size(); i++) {
+            formateurs.add(srvPersonnel.getByCompteForum(comptes.get(i)));
+        }
 
         try {
             String strNumWeek = req.getParameter("week");
             int numWeek = Integer.parseInt(strNumWeek);
             int resultWeek = numWeek - cal.get(Calendar.WEEK_OF_YEAR);
             int moreDay = resultWeek * Calendar.DAY_OF_WEEK;
-            cal.add(Calendar.DATE, moreDay);
             calActualMax = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+            cal.add(Calendar.DATE, moreDay);
             day = cal.get(Calendar.DATE);
             year = cal.get(Calendar.YEAR);
+            cal2.add(Calendar.WEEK_OF_YEAR, resultWeek);
         } catch (Exception e) {
             System.out.println("Pas de semaine spécial demandé!");
         }
-
+        
         if (today == Calendar.MONDAY) {
             strToday = "monday";
             monday = day;
@@ -90,62 +112,58 @@ public class PlanningServlet extends HttpServlet {
             wednesday = tuesday + 1;
             thursday = wednesday + 1;
             friday = thursday + 1;
-            saturday = friday + 1;
-            sunday = saturday + 1;
         } else if (today == Calendar.TUESDAY) {
             strToday = "tuesday";
             tuesday = day;
             monday = tuesday - 1;
+            if(monday == 0){
+                monday = calActualMax;
+            }
             wednesday = tuesday + 1;
             thursday = wednesday + 1;
             friday = thursday + 1;
-            saturday = friday + 1;
-            sunday = saturday + 1;
         } else if (today == Calendar.WEDNESDAY) {
             strToday = "wednesday";
             wednesday = day;
             monday = wednesday - 2;
+            if(monday == 0){
+                monday = calActualMax;                
+            }else if(monday == -1){
+                monday = calActualMax - 1;
+            }
             tuesday = monday + 1;
             thursday = wednesday + 1;
             friday = thursday + 1;
-            saturday = friday + 1;
-            sunday = saturday + 1;
         } else if (today == Calendar.THURSDAY) {
             strToday = "thurday";
             thursday = day;
-            monday = thursday - 3;
+            monday = thursday - 3;            
+            if(monday == 0){
+                monday = calActualMax;                
+            }else if(monday == -1){
+                monday = calActualMax - 1;
+            }else if(monday == -2){
+                monday = calActualMax - 2;
+            }
             tuesday = monday + 1;
             wednesday = tuesday + 1;
             friday = thursday + 1;
-            saturday = friday + 1;
-            sunday = saturday + 1;
         } else if (today == Calendar.FRIDAY) {
             strToday = "friday";
             friday = day;
             monday = friday - 4;
+            if(monday == 0){
+                monday = calActualMax;                
+            }else if(monday == -1){
+                monday = calActualMax - 1;
+            }else if(monday == -2){
+                monday = calActualMax - 2;
+            }else if(monday == -3){
+                monday = calActualMax - 3;
+            }
             tuesday = monday + 1;
             wednesday = tuesday + 1;
             thursday = wednesday + 1;
-            saturday = friday + 1;
-            sunday = saturday + 1;
-        } else if (today == Calendar.SATURDAY) {
-            strToday = "saturday";
-            saturday = day;
-            monday = saturday - 5;
-            tuesday = monday + 1;
-            wednesday = tuesday + 1;
-            thursday = wednesday + 1;
-            friday = thursday + 1;
-            sunday = saturday + 1;
-        } else if (today == Calendar.SUNDAY) {
-            strToday = "sunday";
-            sunday = day;
-            monday = sunday - 6;
-            tuesday = monday + 1;
-            wednesday = tuesday + 1;
-            thursday = wednesday + 1;
-            friday = thursday + 1;
-            saturday = friday + 1;
         }
 
         if (monday > calActualMax
@@ -275,14 +293,7 @@ public class PlanningServlet extends HttpServlet {
 
         theoriques = srvTheorique.getAll();
         pratiques = srvPratique.getAll();
-        /*
-        if (pers instanceof Personnel) {
-        setAttributeHoraireTheoriquePersonnel(theoriques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
-        setAttributeHorairePratiquePersonnel(pratiques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
-        } else if (pers instanceof Client) {
-        setAttributeHoraireTheoriqueClient(theoriques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
-        setAttributeHorairePratiqueClient(pratiques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
-        }*/
+
         if (compte.getRole().equals(srvRole.getByRoleName("FORUM"))) {
             setAttributeHoraireTheoriqueClient(theoriques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
             setAttributeHorairePratiqueClient(pratiques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
@@ -304,6 +315,8 @@ public class PlanningServlet extends HttpServlet {
         req.setAttribute("friday", friday);
         req.setAttribute("saturday", saturday);
         req.setAttribute("sunday", sunday);
+        req.setAttribute("formateurs", formateurs);
+        req.setAttribute("currentPersonne", pers);
         req.getRequestDispatcher("planning.jsp").forward(req, resp);
     }
 

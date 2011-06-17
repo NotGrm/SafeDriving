@@ -5,6 +5,7 @@
 package com.safedriving.services;
 
 import com.safedriving.model.InscritForum;
+import com.safedriving.model.WebSiteRole;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -54,6 +55,12 @@ public class InscritForumService implements InscritForumServiceLocal {
         q.setParameter("username", username);
         q.setParameter("password", password);
         return (InscritForum)q.getSingleResult();
+    }
+
+    public List<InscritForum> getByRole(WebSiteRole role) {
+        Query q = em.createNamedQuery("InscritForum.getByRole");
+        q.setParameter("role", role);
+        return q.getResultList();
     }
     
     

@@ -5,6 +5,7 @@
 package com.safedriving.services;
 
 import com.safedriving.model.InscritForum;
+import com.safedriving.model.WebSiteRole;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -26,5 +27,7 @@ public interface InscritForumServiceLocal {
     InscritForum getByUsername(String username);
 
     InscritForum getByUsernamePwd(String username, String password);
+
+    List<InscritForum> getByRole(WebSiteRole role);
     
 }
