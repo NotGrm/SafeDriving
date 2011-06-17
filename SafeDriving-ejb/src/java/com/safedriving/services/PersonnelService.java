@@ -7,7 +7,9 @@ package com.safedriving.services;
 import com.safedriving.model.InscritForum;
 import com.safedriving.model.Personnel;
 import com.safedriving.model.WebSiteRole;
+import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,6 +24,9 @@ public class PersonnelService implements PersonnelServiceLocal {
 
     @PersistenceContext
     EntityManager em;
+        
+    @EJB
+    InscritForumServiceLocal compteSrv;
 
     @Override
     public void add(Personnel personnel) {
@@ -45,6 +50,19 @@ public class PersonnelService implements PersonnelServiceLocal {
     }
 
     @Override
+    public List<Personnel> getAllFormateurs() {
+        
+        List<InscritForum> Lcomptes = compteSrv.getAllByRole("FORMATION");
+        
+        ArrayList<Personnel> formateurs = new ArrayList<Personnel>();
+        
+        for (InscritForum inscritForum : Lcomptes) {
+            formateurs.add(this.getByCompteForum(inscritForum));
+        }
+        return formateurs;
+    }
+    
+    @Override
     public Personnel getById(int id) {
         return em.find(Personnel.class, id);
     }
@@ -64,10 +82,12 @@ public class PersonnelService implements PersonnelServiceLocal {
     }
 
     public Personnel getByCompteForum(InscritForum compte) {
-        Query q = em.createNamedQuery("Personnel.getByCompteForum");
+        Query q = em.createNamedQuery("Personnel.getByInscritForum");
         q.setParameter("compte", compte);
         return (Personnel) q.getSingleResult();
     }
+
+    
     
     
 }

@@ -5,7 +5,9 @@
 package com.safedriving.services;
 
 import com.safedriving.model.InscritForum;
+import com.safedriving.model.WebSiteRole;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,6 +23,9 @@ public class InscritForumService implements InscritForumServiceLocal {
     @PersistenceContext
     private EntityManager em;
 
+    @EJB
+    WebSiteRoleServiceLocal roleSrv;
+    
     @Override
     public void add(InscritForum inscritForum) {
         em.persist(inscritForum);
@@ -55,6 +60,17 @@ public class InscritForumService implements InscritForumServiceLocal {
         q.setParameter("password", password);
         return (InscritForum)q.getSingleResult();
     }
+
+    @Override
+    public List<InscritForum> getAllByRole(String roleName) {
+        
+        WebSiteRole role = roleSrv.getByRoleName(roleName);
+        
+        Query q = em.createNamedQuery("InscritForum.getAllByRole");
+        q.setParameter("role", role);
+        return q.getResultList();
+    }
+    
     
     
     

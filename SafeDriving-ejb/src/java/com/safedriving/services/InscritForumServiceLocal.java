@@ -26,5 +26,7 @@ public interface InscritForumServiceLocal {
     InscritForum getByUsername(String username);
 
     InscritForum getByUsernamePwd(String username, String password);
+
+    List<InscritForum> getAllByRole(String roleName);
     
 }

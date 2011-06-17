@@ -32,5 +32,7 @@ public interface PersonnelServiceLocal {
     public com.safedriving.model.Personnel getByCodePersonnel(java.lang.String code);
 
     Personnel getByCompteForum(InscritForum compte);
+
+    List<Personnel> getAllFormateurs();
     
 }

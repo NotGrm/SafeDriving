@@ -36,7 +36,8 @@ public class LoginServlet extends HttpServlet {
         try {
             userDb = srv.getByUsernamePwd(userEntry, password);
             session.setAttribute("user", userDb);
-            req.getRequestDispatcher("index.jsp").forward(req, resp);
+            //req.getRequestDispatcher("index.jsp").forward(req, resp);
+            resp.sendRedirect("/SafeDriving-war/Home");
         } catch (Exception e) {
             System.out.println("Entré Catch");
             resp.sendRedirect("Login");

@@ -30,7 +30,8 @@ import javax.persistence.UniqueConstraint;
     @NamedQuery(name = "InscritForum.getByUsername",
     query = "SELECT c from InscritForum AS c WHERE c.username = :username"),
     @NamedQuery(name = "InscritForum.getByUsernamePwd",
-    query = "SELECT c from InscritForum c WHERE c.username = :username AND c.password = :password")
+    query = "SELECT c from InscritForum c WHERE c.username = :username AND c.password = :password"),
+    @NamedQuery(name="InscritForum.getAllByRole", query="Select c from InscritForum c where c.role = :role")
 })
 public class InscritForum implements Serializable {
 

@@ -74,7 +74,7 @@ public class Filtre implements Filter {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
                     access = true;
                 }
-            }else if (nameFonction.equals("EmployeDetail")) {
+            } else if (nameFonction.equals("EmployeDetail")) {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
                     access = true;
                 }
@@ -107,7 +107,11 @@ public class Filtre implements Filter {
                     access = true;
                 }
             } else if (nameFonction.equals("RegisterToSession")) {
-                if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("CLIENT")){
+                if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("CLIENT")) {
+                    access = true;
+                }
+            } else if (nameFonction.equals("AddSession")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
                     access = true;
                 }
             } else if (nameFonction.equals("Planning")) {
