@@ -96,6 +96,14 @@
         <servlet-name>EmployeDetailServlet</servlet-name>
         <servlet-class>com.safedriving.servlet.EmployeDetailServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddCategorieServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddCategorieServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddTagServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddTagServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddPersonnelServlet</servlet-name>
         <url-pattern>/auth/AddPersonnel</url-pattern>
@@ -191,6 +199,14 @@
     <servlet-mapping>
         <servlet-name>ArticleDetailServlet</servlet-name>
         <url-pattern>/ArticleDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCategorieServlet</servlet-name>
+        <url-pattern>/auth/AddCategorie</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddTagServlet</servlet-name>
+        <url-pattern>/auth/AddTag</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

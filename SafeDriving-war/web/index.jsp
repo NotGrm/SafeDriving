@@ -30,6 +30,7 @@
                         <footer>
                             <a href="/SafeDriving-war/ArticleDetail?id=${article.id}">Lire la suite</a> 
                         </footer>
+                        <hr/>
                     </article>
                 </c:forEach>
             </section>
