@@ -85,13 +85,6 @@ public class PersonnelService implements PersonnelServiceLocal {
         Query q = em.createNamedQuery("Personnel.getByInscritForum");
         q.setParameter("compte", compte);
         return (Personnel) q.getSingleResult();
-<<<<<<< HEAD
     }
-
-    
-    
-=======
-    }    
->>>>>>> 69749ec0905012af16e51992399f9b27b28a4fae
     
 }

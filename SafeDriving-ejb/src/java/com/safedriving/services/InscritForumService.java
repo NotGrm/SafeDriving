@@ -60,8 +60,6 @@ public class InscritForumService implements InscritForumServiceLocal {
         q.setParameter("password", password);
         return (InscritForum)q.getSingleResult();
     }
-
-<<<<<<< HEAD
     @Override
     public List<InscritForum> getAllByRole(String roleName) {
         
@@ -71,17 +69,9 @@ public class InscritForumService implements InscritForumServiceLocal {
         q.setParameter("role", role);
         return q.getResultList();
     }
-    
-=======
     public List<InscritForum> getByRole(WebSiteRole role) {
         Query q = em.createNamedQuery("InscritForum.getByRole");
         q.setParameter("role", role);
         return q.getResultList();
     }
->>>>>>> 69749ec0905012af16e51992399f9b27b28a4fae
-    
-    
-    
-    
-    
 }

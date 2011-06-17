@@ -28,10 +28,8 @@ public interface InscritForumServiceLocal {
 
     InscritForum getByUsernamePwd(String username, String password);
 
-<<<<<<< HEAD
     List<InscritForum> getAllByRole(String roleName);
-=======
+    
     List<InscritForum> getByRole(WebSiteRole role);
->>>>>>> 69749ec0905012af16e51992399f9b27b28a4fae
     
 }
