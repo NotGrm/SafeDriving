@@ -14,7 +14,7 @@
 html, body {height:100%; margin:0; padding:0;}
 
 body {
-    width: 900px;
+    width: 1000px;
     height: 100%;
     margin: 0 auto;
     background-color: #003399;
@@ -24,6 +24,7 @@ body {
     background-image:     -ms-linear-gradient(top, #003399, #DDDDDD); /* IE10 */
 
     background-attachment: fixed;
+
 
     font-weight: bold;
     font-family: Verdana,Arial,Helvetica,sans-serif;
@@ -61,7 +62,15 @@ nav ul li a {
     display: block;  
     line-height: 20px;  
     text-decoration: none;  
-    color: #000000; 
+    color: #000000;
+    border-bottom: 1px solid ;
+    background-color: #FFFFFF;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#CCCCCC)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #FFFFFF, #CCCCCC); /* Chrome 10+, Saf5.1+ */
+    background-image:    -moz-linear-gradient(top, #FFFFFF, #CCCCCC); /* FF3.6 */
+    background-image:     -ms-linear-gradient(top, #FFFFFF, #CCCCCC); /* IE10 */
+    background-image:      -o-linear-gradient(top, #FFFFFF, #CCCCCC); /* Opera 11.10+ */
+    background-image:         linear-gradient(top, #FFFFFF, #CCCCCC);
 } 
 
 div#content {
@@ -118,15 +127,21 @@ td{
     height: 580px;
     float : left;
     margin-top: 40px;
+    margin-right: 10px;
 }
 .tablePlanning{
-    width : 850px;
+    width : 550px;
+    text-align: center;
 }
 .tablePlanning.th{
     margin-bottom: 15px;
 }
+.tablePlanning.td{
+    background-color: #aaaaaa;
+    border : 1px solid white;
+}
 #heures{
-    margin-bottom: 26px;
+    margin-bottom: 28px;
 }
 .infoTemp{
     width: 850px;

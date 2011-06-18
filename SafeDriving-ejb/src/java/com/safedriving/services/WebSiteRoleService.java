@@ -43,7 +43,7 @@ public class WebSiteRoleService implements WebSiteRoleServiceLocal {
     }
 
     @Override
-    public WebSiteRole getById(int id) {        
+    public WebSiteRole getById(Long id) {        
         return em.find(WebSiteRole.class, id);
     }
 

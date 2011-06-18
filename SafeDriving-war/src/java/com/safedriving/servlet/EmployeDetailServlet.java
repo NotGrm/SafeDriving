@@ -28,7 +28,7 @@ public class EmployeDetailServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
+        Long id = Long.parseLong(req.getParameter("id"));
         Personnel pers = srvEmploye.getById(id);
         try {
             req.setAttribute("compteWeb", srvInscri.getByUsername(pers.getCompteForum().getUsername()));

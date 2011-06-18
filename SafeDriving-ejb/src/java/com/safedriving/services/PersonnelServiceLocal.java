@@ -25,12 +25,14 @@ public interface PersonnelServiceLocal {
 
     List<Personnel> getAll();
 
-    Personnel getById(int id);
+    Personnel getById(Long id);
 
     List<Personnel> getByNom(String nom);
 
     public com.safedriving.model.Personnel getByCodePersonnel(java.lang.String code);
 
     Personnel getByCompteForum(InscritForum compte);
+
+    List<Personnel> getAllFormateurs();
     
 }

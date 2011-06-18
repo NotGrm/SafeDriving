@@ -23,7 +23,7 @@ public interface WebSiteRoleServiceLocal {
 
     List<WebSiteRole> getAll();
 
-    WebSiteRole getById(int id);
+    WebSiteRole getById(Long id);
 
     WebSiteRole getByRoleName(String roleName);
     

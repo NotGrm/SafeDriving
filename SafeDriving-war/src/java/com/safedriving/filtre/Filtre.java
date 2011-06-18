@@ -34,6 +34,7 @@ public class Filtre implements Filter {
         request.setAttribute("path", httpRequest.getRequestURI());
 
         if (user != null) {
+            System.out.println("utilisateur loggé");
             String roleName = user.getRole().getRoleName();
             String nameFonction = httpRequest.getRequestURI().substring(22);
             System.out.println("Fonction demandé" + nameFonction);
@@ -74,7 +75,7 @@ public class Filtre implements Filter {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
                     access = true;
                 }
-            }else if (nameFonction.equals("EmployeDetail")) {
+            } else if (nameFonction.equals("EmployeDetail")) {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
                     access = true;
                 }
@@ -107,7 +108,11 @@ public class Filtre implements Filter {
                     access = true;
                 }
             } else if (nameFonction.equals("RegisterToSession")) {
-                if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("CLIENT")){
+                if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("CLIENT")) {
+                    access = true;
+                }
+            } else if (nameFonction.equals("AddSession")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
                     access = true;
                 }
             } else if (nameFonction.equals("Planning")) {
@@ -121,6 +126,7 @@ public class Filtre implements Filter {
             }
 
         } else {
+            System.out.println("utilisateur redirigé login");
             httpResponse.sendRedirect("/SafeDriving-war/Login?path=" + httpRequest.getRequestURI());
         }
 

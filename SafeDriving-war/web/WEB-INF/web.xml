@@ -104,6 +104,22 @@
         <servlet-name>AddTagServlet</servlet-name>
         <servlet-class>com.safedriving.servlet.AddTagServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddSessionServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddSessionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddRoleServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.AddRoleServlet</servlet-class>
+    </servlet>    
+    <filter>
+        <filter-name>Filtre</filter-name>
+        <filter-class>com.safedriving.filtre.Filtre</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Filtre</filter-name>
+        <url-pattern>/auth/*</url-pattern>
+    </filter-mapping>
     <servlet-mapping>
         <servlet-name>AddPersonnelServlet</servlet-name>
         <url-pattern>/auth/AddPersonnel</url-pattern>
@@ -207,6 +223,14 @@
     <servlet-mapping>
         <servlet-name>AddTagServlet</servlet-name>
         <url-pattern>/auth/AddTag</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddSessionServlet</servlet-name>
+        <url-pattern>/auth/AddSession</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddRoleServlet</servlet-name>
+        <url-pattern>/auth/AddRole</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

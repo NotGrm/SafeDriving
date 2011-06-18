@@ -42,11 +42,7 @@
     directionLinks.add(new String[]{"/SafeDriving-war/auth/AddVehicule", "Ajout Véhicule"});
     directionLinks.add(new String[]{"/SafeDriving-war/auth/AddLieu", "Ajout Lieu"});
     directionLinks.add(new String[]{"/SafeDriving-war/auth/AddTypePratique", "Ajout Type Pratique"});
-    /*<li><a href="/SafeDriving-war/auth/AddExamen">Ajout Examen</a></li>
-    <li><a href="/SafeDriving-war/auth/AddVehicule">Ajout Véhicule</a></li>
-    <li><a href="/SafeDriving-war/auth/AddLieu">Ajout Lieu</a></li>
-    <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout Type Examen</a></li>
-    <li><a href="/SafeDriving-war/auth/AddTypePratique">Ajout Type Pratique</a></li>*/
+    directionLinks.add(new String[]{"/SafeDriving-war/auth/AddRole", "Ajout Role"});
 
     pageContext.setAttribute("directionLinks", directionLinks);
 %>
