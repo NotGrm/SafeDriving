@@ -58,7 +58,7 @@ public class AddCompteWebServlet extends HttpServlet {
                 } else if (req.getParameter("bool").equals("no")) {
                     username = req.getParameter("pseudoAdd");
                     password = req.getParameter("password");
-                    role = srvRole.getByRoleName(req.getParameter("role"));
+                    role = srvRole.getByRoleName(req.getParameter("WebSiteRole"));
                     compte.setUsername(username);
                     compte.setPassword(password);
                     compte.setRole(role);
@@ -67,11 +67,12 @@ public class AddCompteWebServlet extends HttpServlet {
                 }
                 pers.setCompteForum(compte);
                 srvPersonnel.refresh(pers);
-                resp.sendRedirect("/SafeDriving-war/");
+                resp.sendRedirect("/SafeDriving-war/Home");
 
             } catch (Exception e) {
                 req.setAttribute("employe", pers);
                 req.setAttribute("error", "mauvais pseudo");
+                req.setAttribute("roles", srvRole.getAll());
                 req.getRequestDispatcher("addCompteWeb.jsp").forward(req, resp);
             }
         } else if (!req.getParameter("client").equals("")) {
@@ -80,7 +81,7 @@ public class AddCompteWebServlet extends HttpServlet {
             String username;
             String password;
             int clientId;
-            WebSiteRole role;
+            WebSiteRole role = new WebSiteRole();
             InscritForum compte = new InscritForum();
             clientId = Integer.parseInt(req.getParameter("client"));
             cli = srvClient.getById(clientId);
@@ -95,7 +96,8 @@ public class AddCompteWebServlet extends HttpServlet {
                     password = req.getParameter("password");
                     System.out.println("avant role.getById");
                     System.out.println("id : " + req.getParameter("WebSiteRole"));
-                    role = srvRole.getById(Long.parseLong(req.getParameter("WebSiteRole")));
+                    role = srvRole.getByRoleName("CLIENT");
+                    
                     System.out.println("test");
                     compte.setUsername(username);
                     compte.setPassword(password);

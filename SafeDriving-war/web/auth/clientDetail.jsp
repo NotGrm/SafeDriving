@@ -29,8 +29,8 @@
                     <p>Code Postal : <input type="text" name="codePostal" value="<c:out value="${client.codePostal}"/>" /></p>
                     <p>Ville : <input type="text" name="ville" value="<c:out value="${client.ville}"/>" /></p>
                     <input type="submit" value="Enregistrer" />
-                        <c:choose>
-                            <c:when test="${compte.username != null}">
+                    <c:choose>
+                        <c:when test="${compte.username != null}">
                             <p>Pseudo compte web : <c:out value="${compte.username}"/></p>
                         </c:when>
                         <c:when test="${compte == null}">

@@ -105,6 +105,8 @@ public class AddArticleServlet extends HttpServlet {
         art.setAuteur(pers);
         
         srv.add(art);
+        
+        response.sendRedirect("/safeDriving-war/Home");
     }
 
     /** 

@@ -73,7 +73,8 @@ public class PlanningServlet extends HttpServlet {
         List<InscritForum> comptes = srvCompteWeb.getByRole(role);
         List<Personnel> formateurs = new ArrayList<Personnel>();
         Personne pers = new Personne();
-        
+        String message = new String();
+
         System.out.println("today : " + today);
 
         try {
@@ -84,15 +85,19 @@ public class PlanningServlet extends HttpServlet {
         } catch (Exception e) {
             System.out.println("erreur : " + e.getMessage());
             compte = (InscritForum) req.getSession().getAttribute("user");
-            System.out.println("compte.nom : " + compte.getUsername());
-            pers = srvPersonne.getByCompteForum(compte);
+            System.out.println("compte.nom : " + compte.getUsername() + " " + compte.getId());
+            pers = srvPersonnel.getByCompteForum(compte);
             System.out.println("compte.size : " + comptes.size());
         }
-
-        for (int i = 0; i < comptes.size(); i++) {
-            System.out.println("compte : " + comptes.get(i).getUsername());
-            formateurs.add(srvPersonnel.getByCompteForum(comptes.get(i)));
+        try {
+            for (int i = 0; i < comptes.size(); i++) {
+                System.out.println("compte : " + comptes.get(i).getUsername());
+                formateurs.add(srvPersonnel.getByCompteForum(comptes.get(i)));
+            }
+        } catch (Exception e) {
+            req.setAttribute("message", message + "Erreur sur liste formateurs");
         }
+
 
         try {
             String strNumWeek = req.getParameter("week");
@@ -107,19 +112,19 @@ public class PlanningServlet extends HttpServlet {
         } catch (Exception e) {
             System.out.println("Pas de semaine spécial demandé!");
         }
-        
+
         if (today == Calendar.MONDAY) {
             strToday = "monday";
             monday = day;
             tuesday = monday + 1;
             wednesday = tuesday + 1;
             thursday = wednesday + 1;
-            friday = thursday + 1; 
+            friday = thursday + 1;
         } else if (today == Calendar.TUESDAY) {
             strToday = "tuesday";
             tuesday = day;
             monday = tuesday - 1;
-            if(monday == 0){
+            if (monday == 0) {
                 monday = calActualMax;
             }
             wednesday = tuesday + 1;
@@ -129,9 +134,9 @@ public class PlanningServlet extends HttpServlet {
             strToday = "wednesday";
             wednesday = day;
             monday = wednesday - 2;
-            if(monday == 0){
-                monday = calActualMax;                
-            }else if(monday == -1){
+            if (monday == 0) {
+                monday = calActualMax;
+            } else if (monday == -1) {
                 monday = calActualMax - 1;
             }
             tuesday = monday + 1;
@@ -140,12 +145,12 @@ public class PlanningServlet extends HttpServlet {
         } else if (today == Calendar.THURSDAY) {
             strToday = "thurday";
             thursday = day;
-            monday = thursday - 3;            
-            if(monday == 0){
-                monday = calActualMax;                
-            }else if(monday == -1){
+            monday = thursday - 3;
+            if (monday == 0) {
+                monday = calActualMax;
+            } else if (monday == -1) {
                 monday = calActualMax - 1;
-            }else if(monday == -2){
+            } else if (monday == -2) {
                 monday = calActualMax - 2;
             }
             tuesday = monday + 1;
@@ -155,31 +160,31 @@ public class PlanningServlet extends HttpServlet {
             strToday = "friday";
             friday = day;
             monday = friday - 4;
-            if(monday == 0){
-                monday = calActualMax;                
-            }else if(monday == -1){
+            if (monday == 0) {
+                monday = calActualMax;
+            } else if (monday == -1) {
                 monday = calActualMax - 1;
-            }else if(monday == -2){
+            } else if (monday == -2) {
                 monday = calActualMax - 2;
-            }else if(monday == -3){
+            } else if (monday == -3) {
                 monday = calActualMax - 3;
             }
             tuesday = monday + 1;
             wednesday = tuesday + 1;
             thursday = wednesday + 1;
-        }else if (today == Calendar.SATURDAY) {
+        } else if (today == Calendar.SATURDAY) {
             strToday = "saturday";
             saturday = day;
             monday = saturday - 5;
-             if(monday == 0){
-                monday = calActualMax;                
-            }else if(monday == -1){
+            if (monday == 0) {
+                monday = calActualMax;
+            } else if (monday == -1) {
                 monday = calActualMax - 1;
-            }else if(monday == -2){
+            } else if (monday == -2) {
                 monday = calActualMax - 2;
-            }else if(monday == -3){
+            } else if (monday == -3) {
                 monday = calActualMax - 3;
-            }else if(monday == -4){
+            } else if (monday == -4) {
                 monday = calActualMax - 4;
             }
             tuesday = monday + 1;
@@ -191,17 +196,17 @@ public class PlanningServlet extends HttpServlet {
             strToday = "sunday";
             sunday = day;
             monday = sunday - 6;
-            if(monday == 0){
-                monday = calActualMax;                
-            }else if(monday == -1){
+            if (monday == 0) {
+                monday = calActualMax;
+            } else if (monday == -1) {
                 monday = calActualMax - 1;
-            }else if(monday == -2){
+            } else if (monday == -2) {
                 monday = calActualMax - 2;
-            }else if(monday == -3){
+            } else if (monday == -3) {
                 monday = calActualMax - 3;
-            }else if(monday == -4){
+            } else if (monday == -4) {
                 monday = calActualMax - 4;
-            }else if(monday == -5){
+            } else if (monday == -5) {
                 monday = calActualMax - 5;
             }
             tuesday = monday + 1;
@@ -339,7 +344,7 @@ public class PlanningServlet extends HttpServlet {
         theoriques = srvTheorique.getAll();
         pratiques = srvPratique.getAll();
 
-        if (compte.getRole().equals(srvRole.getByRoleName("CLIENT"))) {            
+        if (compte.getRole().equals(srvRole.getByRoleName("CLIENT"))) {
             setAttributeHoraireTheoriqueClient(theoriques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
             setAttributeHorairePratiqueClient(pratiques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
         } else if (compte.getRole().equals(srvRole.getByRoleName("SERVICE_FORMATION"))) {

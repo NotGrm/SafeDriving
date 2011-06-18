@@ -107,6 +107,14 @@ public class Filtre implements Filter {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("SERVICE_FORMATION")) {
                     access = true;
                 }
+            }else if (nameFonction.equals("AddTag")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("REDACTION") ) {
+                    access = true;
+                }
+            }else if (nameFonction.equals("AddCategorie")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("REDACTION") ) {
+                    access = true;
+                }
             } else if (nameFonction.equals("RegisterToSession")) {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("CLIENT")) {
                     access = true;
