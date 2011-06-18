@@ -18,8 +18,12 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Vehicule.getBySerial", query = "Select c from Vehicule c where c.numSerie = :serial"),
-    @NamedQuery(name = "Vehicule.getAll", query="Select c from Vehicule c")
+    @NamedQuery(name = "Vehicule.getAll",
+    query = "SELECT c FROM Vehicule c"),
+    @NamedQuery(name = "Vehicule.getById", 
+        query = "SELECT c FROM Vehicule c WHERE c.id = :id"),
+    @NamedQuery(name = "Vehicule.getByNumSerie", 
+        query = "SELECT c FROM Vehicule c WHERE c.numSerie = :numSerie")
 })
 public class Vehicule implements Serializable {
 
