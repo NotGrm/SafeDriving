@@ -19,7 +19,7 @@
         <%@include file="../template/menu.jsp" %>
         <section>
             <h2>Ajout d'une categorie</h2>
-            <form action="/SafeDriving-war/AddCategorie" method="post">
+            <form action="/SafeDriving-war/auth/AddCategorie" method="post">
                 <input type="text" name="categorieName"/>
 
                 <select name="parent">

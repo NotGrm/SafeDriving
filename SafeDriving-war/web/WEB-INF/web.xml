@@ -111,7 +111,15 @@
     <servlet>
         <servlet-name>AddRoleServlet</servlet-name>
         <servlet-class>com.safedriving.servlet.AddRoleServlet</servlet-class>
-    </servlet>
+    </servlet>    
+    <filter>
+        <filter-name>Filtre</filter-name>
+        <filter-class>com.safedriving.filtre.Filtre</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>Filtre</filter-name>
+        <url-pattern>/auth/*</url-pattern>
+    </filter-mapping>
     <servlet-mapping>
         <servlet-name>AddPersonnelServlet</servlet-name>
         <url-pattern>/auth/AddPersonnel</url-pattern>

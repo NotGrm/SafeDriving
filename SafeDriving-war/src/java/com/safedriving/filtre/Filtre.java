@@ -34,6 +34,7 @@ public class Filtre implements Filter {
         request.setAttribute("path", httpRequest.getRequestURI());
 
         if (user != null) {
+            System.out.println("utilisateur loggé");
             String roleName = user.getRole().getRoleName();
             String nameFonction = httpRequest.getRequestURI().substring(22);
             System.out.println("Fonction demandé" + nameFonction);
@@ -106,6 +107,14 @@ public class Filtre implements Filter {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("SERVICE_FORMATION")) {
                     access = true;
                 }
+            }else if (nameFonction.equals("AddTag")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("REDACTION") ) {
+                    access = true;
+                }
+            }else if (nameFonction.equals("AddCategorie")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("REDACTION") ) {
+                    access = true;
+                }
             } else if (nameFonction.equals("RegisterToSession")) {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("CLIENT")) {
                     access = true;
@@ -125,6 +134,7 @@ public class Filtre implements Filter {
             }
 
         } else {
+            System.out.println("utilisateur redirigé login");
             httpResponse.sendRedirect("/SafeDriving-war/Login?path=" + httpRequest.getRequestURI());
         }
 

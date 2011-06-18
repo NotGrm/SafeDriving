@@ -107,7 +107,7 @@ public class Personne implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) id;
+        hash += (Long) id;
         return hash;
     }
 

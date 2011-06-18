@@ -39,15 +39,15 @@ public class AddCompteWebServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if (req.getParameter("employe") != null) {
+        if (!req.getParameter("employe").equals("")) {
             System.out.println("entré if employe");
             Personnel pers = new Personnel();
             String username;
-            String password;
-            int persId;
+            String password;            
+            Long persId;
             WebSiteRole role;
             InscritForum compte = new InscritForum();
-            persId = Integer.parseInt(req.getParameter("employe"));
+            persId = Long.parseLong(req.getParameter("employe"));
             pers = srvPersonnel.getById(persId);
 
             try {
@@ -58,7 +58,7 @@ public class AddCompteWebServlet extends HttpServlet {
                 } else if (req.getParameter("bool").equals("no")) {
                     username = req.getParameter("pseudoAdd");
                     password = req.getParameter("password");
-                    role = srvRole.getByRoleName("FORUM");
+                    role = srvRole.getByRoleName(req.getParameter("WebSiteRole"));
                     compte.setUsername(username);
                     compte.setPassword(password);
                     compte.setRole(role);
@@ -67,20 +67,21 @@ public class AddCompteWebServlet extends HttpServlet {
                 }
                 pers.setCompteForum(compte);
                 srvPersonnel.refresh(pers);
-                resp.sendRedirect("/SafeDriving-war/");
+                resp.sendRedirect("/SafeDriving-war/Home");
 
             } catch (Exception e) {
                 req.setAttribute("employe", pers);
                 req.setAttribute("error", "mauvais pseudo");
+                req.setAttribute("roles", srvRole.getAll());
                 req.getRequestDispatcher("addCompteWeb.jsp").forward(req, resp);
             }
-        } else if (req.getParameter("client") != null) {
+        } else if (!req.getParameter("client").equals("")) {
             System.out.println("entré if client");
             Client cli = new Client();
             String username;
             String password;
             int clientId;
-            WebSiteRole role;
+            WebSiteRole role = new WebSiteRole();
             InscritForum compte = new InscritForum();
             clientId = Integer.parseInt(req.getParameter("client"));
             cli = srvClient.getById(clientId);
@@ -93,7 +94,11 @@ public class AddCompteWebServlet extends HttpServlet {
                 } else if (req.getParameter("bool").equals("no")) {
                     username = req.getParameter("pseudoAdd");
                     password = req.getParameter("password");
-                    role = srvRole.getByRoleName("FORUM");
+                    System.out.println("avant role.getById");
+                    System.out.println("id : " + req.getParameter("WebSiteRole"));
+                    role = srvRole.getByRoleName("CLIENT");
+                    
+                    System.out.println("test");
                     compte.setUsername(username);
                     compte.setPassword(password);
                     compte.setRole(role);
@@ -101,12 +106,13 @@ public class AddCompteWebServlet extends HttpServlet {
                     srvCompteWeb.add(compte);
                 }
                 cli.setCompteForum(compte);
-                srvClient.refresh(cli);
-                resp.sendRedirect("/SafeDriving-war/");
+                srvClient.refresh(cli);                
+                resp.sendRedirect("/SafeDriving-war/Home");
 
             } catch (Exception e) {
                 req.setAttribute("client", cli);
-                req.setAttribute("error", "mauvais pseudo");
+                req.setAttribute("roles", srvRole.getAll());
+                req.setAttribute("message", "Erreur dans l'ajout d'un compte Web!");
                 req.getRequestDispatcher("addCompteWeb.jsp").forward(req, resp);
             }
         }

@@ -67,7 +67,7 @@
                 <div id="heures">18h</div>
                 <div id="heures">19h</div>
             </div>
-            <table class="tablePlanning" border="2">
+            <table class="tablePlanning" border="1">
                 <thead>
                     <tr>
                         <th>

@@ -100,7 +100,6 @@ section nav {
 article {
 
     position: relative;
-    float: left;
     font-size: 12px;
 
 }
@@ -125,15 +124,21 @@ td{
     height: 580px;
     float : left;
     margin-top: 40px;
+    margin-right: 10px;
 }
 .tablePlanning{
-    width : 850px;
+    width : 550px;
+    text-align: center;
 }
 .tablePlanning.th{
     margin-bottom: 15px;
 }
+.tablePlanning.td{
+    background-color: #aaaaaa;
+    border : 1px solid white;
+}
 #heures{
-    margin-bottom: 26px;
+    margin-bottom: 28px;
 }
 .infoTemp{
     width: 850px;

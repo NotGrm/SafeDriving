@@ -44,9 +44,7 @@ public class ClientService implements ClientServiceLocal {
 
     @Override
     public Client getById(long id) {
-        Query q = em.createNamedQuery("Client.getById");
-        q.setParameter("id", id);
-        return (Client)q.getSingleResult();
+        return em.find(Client.class, id);
     }
 
     @Override

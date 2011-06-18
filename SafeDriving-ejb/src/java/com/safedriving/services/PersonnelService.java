@@ -6,7 +6,6 @@ package com.safedriving.services;
 
 import com.safedriving.model.InscritForum;
 import com.safedriving.model.Personnel;
-import com.safedriving.model.WebSiteRole;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -63,7 +62,11 @@ public class PersonnelService implements PersonnelServiceLocal {
     }
     
     @Override
+<<<<<<< HEAD
     public Personnel getById(long id) {
+=======
+    public Personnel getById(Long id) {
+>>>>>>> 4f639ee4bb57c04bbe6e7d9d12634a945b961cf5
         return em.find(Personnel.class, id);
     }
 
@@ -82,7 +85,7 @@ public class PersonnelService implements PersonnelServiceLocal {
     }
 
     public Personnel getByCompteForum(InscritForum compte) {
-        Query q = em.createNamedQuery("Personnel.getByInscritForum");
+        Query q = em.createNamedQuery("Personnel.getByCompteForum");
         q.setParameter("compte", compte);
         return (Personnel) q.getSingleResult();
     }

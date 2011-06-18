@@ -6,6 +6,7 @@ package com.safedriving.servlet;
 
 import com.safedriving.model.Personnel;
 import com.safedriving.services.PersonnelServiceLocal;
+import com.safedriving.services.WebSiteRoleServiceLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -23,6 +24,8 @@ public class AddPersonnelServlet extends HttpServlet {
 
     @EJB
     private PersonnelServiceLocal srv;
+    @EJB
+    private WebSiteRoleServiceLocal srvRole;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,6 +54,7 @@ public class AddPersonnelServlet extends HttpServlet {
 
         srv.add(pers);
 
+        request.setAttribute("roles", srvRole.getAll());
         request.setAttribute("employe", pers);
         request.getRequestDispatcher("addCompteWeb.jsp").forward(request, resp);
     }

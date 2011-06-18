@@ -65,5 +65,8 @@ public class AddCategorieServlet extends HttpServlet {
 
             srv.addCategorie(cat);
         }
+        
+        req.setAttribute("message", "Catégorie ajouté !");
+        req.getRequestDispatcher("/SafeDriving-war/auth/AddCategorie").forward(req, resp);
     }
 }

@@ -14,11 +14,12 @@
     </head>
     <body>
         <%@include file="../template/header.jsp" %>
-        
+
         <%@include file="../template/menu.jsp" %>
         <section>
             <h2>Ajout d'un compte web</h2>
             <p>Est-ce qu'un compte Web Existe ?</p>
+            <c:out value="${message}" />
             <form name="addCompteWeb" action="/SafeDriving-war/auth/AddCompteWeb" method="POST"> 
                 <input type="hidden" name="client" value="${client.id}" />
                 <input type="hidden" name="employe" value="${employe.id}" />
@@ -27,6 +28,17 @@
                 <input type="radio" name="bool" value="no" />Non<br/>
                 Pseudo : <input type="text" name="pseudoAdd" value="" /><br/>
                 Password : <input type="password" name="password" value="" /><br/>
+                Role : 
+                <c:if test="${employe != null}">
+                    <select name="WebSiteRole">
+                        <c:forEach items="${roles}" var="role">
+                            <option value="${role.id}">${role.roleName}</option>
+                        </c:forEach>
+                    </select>
+                </c:if>
+                <c:if test="${client != null}">
+                    <input type="text" name="WebSiteRole" value="FORUM" disabled="disabled" />
+                </c:if>
                 <input type="submit" value="Envoyer" />
             </form>
         </section>
