@@ -63,7 +63,7 @@ public class PersonnelService implements PersonnelServiceLocal {
     }
     
     @Override
-    public Personnel getById(int id) {
+    public Personnel getById(long id) {
         return em.find(Personnel.class, id);
     }
 

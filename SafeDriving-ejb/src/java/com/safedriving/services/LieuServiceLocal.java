@@ -23,7 +23,7 @@ public interface LieuServiceLocal {
 
     List<Lieu> getAll();
 
-    Lieu getById(int id);
+    Lieu getById(long id);
 
     Lieu getByNom(String nom);
     

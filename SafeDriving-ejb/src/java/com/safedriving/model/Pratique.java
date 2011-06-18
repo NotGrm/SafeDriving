@@ -34,6 +34,19 @@ public class Pratique extends SessionFormation implements Serializable {
     private TypeSessionPratique type;
     @ManyToOne
     private Vehicule vehicule;
+
+    public Pratique() {
+    }
+
+    public Pratique(SessionFormation s) {
+        this.dateSession = s.dateSession;
+        this.duree = s.duree;
+        this.heureDebut = s.heureDebut;
+        this.intervenant = s.intervenant;
+        this.lieu = s.lieu;
+        this.nbrMaxPlace = s.nbrMaxPlace;
+        this.participants = s.participants;
+    }
     
     public int getNote() {
         return Note;

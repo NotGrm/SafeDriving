@@ -24,13 +24,7 @@ body {
     background-image:     -ms-linear-gradient(top, #003399, #DDDDDD); /* IE10 */
 
     background-attachment: fixed;
-<<<<<<< HEAD
-    
-    
-=======
-
     font-weight: bold;
->>>>>>> 69749ec0905012af16e51992399f9b27b28a4fae
     font-family: Verdana,Arial,Helvetica,sans-serif;
     font-size: 14px;
 }

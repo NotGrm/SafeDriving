@@ -19,6 +19,7 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
+    @NamedQuery(name="TypeSessionPratique.getAll", query="Select c from TypeSessionPratique c" ),
     @NamedQuery(name="TypeSessionPratique.getByTypeName", query="Select c from TypeSessionPratique c where c.typeName = :typeName")
 })
 

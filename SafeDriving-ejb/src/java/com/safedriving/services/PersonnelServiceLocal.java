@@ -25,7 +25,7 @@ public interface PersonnelServiceLocal {
 
     List<Personnel> getAll();
 
-    Personnel getById(int id);
+    Personnel getById(long id);
 
     List<Personnel> getByNom(String nom);
 

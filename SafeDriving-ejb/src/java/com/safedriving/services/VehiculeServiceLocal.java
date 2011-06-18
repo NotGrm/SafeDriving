@@ -23,7 +23,7 @@ public interface VehiculeServiceLocal {
 
     List<Vehicule> getAll();
 
-    Vehicule getById(int id);
+    Vehicule getById(long id);
 
     Vehicule getBySerial(java.lang.String serial);
     

@@ -29,7 +29,7 @@ public class Personne implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
     private String nom;
     private String prenom;
     private String adresse;
@@ -56,11 +56,11 @@ public class Personne implements Serializable {
         this.dateNaissance = dateNaissance;
     }
         
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -23,8 +23,9 @@
     ArrayList<String[]> agenceLinks = new ArrayList<String[]>();
 
     agenceLinks.add(new String[]{"/SafeDriving-war/auth/AddClient", "Ajout Client"});
-    agenceLinks.add(new String[]{"/SafeDriving-war/auth/AddSessionPratique", "Ajout Session Pratique"});
-    agenceLinks.add(new String[]{"/SafeDriving-war/auth/AddSessionTheorique", "Ajout Session Theorique"});
+    //agenceLinks.add(new String[]{"/SafeDriving-war/auth/AddSessionPratique", "Ajout Session Pratique"});
+    //agenceLinks.add(new String[]{"/SafeDriving-war/auth/AddSessionTheorique", "Ajout Session Theorique"});
+    agenceLinks.add(new String[]{"/SafeDriving-war/auth/AddSession", "Ajout Session"});
     agenceLinks.add(new String[]{"/SafeDriving-war/auth/ShowClients", "Liste Clients"});
     pageContext.setAttribute("agenceLinks", agenceLinks);
 
