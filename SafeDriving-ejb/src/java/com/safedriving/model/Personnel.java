@@ -5,8 +5,8 @@
 package com.safedriving.model;
 
 import com.safedriving.model.blog.Article;
+import java.io.Serializable;
 import java.util.List;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,7 +25,7 @@ import javax.persistence.OneToMany;
     @NamedQuery(name = "Personnel.getByCompteForum", 
         query = "SELECT c FROM Personnel c WHERE c.compteForum = :compte")
 })
-public class Personnel extends Personne {
+public class Personnel extends Personne implements Serializable {
 
     private String codePersonnel;
     @OneToMany(mappedBy = "auteur")

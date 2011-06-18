@@ -41,17 +41,17 @@ public class SessionFormation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int nbrMaxPlace;
+    protected  int nbrMaxPlace;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateSession;
+    protected Date dateSession;
     @ManyToOne
-    private Lieu lieu;
+    protected Lieu lieu;
     @ManyToOne
-    private Personnel intervenant;  
+    protected Personnel intervenant;  
     @OneToMany
-    private List<Client> participants;
-    private int duree;
-    private int heureDebut;
+    protected List<Client> participants;
+    protected int duree;
+    protected int heureDebut;
 
     public int getHeureDebut() {
         return heureDebut;

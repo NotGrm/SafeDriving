@@ -21,17 +21,15 @@
     pageContext.setAttribute("clientLinks", clientLinks);
 
     ArrayList<String[]> agenceLinks = new ArrayList<String[]>();
-
     agenceLinks.add(new String[]{"/SafeDriving-war/auth/AddClient", "Ajout Client"});
-    agenceLinks.add(new String[]{"/SafeDriving-war/auth/AddSessionPratique", "Ajout Session Pratique"});
-    agenceLinks.add(new String[]{"/SafeDriving-war/auth/AddSessionTheorique", "Ajout Session Theorique"});
+    agenceLinks.add(new String[]{"/SafeDriving-war/auth/AddSession", "Ajout Session"});
     agenceLinks.add(new String[]{"/SafeDriving-war/auth/ShowClients", "Liste Clients"});
     pageContext.setAttribute("agenceLinks", agenceLinks);
 
     ArrayList<String[]> formationLinks = new ArrayList<String[]>();
     formationLinks.add(new String[]{"/SafeDriving-war/auth/Planning", "Voir Planning"});
     formationLinks.add(new String[]{"/SafeDriving-war/auth/AddNote", "Ajout Note"});
-    formationLinks.add(new String[]{"/SafeDriving-war/auth/accessDenied.jsp", "Indiqué Disponibilités"});
+    formationLinks.add(new String[]{"/SafeDriving-war/auth/AddDisponibilite", "Indiqué Disponibilités"});
     pageContext.setAttribute("formationLinks", formationLinks);
 
     ArrayList<String[]> directionLinks = new ArrayList<String[]>();

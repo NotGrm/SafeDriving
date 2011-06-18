@@ -43,7 +43,7 @@ public class LieuService implements LieuServiceLocal {
     }
 
     @Override
-    public Lieu getById(int id) {        
+    public Lieu getById(long id) {        
         return em.find(Lieu.class, id);
     }
 

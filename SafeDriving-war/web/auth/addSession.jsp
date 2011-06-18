@@ -45,7 +45,7 @@
         <%@include file="../template/menu.jsp" %>
         <section>
 
-            <form action="/SafeDriving-war/auth/AddSessionTheorique" method="POST">
+            <form action="/SafeDriving-war/auth/AddSession" method="POST">
                 <header>
                     <h2> Ajout d'une session </h2>
                 </header>
@@ -58,7 +58,7 @@
                     Nb Places : <input type="text" name="nbPlaces"/>
 
                     <label for="lieu"> Lieu :</label>
-                    <select id="lieu" name="place">
+                    <select id="lieu" name="placeId">
                         <c:forEach items="${lieux}" var="lieu">
                             <option value="${lieu.id}">${lieu.nom}</option>
                         </c:forEach>
@@ -67,7 +67,7 @@
                     <!--Lieu : <input type="text" name="place"/>-->
                     <h3> Choix d'un intervenant</h3>
                     <c:forEach items="${formateurs}" var="formateur">
-                        <input id="${formateur.id}" type="radio" name="intervenant" value="${formateur.id}"/>
+                        <input id="${formateur.id}" type="radio" name="intervenantId" value="${formateur.id}"/>
                         <label for="${formateur.id}">${formateur.nom} ${formateur.prenom}</label>
                     </c:forEach>
                     <!--Intervenant : <input type="text" name="intervenant"/>-->
@@ -76,18 +76,28 @@
                 </div>
 
                 <h3>Choisissez quel type de session à ajouter</h3>
-                <input id="pratique_radio" type="radio" name="typesession" value="pratique" onclick="visibilite('div_pratique')"/>
+                <input id="pratique_radio" type="radio" name="typeSession" value="pratique" onclick="visibilite('div_pratique')"/>
                 <label for="pratique_radio">Session Pratique</label>
 
-                <input id="theorique_radio" type="radio" name="typesession" value="theorique" onclick="visibilite('div_theorique')"/>
+                <input id="theorique_radio" type="radio" name="typeSession" value="theorique" onclick="visibilite('div_theorique')"/>
                 <label for="theorique_radio">Session Theorique</label>
 
                 <div id="div_theorique" style="display:none">
                     Difficulté : <input type="text" name="difficult"/>
                 </div>
                 <div id="div_pratique" style="display:none">
-                    Véhicule : <input type="text" name="vehiculeNumSerie"/>
-                    Type : <input type="text" name="type"/>
+                    Véhicule : 
+                    <select name="vehiculeId">
+                        <c:forEach items="${vehicules}" var="vehicule">
+                            <option value="${vehicule.id}">${vehicule.numSerie}</option>
+                        </c:forEach>
+                    </select>
+                    Type :
+                    <select name="typeId">
+                        <c:forEach items="${types}" var="type">
+                            <option value="${type.id}">${type.typeName}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <footer>
                     <input type="submit" value="Valider"/>

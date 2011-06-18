@@ -58,7 +58,7 @@ public class AddCompteWebServlet extends HttpServlet {
                 } else if (req.getParameter("bool").equals("no")) {
                     username = req.getParameter("pseudoAdd");
                     password = req.getParameter("password");
-                    role = srvRole.getByRoleName(req.getParameter("WebSiteRole"));
+                    role = srvRole.getById(Long.parseLong(req.getParameter("WebSiteRole")));
                     compte.setUsername(username);
                     compte.setPassword(password);
                     compte.setRole(role);

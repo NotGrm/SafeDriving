@@ -43,7 +43,7 @@ public class VehiculeService implements VehiculeServiceLocal {
     }
 
     @Override
-    public Vehicule getById(int id) {
+    public Vehicule getById(long id) {
         return em.find(Vehicule.class, id);
     }
     

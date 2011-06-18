@@ -31,6 +31,19 @@ public class Theorique extends SessionFormation implements Serializable {
     private int score;
     private int difficulte;
 
+    public Theorique() {
+    }
+
+    public Theorique(SessionFormation s) {
+        this.dateSession = s.dateSession;
+        this.duree = s.duree;
+        this.heureDebut = s.heureDebut;
+        this.intervenant = s.intervenant;
+        this.lieu = s.lieu;
+        this.nbrMaxPlace = s.nbrMaxPlace;
+        this.participants = s.participants;
+    }
+    
     public int getDifficulte() {
         return difficulte;
     }

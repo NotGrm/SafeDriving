@@ -79,14 +79,6 @@ public class Filtre implements Filter {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
                     access = true;
                 }
-            } else if (nameFonction.equals("AddSessionPratique")) {
-                if (roleName.equals("DIRECTION") || roleName.equals("SERVICE_FORMATION")) {
-                    access = true;
-                }
-            } else if (nameFonction.equals("AddSessionTheorique")) {
-                if (roleName.equals("DIRECTION") || roleName.equals("SERVICE_FORMATION")) {
-                    access = true;
-                }
             } else if (nameFonction.equals("AddTypeExamen")) {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("SERVICE_FORMATION")) {
                     access = true;
@@ -107,12 +99,12 @@ public class Filtre implements Filter {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE") || roleName.equals("SERVICE_FORMATION")) {
                     access = true;
                 }
-            }else if (nameFonction.equals("AddTag")) {
-                if (roleName.equals("DIRECTION") || roleName.equals("REDACTION") ) {
+            } else if (nameFonction.equals("AddTag")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("REDACTION")) {
                     access = true;
                 }
-            }else if (nameFonction.equals("AddCategorie")) {
-                if (roleName.equals("DIRECTION") || roleName.equals("REDACTION") ) {
+            } else if (nameFonction.equals("AddCategorie")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("REDACTION")) {
                     access = true;
                 }
             } else if (nameFonction.equals("RegisterToSession")) {
@@ -121,6 +113,10 @@ public class Filtre implements Filter {
                 }
             } else if (nameFonction.equals("AddSession")) {
                 if (roleName.equals("DIRECTION") || roleName.equals("GESTION_AGENCE")) {
+                    access = true;
+                }
+            } else if (nameFonction.equals("AddDisponibilite")) {
+                if (roleName.equals("DIRECTION") || roleName.equals("SERVICE_FORMATION")) {
                     access = true;
                 }
             } else if (nameFonction.equals("Planning")) {

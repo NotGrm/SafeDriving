@@ -19,7 +19,12 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name="TypeSessionPratique.getByTypeName", query="Select c from TypeSessionPratique c where c.typeName = :typeName")
+    @NamedQuery(name = "TypeSessionPratique.getAll",
+    query = "SELECT c FROM TypeSessionPratique c"),
+    @NamedQuery(name = "TypeSessionPratique.getById", 
+        query = "SELECT c FROM TypeSessionPratique c WHERE c.id = :id"),
+    @NamedQuery(name = "TypeSessionPratique.getByTypeName", 
+        query = "SELECT c FROM TypeSessionPratique c WHERE c.typeName = :typeName")
 })
 
 public class TypeSessionPratique implements Serializable {

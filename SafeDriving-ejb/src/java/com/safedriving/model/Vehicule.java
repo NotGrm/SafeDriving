@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 /**
@@ -16,8 +17,16 @@ import javax.persistence.NamedQuery;
  * @author Ehres
  */
 @Entity
-@NamedQuery(name="Vehicule.getBySerial", query="Select c from Vehicule c where c.numSerie = :serial")
+@NamedQueries({
+    @NamedQuery(name = "Vehicule.getAll",
+    query = "SELECT c FROM Vehicule c"),
+    @NamedQuery(name = "Vehicule.getById", 
+        query = "SELECT c FROM Vehicule c WHERE c.id = :id"),
+    @NamedQuery(name = "Vehicule.getByNumSerie", 
+        query = "SELECT c FROM Vehicule c WHERE c.numSerie = :numSerie")
+})
 public class Vehicule implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -82,5 +91,4 @@ public class Vehicule implements Serializable {
     public String toString() {
         return "com.safedriving.model.Vehicule[ id=" + id + " ]";
     }
-    
 }
