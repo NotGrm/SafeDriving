@@ -5,6 +5,8 @@
 package com.safedriving.services;
 
 import com.safedriving.model.Disponibility;
+import com.safedriving.model.Personnel;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -26,5 +28,7 @@ public interface DisponibilityServiceLocal {
     Disponibility getById(int id);
 
     Disponibility getByFormateurId(int id);
+
+    Disponibility getForUserAtDate(Personnel user, Date dateDebut, Date dateFin);
     
 }

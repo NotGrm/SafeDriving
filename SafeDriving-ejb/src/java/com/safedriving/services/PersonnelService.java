@@ -51,7 +51,7 @@ public class PersonnelService implements PersonnelServiceLocal {
     @Override
     public List<Personnel> getAllFormateurs() {
         
-        List<InscritForum> Lcomptes = compteSrv.getAllByRole("FORMATION");
+        List<InscritForum> Lcomptes = compteSrv.getAllByRole("SERVICE_FORMATION");
         
         ArrayList<Personnel> formateurs = new ArrayList<Personnel>();
         

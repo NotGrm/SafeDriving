@@ -10,7 +10,6 @@ import com.safedriving.model.Personnel;
 import com.safedriving.services.DisponibilityServiceLocal;
 import com.safedriving.services.PersonnelServiceLocal;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -59,6 +58,7 @@ public class AddDisponibiliteServlet extends HttpServlet {
             
             Date fullDateDebut = cal.getTime();
             
+            
             Date dateFin = sdf.parse(dateFinString);
             int heureFin = Integer.parseInt(heureFinString);
             
@@ -73,13 +73,14 @@ public class AddDisponibiliteServlet extends HttpServlet {
             Personnel p = personnelSrv.getByCompteForum(i);
             
             Disponibility d = new Disponibility();
-            d.setDateDebut(dateDebut);
-            d.setDateFin(dateFin);
+            d.setDateDebut(fullDateDebut);
+            d.setDateFin(fullDateFin);
             d.setFormateur(p);
             
             srv.add(d);
             
         } catch (Exception e) {
+            System.err.println(e);
         }
         
     }

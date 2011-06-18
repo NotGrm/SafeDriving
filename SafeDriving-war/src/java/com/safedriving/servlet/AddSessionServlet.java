@@ -4,6 +4,7 @@
  */
 package com.safedriving.servlet;
 
+import com.safedriving.model.Disponibility;
 import com.safedriving.model.Lieu;
 import com.safedriving.model.Personnel;
 import com.safedriving.model.Pratique;
@@ -11,15 +12,18 @@ import com.safedriving.model.SessionFormation;
 import com.safedriving.model.Theorique;
 import com.safedriving.model.TypeSessionPratique;
 import com.safedriving.model.Vehicule;
+import com.safedriving.services.DisponibilityServiceLocal;
 import com.safedriving.services.LieuServiceLocal;
 import com.safedriving.services.PersonnelServiceLocal;
 import com.safedriving.services.PratiqueServiceLocal;
 import com.safedriving.services.TheoriqueServiceLocal;
 import com.safedriving.services.TypeSessionPratiqueServiceLocal;
 import com.safedriving.services.VehiculeServiceLocal;
+import com.safedriving.util.ControleDisponibilites;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -47,6 +51,8 @@ public class AddSessionServlet extends HttpServlet {
     VehiculeServiceLocal vehiculeSrv;
     @EJB
     TypeSessionPratiqueServiceLocal typeSrv;
+    @EJB
+    DisponibilityServiceLocal disponibiliteSrv;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -78,64 +84,69 @@ public class AddSessionServlet extends HttpServlet {
         String intervenantIdString = req.getParameter("intervenantId");
 
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");
-
+        
+        
         try {
-            Date date = sdf.parse(dateString);
-            int debut = Integer.parseInt(debutString);
-            int duree = Integer.parseInt(dureeString);
-            int nbPlaces = Integer.parseInt(nbPlacesString);
-
-            long placeId = Long.parseLong(placeIdString);
-            Lieu l = lieuSrv.getById(placeId);
-
             long intervenantId = Long.parseLong(intervenantIdString);
             Personnel pers = personnelSrv.getById(intervenantId);
-
-            SessionFormation s = new SessionFormation();
-            s.setDate(date);
-            s.setDure(duree);
-            s.setHeureDebut(debut);
-            s.setIntervenant(pers);
-            s.setLieu(l);
-            s.setNbrMaxPlace(nbPlaces);
-
-
-            String typeSession = req.getParameter("typeSession");
-
-            System.out.println(typeSession);
             
-            if (typeSession.equals("pratique")) {
-                                
-                String vehiculeIdString = req.getParameter("vehiculeId");
-                String typeIdString = req.getParameter("typeId");
+            int debut = Integer.parseInt(debutString);
+            int duree = Integer.parseInt(dureeString);
+            
+            Date date = sdf.parse(dateString);
+            
+            //on teste si le formateur est dispo à la date
+            Disponibility d = ControleDisponibilites.getDisponibility(pers, date, duree);
 
-                long vehiculeId = Long.parseLong(vehiculeIdString);
-                Vehicule v = vehiculeSrv.getById(vehiculeId);
-                
-                long typeId = Long.parseLong(typeIdString);
-                TypeSessionPratique t = typeSrv.getById(typeId);
+            if (d != null) {
 
-                System.out.println(s.getHeureDebut());
-                
-                Pratique p = new Pratique(s);
-                System.out.println("cocu");
-                System.out.println("Coucou" + p.getHeureDebut());
-                p.setType(t);
-                p.setVehicule(v);
+                disponibiliteSrv.remove(d);
 
-                pratiqueSrv.add(p);
+                int nbPlaces = Integer.parseInt(nbPlacesString);
 
+                long placeId = Long.parseLong(placeIdString);
+                Lieu l = lieuSrv.getById(placeId);
+
+                SessionFormation s = new SessionFormation();
+                s.setDate(date);
+                s.setDure(duree);
+                s.setHeureDebut(debut);
+                s.setIntervenant(pers);
+                s.setLieu(l);
+                s.setNbrMaxPlace(nbPlaces);
+
+
+                String typeSession = req.getParameter("typeSession");
+
+                if (typeSession.equals("pratique")) {
+
+                    String vehiculeIdString = req.getParameter("vehiculeId");
+                    String typeIdString = req.getParameter("typeId");
+
+                    long vehiculeId = Long.parseLong(vehiculeIdString);
+                    Vehicule v = vehiculeSrv.getById(vehiculeId);
+
+                    long typeId = Long.parseLong(typeIdString);
+                    TypeSessionPratique t = typeSrv.getById(typeId);
+
+                    Pratique p = new Pratique(s);
+                    p.setType(t);
+                    p.setVehicule(v);
+
+                    pratiqueSrv.add(p);
+
+                } else {
+                    String difficultString = req.getParameter("difficult");
+                    int difficult = Integer.parseInt(difficultString);
+
+                    Theorique t = new Theorique(s);
+                    t.setDifficulte(difficult);
+
+                    theoriqueSrv.add(t);
+                }
             } else {
-                System.out.println("on est dans theorique");
-                String difficultString = req.getParameter("difficult");
-                int difficult = Integer.parseInt(difficultString);
-
-                Theorique t = new Theorique(s);
-                t.setDifficulte(difficult);
-
-                theoriqueSrv.add(t);
+                System.out.println("IL n'ya pas de disponibilité");
             }
-
         } catch (Exception e) {
         }
 

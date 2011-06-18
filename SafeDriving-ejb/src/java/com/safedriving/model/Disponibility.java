@@ -24,7 +24,11 @@ import javax.persistence.Temporal;
     @NamedQuery(name = "Disponibility.getAll",
     query = "SELECT c FROM Disponibility c"),
     @NamedQuery(name = "Disponibility.getByFormateurId",
-    query = "SELECT c FROM Disponibility c WHERE c.formateur.id = :id")
+    query = "SELECT c FROM Disponibility c WHERE c.formateur.id = :id"),
+    @NamedQuery(name = "Disponibility.getForUserAtDate",
+    query = "Select c from Disponibility c where c.formateur = :user "
+        + "and c.dateDebut <= :dateDebut "
+        + "and :dateFin <= c.dateFin")
 })
 public class Disponibility implements Serializable {
 
@@ -34,9 +38,9 @@ public class Disponibility implements Serializable {
     private Long id;
     @OneToOne
     private Personnel formateur;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateDebut;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateFin;
 
     public Date getDateDebut() {
