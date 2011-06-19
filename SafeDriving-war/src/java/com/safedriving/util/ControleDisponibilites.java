@@ -18,9 +18,9 @@ import javax.ejb.EJB;
 public class ControleDisponibilites {
 
     @EJB
-    static DisponibilityServiceLocal srv;
+    DisponibilityServiceLocal srv;
 
-    public static Disponibility getDisponibility(Personnel pers, Date date, int duree) {
+    public Disponibility getDisponibility(Personnel pers, Date date, int duree) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.set(Calendar.HOUR, duree);
@@ -34,10 +34,11 @@ public class ControleDisponibilites {
         System.out.println(dateDebut);
         System.out.println(dateFin);
 
+        System.out.println("coucou");
         return srv.getForUserAtDate(pers, dateDebut, dateFin);
     }
-    
-    public static void manageDisponibility(Disponibility dispo, Date date, int duree) {
+
+    public void manageDisponibility(Disponibility dispo, Date date, int duree) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.set(Calendar.HOUR, duree);
@@ -47,5 +48,29 @@ public class ControleDisponibilites {
         cal.add(Calendar.HOUR, duree);
 
         Date dateFin = cal.getTime();
+
+        if (dispo.getDateDebut().equals(dateDebut)) {
+            if (dispo.getDateFin().equals(dateFin)) {
+                srv.remove(dispo);
+            } else {
+                dispo.setDateDebut(dateFin);
+                srv.refresh(dispo);
+            }
+        } else {
+            if (dispo.getDateFin().equals(dateFin)) {
+                dispo.setDateFin(dateDebut);
+                srv.refresh(dispo);
+            } else {
+                Disponibility newDispo = new Disponibility();
+                newDispo.setFormateur(dispo.getFormateur());
+                newDispo.setDateDebut(dateFin);
+                newDispo.setDateFin(dispo.getDateFin());
+                srv.add(newDispo);
+                
+                dispo.setDateFin(dateDebut);
+                srv.refresh(dispo);
+                
+            }
+        }
     }
 }

@@ -84,23 +84,27 @@ public class AddSessionServlet extends HttpServlet {
         String intervenantIdString = req.getParameter("intervenantId");
 
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");
-        
-        
+
+
         try {
             long intervenantId = Long.parseLong(intervenantIdString);
             Personnel pers = personnelSrv.getById(intervenantId);
-            
+
             int debut = Integer.parseInt(debutString);
             int duree = Integer.parseInt(dureeString);
-            
+
             Date date = sdf.parse(dateString);
-            
+
             //on teste si le formateur est dispo à la date
-            Disponibility d = ControleDisponibilites.getDisponibility(pers, date, duree);
+            Disponibility d = this.getDisponibility(pers, date, debut, duree);
+
+            System.out.println(d);
 
             if (d != null) {
 
-                disponibiliteSrv.remove(d);
+                System.out.println("Il y a une disponibilite");
+
+                this.manageDisponibility(d, date, debut, duree);
 
                 int nbPlaces = Integer.parseInt(nbPlacesString);
 
@@ -149,6 +153,61 @@ public class AddSessionServlet extends HttpServlet {
             }
         } catch (Exception e) {
         }
+    }
 
+    private Disponibility getDisponibility(Personnel pers, Date date, int debut, int duree) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.set(Calendar.HOUR, debut);
+
+        Date dateDebut = cal.getTime();
+
+        cal.add(Calendar.HOUR, duree);
+
+        Date dateFin = cal.getTime();
+
+        System.out.println("Date Debut " + dateDebut);
+        System.out.println("Date Fin " + dateFin);
+
+        System.out.println("coucou");
+
+        return disponibiliteSrv.getForUserAtDate(pers, dateDebut, dateFin);
+    }
+
+    private void manageDisponibility(Disponibility dispo, Date date, int debut, int duree) {
+        System.out.println("Coucou " + date);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.set(Calendar.HOUR, debut);
+
+        Date dateDebut = cal.getTime();
+
+        cal.add(Calendar.HOUR, duree);
+
+        Date dateFin = cal.getTime();
+
+        if (dispo.getDateDebut().equals(dateDebut)) {
+            if (dispo.getDateFin().equals(dateFin)) {
+                disponibiliteSrv.remove(dispo);
+            } else {
+                dispo.setDateDebut(dateFin);
+                disponibiliteSrv.refresh(dispo);
+            }
+        } else {
+            if (dispo.getDateFin().equals(dateFin)) {
+                dispo.setDateFin(dateDebut);
+                disponibiliteSrv.refresh(dispo);
+            } else {
+                Disponibility newDispo = new Disponibility();
+                newDispo.setFormateur(dispo.getFormateur());
+                newDispo.setDateDebut(dateFin);
+                newDispo.setDateFin(dispo.getDateFin());
+                disponibiliteSrv.add(newDispo);
+
+                dispo.setDateFin(dateDebut);
+                disponibiliteSrv.refresh(dispo);
+
+            }
+        }
     }
 }

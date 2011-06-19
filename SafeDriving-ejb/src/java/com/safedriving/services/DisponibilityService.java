@@ -62,7 +62,9 @@ public class DisponibilityService implements DisponibilityServiceLocal {
     public Disponibility getForUserAtDate(Personnel user, Date dateDebut, Date dateFin) {
         Query q = em.createNamedQuery("Disponibility.getForUserAtDate");
         q.setParameter("user", user);
+        System.out.println("debut "+dateDebut);
         q.setParameter("dateDebut", dateDebut);
+        System.out.println("fin "+dateFin);
         q.setParameter("dateFin", dateFin);
         
         try {
