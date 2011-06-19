@@ -28,6 +28,14 @@
                     <p>Adresse : <input type="text" name="adresse" value="<c:out value="${employe.adresse}"/>" /></p>
                     <p>Code Postal : <input type="text" name="codePostal" value="<c:out value="${employe.codePostal}"/>" /></p>
                     <p>Ville : <input type="text" name="ville" value="<c:out value="${employe.ville}"/>" /></p>
+                    <p>Role : 
+                        <select name="roles">
+                            <option value="${compte.role.id}">${compte.role.roleName}</option>
+                            <c:forEach items="${roles}" var="role">
+                                <option value="${role.id}">${role.roleName}</option>
+                            </c:forEach>
+                        </select>
+                    </p>
                     <input type="submit" value="Enregistrer" />
                     <c:choose>
                         <c:when test="${compte.username != null}">
@@ -48,8 +56,9 @@
                 <p>Adresse : <c:out value="${employe.adresse}"/></p>
                 <p>Code Postal : <c:out value="${employe.codePostal}"/></p>
                 <p>Ville : <c:out value="${employe.ville}"/></p>
-                <c:choose>
-                    <c:when test="${compte.username != null}">
+                <p>Role : <c:out value="${compte.role.roleName}"/></p>
+                    <c:choose>
+                        <c:when test="${compte.username != null}">
                         <p>Pseudo compte web : <c:out value="${compte.username}"/></p>
                     </c:when>
                     <c:when test="${compte == null}">

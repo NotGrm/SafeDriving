@@ -20,6 +20,7 @@
         <%@include file="../template/menu.jsp" %>
         <section>
             <h2>Planning</h2>
+            <c:out value="${message}"/>
             <c:choose>
                 <c:when test="${user != null}">
                     <c:set var="roleName" value="${user.getRole().roleName}"/>

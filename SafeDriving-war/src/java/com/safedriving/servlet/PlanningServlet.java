@@ -74,21 +74,32 @@ public class PlanningServlet extends HttpServlet {
         List<Personnel> formateurs = new ArrayList<Personnel>();
         Personne pers = new Personne();
         String message = new String();
+        String formateurDemander;
 
         System.out.println("today : " + today);
-
+        
         try {
+            formateurDemander = req.getParameter("formateur");
+        } catch (Exception e) {
+            formateurDemander = null;
+        }
+
+        if (formateurDemander != null) {
             System.out.println("select.id : " + Long.parseLong(req.getParameter("formateur")));
             pers = srvPersonnel.getById(Long.parseLong(req.getParameter("formateur")));
             compte = pers.getCompteForum();
             System.out.println("srvCompteWeb.getById OK : " + compte.getUsername());
-        } catch (Exception e) {
-            System.out.println("erreur : " + e.getMessage());
+
+        } else {
             compte = (InscritForum) req.getSession().getAttribute("user");
-            System.out.println("compte.nom : " + compte.getUsername() + " " + compte.getId());
-            pers = srvPersonnel.getByCompteForum(compte);
-            System.out.println("compte.size : " + comptes.size());
+            try {
+                pers = srvPersonnel.getByCompteForum(compte);
+            } catch (Exception e) {
+                req.setAttribute("message", message + "Votre Compte n'est pas inscrit definitivement !");
+            }
         }
+
+
         try {
             for (int i = 0; i < comptes.size(); i++) {
                 System.out.println("compte : " + comptes.get(i).getUsername());

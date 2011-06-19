@@ -44,7 +44,7 @@ public class InscriptionServlet extends HttpServlet {
             InscritForum inscrit = new InscritForum();
             inscrit.setUsername(username);
             inscrit.setPassword(password);
-            inscrit.setRole(srvRole.getByRoleName("FORUM"));
+            inscrit.setRole(srvRole.getByRoleName("CLIENT"));
             inscrit.setDateInscription(new Date());
 
             srv.add(inscrit);
