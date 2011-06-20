@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://ckeditor.com" prefix="ckeditor" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,13 +23,15 @@
                 <h3>Titre</h3>
                 <input type="text" name="title"/>
                 <br/> 
-                <textarea rows="10" cols="50" name="text"> </textarea><br/>
-                <br/>
-                Auteur : <input type="text" name="author"/>
-                Categorie : <input type="text" name="categorie"/><br/>
+                <textarea rows="10" cols="50" name="text" id="editor1"> </textarea><br/>
+                <div>
+                    <h3>Catégorie</h3>
+                    <%@include file="../template/categories.jsp" %>
+                </div>
                 Tags : <input type="text" name="tags"/><br>
                 <input type="submit" value="Valider"/>
             </form>
         </section>
+        <ckeditor:replace replace="editor1" basePath="../ckeditor/" />
     </body>
 </html>

@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -31,7 +32,7 @@ import javax.persistence.Temporal;
     @NamedQuery(name = "Article.getByAuthor",
     query = "SELECT c FROM Article c WHERE c.auteur = :name"),
     @NamedQuery(name = "Article.getByTag",
-    query = "SELECT c FROM Article c WHERE c.tag = :tag"),
+    query = "SELECT c FROM Article c WHERE :tag MEMBER OF c.tags"),
     @NamedQuery(name = "Article.getById",
     query = "SELECT c FROM Article c WHERE c.id = :id")
 })
@@ -43,15 +44,16 @@ public class Article implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String titre;
+    @Lob
     private String text;
     @ManyToOne
     private Personnel auteur;
     @OneToMany
     private List<Categorie> categories;
     @OneToMany
-    private List<Tag> tag;
+    private List<Tag> tags;
     
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date datePublication;
 
     public Date getDatePublication() {
@@ -102,12 +104,12 @@ public class Article implements Serializable {
         this.categories = categories;
     }
 
-    public List<Tag> getTag() {
-        return tag;
+    public List<Tag> getTags() {
+        return tags;
     }
 
-    public void setTag(List<Tag> tag) {
-        this.tag = tag;
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 
     

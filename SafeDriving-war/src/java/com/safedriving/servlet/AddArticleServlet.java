@@ -4,6 +4,7 @@
  */
 package com.safedriving.servlet;
 
+import com.safedriving.model.InscritForum;
 import com.safedriving.model.Personnel;
 import com.safedriving.model.blog.Article;
 import com.safedriving.model.blog.Categorie;
@@ -22,6 +23,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,13 +33,10 @@ public class AddArticleServlet extends HttpServlet {
 
     @EJB
     private ArticleServiceLocal srv;
-    
     @EJB
     private PersonnelServiceLocal srvPersonnel;
-    
     @EJB
     private CategorieServiceLocal srvCategorie;
-    
     @EJB
     private TagServiceLocal srvTag;
 
@@ -52,13 +51,13 @@ public class AddArticleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         List<Categorie> L = srvCategorie.getAllTopLevelCategorie();
         request.setAttribute("categories", L);
-        
+
         List<Tag> Ltag = srvTag.getAllTag();
         request.setAttribute("tags", Ltag);
-        
+
         RequestDispatcher rq = request.getRequestDispatcher("addArticle.jsp");
         rq.forward(request, response);
     }
@@ -73,40 +72,41 @@ public class AddArticleServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String title = request.getParameter("title");
         String text = request.getParameter("text");
-        String author = request.getParameter("author");
         String tags = request.getParameter("tags");
-        
+
         Article art = new Article();
-        
-        /*String[] categories = request.getParameterValues("selectedCategories");
+
+        String[] categories = request.getParameterValues("selectedCategories");
         for (String categorie : categories) {
-            long id = Long.parseLong(categorie);
-            
-            System.err.print(id);
-            
-            Categorie c = srvCategorie.getById(id);
-            
-            if(art.getCategories() == null)
-                art.setCategories(new ArrayList<Categorie>());
-            
-            art.getCategories().add(c);
-        }*/
+        long id = Long.parseLong(categorie);
         
-        Personnel pers = srvPersonnel.getByCodePersonnel(author);
+        System.err.print(id);
         
+        Categorie c = srvCategorie.getById(id);
         
+        if(art.getCategories() == null)
+        art.setCategories(new ArrayList<Categorie>());
+        
+        art.getCategories().add(c);
+        }
+
+        HttpSession session = request.getSession();
+        InscritForum i = (InscritForum) session.getAttribute("user");
+
+        Personnel p = srvPersonnel.getByCompteForum(i);
+
         art.setTitre(title);
         art.setText(text);
         //art.setTag(tags);
         art.setDatePublication(new Date());
-        art.setAuteur(pers);
-        
+        art.setAuteur(p);
+
         srv.add(art);
-        
-        response.sendRedirect("/safeDriving-war/Home");
+
+        response.sendRedirect("/SafeDriving-war/Home");
     }
 
     /** 
