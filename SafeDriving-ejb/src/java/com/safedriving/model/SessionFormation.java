@@ -139,7 +139,7 @@ public class SessionFormation implements Serializable {
 
     @Override
     public String toString() {
-        return "com.safedriving.model.Session[ id=" + id + " ]";
+        return "Session " + this.getClass().getSimpleName();
     }
     
 }

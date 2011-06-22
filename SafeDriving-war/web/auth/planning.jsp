@@ -25,8 +25,8 @@
                 <c:when test="${user != null}">
                     <c:set var="roleName" value="${user.getRole().roleName}"/>
                     <c:choose>
-                        <c:when test="${'DIRECTION' == roleName || 'SERVICE_FORMATION' == roleName}">
-                            <a href="/SafeDriving-war/auth/AddSessionPratique">Ajouter une session pratique à cette semaine</a>    <a href="/SafeDriving-war/auth/AddSessionTheorique">Ajouter une session Théorique à cette semaine</a>
+                        <c:when test="${'DIRECTION' == roleName}">
+                            <a href="/SafeDriving-war/auth/AddSession">Ajouter une session </a>
                             <form name="formateurs" action="/SafeDriving-war/auth/Planning">
                                 Formateur :
                                 <select name="formateur">

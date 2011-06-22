@@ -21,11 +21,11 @@
         <div id="content">
             <%@include file="template/menu.jsp" %>
             <section>
+                <fmt:setLocale value="fr_FR" />
                 <c:forEach items="${articles}" var="article">
                     <article>
                         <header>
                             <h2><c:out value="${article.titre}"/></h2>
-                            <fmt:setLocale value="fr_FR" />
                             <fmt:formatDate type="both" value="${article.datePublication}" />
                         </header>
                         ${article.text}

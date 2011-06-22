@@ -67,4 +67,12 @@ public class ClientService implements ClientServiceLocal {
         q.setParameter("name", id);
         return q.getResultList();
     }
+
+    
+    @Override
+    public List<Client> getBestClient(int nb) {
+        return null;
+    }
+    
+    
 }

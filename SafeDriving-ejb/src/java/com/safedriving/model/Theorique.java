@@ -59,10 +59,4 @@ public class Theorique extends SessionFormation implements Serializable {
     public void setScore(int score) {
         this.score = score;
     }
-
-    @Override
-    public String toString() {
-        return "com.safedriving.model.Theorique[ id=" + getId() + " ]";
-    }
-    
 }

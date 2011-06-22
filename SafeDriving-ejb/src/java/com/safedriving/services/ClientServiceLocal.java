@@ -30,5 +30,7 @@ public interface ClientServiceLocal {
     Client getByNumClient(int num);
 
     List<Client> getBySessionId(int id);
+
+    List<Client> getBestClient(int nb);
     
 }

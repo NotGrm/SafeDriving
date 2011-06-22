@@ -82,6 +82,8 @@ public class AddExamenServlet extends HttpServlet {
         ex.setNbrMaxPlace(places);
         ex.setLieu(lieu);
         
+        //ex.getParticipants().addAll(clctn);
+        
         srv.add(ex);
         
     }

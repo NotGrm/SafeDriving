@@ -48,14 +48,10 @@
 
 
 <c:if test="${user != null}">
-    <nav >
-        <!--<ul>-->
+    <nav>
         <c:set var="roleName" value="${user.getRole().roleName}"/>
         <c:choose>
             <c:when test="${'DIRECTION' == roleName}">
-                <!--<li><a href="/SafeDriving-war/auth/AddArticle">Ajout Article</a></li>
-                <li><a href="/SafeDriving-war/auth/AddArticle">Ajout Tag</a></li>
-                <li><a href="/SafeDriving-war/auth/AddArticle">Ajout Categorie</a></li>-->
                 <ul> <h3>Rédaction</h3>
                     <c:forEach items="${redactionLinks}" var="link">
                         <li><a href="${link[0]}">${link[1]}</a></li>
@@ -76,17 +72,8 @@
                         <li><a href="${link[0]}">${link[1]}</a></li>
                     </c:forEach>
                 </ul>
-                <!--<ul>
-                    <li><a href="/SafeDriving-war/auth/AddExamen">Ajout Examen</a></li>
-                    <li><a href="/SafeDriving-war/auth/AddVehicule">Ajout Véhicule</a></li>
-                    <li><a href="/SafeDriving-war/auth/AddLieu">Ajout Lieu</a></li>
-                    <li><a href="/SafeDriving-war/auth/AddTypeExamen">Ajout Type Examen</a></li>
-                    <li><a href="/SafeDriving-war/auth/AddTypePratique">Ajout Type Pratique</a></li>-->
                 </c:when>                    
                 <c:when test="${'REDACTION' == roleName}">
-                    <!--<li><a href="/SafeDriving-war/auth/AddArticle">Ajout d'un Article</a></li>
-                    <li><a href="/SafeDriving-war/auth/AddArticle">Ajout d'un Tag</a></li>
-                    <li><a href="/SafeDriving-war/auth/AddArticle">Ajout d'une Categorie</a></li>-->
                     <ul> <h3>Rédaction</h3>
                         <c:forEach items="${redactionLinks}" var="link">
                             <li><a href="${link[0]}">${link[1]}</a></li>

@@ -6,15 +6,10 @@ package com.safedriving.servlet;
 
 import com.safedriving.model.Client;
 import com.safedriving.model.InscritForum;
-import com.safedriving.model.Pratique;
 import com.safedriving.model.SessionFormation;
-import com.safedriving.model.Theorique;
 import com.safedriving.services.PersonneServiceLocal;
 import com.safedriving.services.SessionFormationServiceLocal;
-import com.safedriving.services.participationSessionServiceLocal;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;

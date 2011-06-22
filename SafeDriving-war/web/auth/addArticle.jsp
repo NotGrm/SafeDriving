@@ -20,16 +20,23 @@
         <section>
             <h2>Ajouter un article</h2>
             <form action="/SafeDriving-war/auth/AddArticle" method="post">
-                <h3>Titre</h3>
-                <input type="text" name="title"/>
-                <br/> 
+                <label for="title">
+                    <h3>Titre</h3>
+                </label>
+                <input type="text" name="title" id="title"/>
+                <br/>
                 <textarea rows="10" cols="50" name="text" id="editor1"> </textarea><br/>
                 <div>
                     <h3>Catégorie</h3>
                     <%@include file="../template/categories.jsp" %>
                 </div>
-                Tags : <input type="text" name="tags"/><br>
-                <input type="submit" value="Valider"/>
+                <div>
+                    <c:forEach items="${tags}" var="tag">
+                        <a href="#"><c:out value="${tag.name}"/></a>
+                    </c:forEach>
+                    Tags : <input type="text" name="tags"/><br>
+                    <input type="submit" value="Valider"/>
+                </div>
             </form>
         </section>
         <ckeditor:replace replace="editor1" basePath="../ckeditor/" />

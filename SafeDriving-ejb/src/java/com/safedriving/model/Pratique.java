@@ -71,10 +71,4 @@ public class Pratique extends SessionFormation implements Serializable {
     public void setVehicule(Vehicule vehicule) {
         this.vehicule = vehicule;
     }
-
-    @Override
-    public String toString() {
-        return "com.safedriving.model.Pratique[ id=" + getId() + " ]";
-    }
-    
 }
