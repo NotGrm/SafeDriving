@@ -7,6 +7,7 @@
 <%@page import="com.safedriving.model.InscritForum"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%-- <%@page import="javax.servlet.http.HttpSession"%>--%>
 <!DOCTYPE html>
 <html>
@@ -24,10 +25,24 @@
                     <article>
                         <header>
                             <h2><c:out value="${article.titre}"/></h2>
-                            <c:out value="${article.datePublication}"/>
+                            <fmt:setLocale value="fr_FR" />
+                            <fmt:formatDate type="both" value="${article.datePublication}" />
                         </header>
-                        <c:out value="${article.text}"/>
+                        ${article.text}
                         <footer>
+                            <span id="categories" >
+                            Publié dans : 
+                            <c:forEach items="${article.categories}" var="categorie">
+                                <c:out value="${categorie.name}"/>
+                            </c:forEach>
+                            </span>
+                            <span id="tags">
+                                Tags :
+                                <c:forEach items="${article.tags}" var="tag">
+                                    <c:out value="${tag.name}"/>
+                                </c:forEach>
+                            </span>
+                            <br/>
                             <a href="/SafeDriving-war/ArticleDetail?id=${article.id}">Lire la suite</a> 
                         </footer>
                         <hr/>

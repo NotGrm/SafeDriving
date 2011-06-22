@@ -7,5 +7,10 @@
         <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/WebSiteRoleServiceLocal.java</file>
         <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/WebSiteRole.java</file>
         <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/InscritForum.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/SessionFormation.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/SessionFormationService.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/SessionFormationServiceLocal.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/Client.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/Personne.java</file>
     </open-files>
 </project-private>
