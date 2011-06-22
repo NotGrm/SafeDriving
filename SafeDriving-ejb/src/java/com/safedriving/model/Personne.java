@@ -29,16 +29,16 @@ public class Personne implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private String nom;
-    private String prenom;
-    private String adresse;
-    private int codePostal;
-    private String ville;
+    protected long id;
+    protected String nom;
+    protected String prenom;
+    protected String adresse;
+    protected int codePostal;
+    protected String ville;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateNaissance;
+    protected Date dateNaissance;
     @OneToOne
-    private InscritForum compteForum;
+    protected InscritForum compteForum;
 
     public InscritForum getCompteForum() {
         return compteForum;

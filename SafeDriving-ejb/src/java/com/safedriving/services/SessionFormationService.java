@@ -4,6 +4,7 @@
  */
 package com.safedriving.services;
 
+import com.safedriving.model.Client;
 import com.safedriving.model.Personnel;
 import com.safedriving.model.SessionFormation;
 import java.util.Date;
@@ -48,4 +49,13 @@ public class SessionFormationService implements SessionFormationServiceLocal {
         q.setParameter("date", date);
         return q.getResultList();
     }
+
+    public List<SessionFormation> findByClient(Client client) {
+        Query q = em.createNamedQuery("SessionFormation.findAllByClient");
+        q.setParameter("client", client);
+        return q.getResultList();
+       
+    }
+    
+    
 }

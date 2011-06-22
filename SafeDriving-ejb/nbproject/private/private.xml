@@ -2,35 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/Pratique.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/TypeSessionPratique.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/PersonnelService.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/Personnel.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/Vehicule.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/VehiculeService.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/VehiculeServiceLocal.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/TypeSessionPratiqueServiceLocal.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/SessionFormation.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/Theorique.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/PersonneService.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/TheoriqueService.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/TypeExamenService.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/WebSiteRoleService.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/Personne.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/InscritForumService.java</file>
         <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/PersonnelServiceLocal.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/blog/Tag.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/Agence.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/InscritForum.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/TypeSessionPratiqueService.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/participationSessionService.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/PersonnelService.java</file>
         <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/WebSiteRoleServiceLocal.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/InscritForumServiceLocal.java</file>
         <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/WebSiteRole.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/ClientServiceLocal.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/ClientService.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/AgenceService.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/Client.java</file>
-        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/services/PersonneServiceLocal.java</file>
+        <file>file:/C:/Users/Ehres/Documents/NetBeansProjects/SafeDriving/SafeDriving-ejb/src/java/com/safedriving/model/InscritForum.java</file>
     </open-files>
 </project-private>

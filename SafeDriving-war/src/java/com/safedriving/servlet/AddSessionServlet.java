@@ -19,9 +19,7 @@ import com.safedriving.services.PratiqueServiceLocal;
 import com.safedriving.services.TheoriqueServiceLocal;
 import com.safedriving.services.TypeSessionPratiqueServiceLocal;
 import com.safedriving.services.VehiculeServiceLocal;
-import com.safedriving.util.ControleDisponibilites;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -109,7 +107,7 @@ public class AddSessionServlet extends HttpServlet {
                 int nbPlaces = Integer.parseInt(nbPlacesString);
 
                 long placeId = Long.parseLong(placeIdString);
-                Lieu l = lieuSrv.getById(placeId);
+                Lieu l = lieuSrv.getById(placeId); 
 
                 SessionFormation s = new SessionFormation();
                 s.setDate(date);

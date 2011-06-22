@@ -4,11 +4,13 @@
  */
 package com.safedriving.servlet;
 
+import com.safedriving.model.Client;
 import com.safedriving.model.InscritForum;
 import com.safedriving.model.ParticipationSession;
 import com.safedriving.model.Personne;
 import com.safedriving.model.Personnel;
 import com.safedriving.model.Pratique;
+import com.safedriving.model.SessionFormation;
 import com.safedriving.model.Theorique;
 import com.safedriving.model.WebSiteRole;
 import com.safedriving.services.ClientServiceLocal;
@@ -16,6 +18,7 @@ import com.safedriving.services.InscritForumServiceLocal;
 import com.safedriving.services.PersonneServiceLocal;
 import com.safedriving.services.PersonnelServiceLocal;
 import com.safedriving.services.PratiqueServiceLocal;
+import com.safedriving.services.SessionFormationServiceLocal;
 import com.safedriving.services.TheoriqueServiceLocal;
 import com.safedriving.services.WebSiteRoleServiceLocal;
 import com.safedriving.services.participationSessionServiceLocal;
@@ -23,7 +26,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import javax.ejb.EJB;
+import javax.ejb.Local;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -51,6 +56,8 @@ public class PlanningServlet extends HttpServlet {
     participationSessionServiceLocal srvPart;
     @EJB
     WebSiteRoleServiceLocal srvRole;
+    @EJB
+    SessionFormationServiceLocal srvSession;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -93,7 +100,7 @@ public class PlanningServlet extends HttpServlet {
         } else {
             compte = (InscritForum) req.getSession().getAttribute("user");
             try {
-                pers = srvPersonnel.getByCompteForum(compte);
+                pers = srvPersonne.getByCompteForum(compte);
             } catch (Exception e) {
                 req.setAttribute("message", message + "Votre Compte n'est pas inscrit definitivement !");
             }
@@ -357,13 +364,11 @@ public class PlanningServlet extends HttpServlet {
 
         if (compte.getRole().equals(srvRole.getByRoleName("CLIENT"))) {
             setAttributeHoraireTheoriqueClient(theoriques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
-            setAttributeHorairePratiqueClient(pratiques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
+            setAttributeHorairePratiqueClient(pratiques, joursSmall, jours, listMonth, tabJour, heures, new Client(pers), req);
         } else if (compte.getRole().equals(srvRole.getByRoleName("SERVICE_FORMATION"))) {
             setAttributeHoraireTheoriquePersonnel(theoriques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
             setAttributeHorairePratiquePersonnel(pratiques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
         }
-
-
 
         req.setAttribute("month", month);
         req.setAttribute("year", year);
@@ -528,17 +533,22 @@ public class PlanningServlet extends HttpServlet {
         }
     }
 
-    public void setAttributeHorairePratiqueClient(List<Pratique> session, String joursSmall[], String jours[], String listMonth[], int tabJour[], int heures[], Personne pers, HttpServletRequest req) {
+    public void setAttributeHorairePratiqueClient(List<Pratique> session, String joursSmall[], String jours[], String listMonth[], int tabJour[], int heures[], Client pers, HttpServletRequest req) {
         try {
-            List<ParticipationSession> part = srvPart.getByClientId(pers.getId());
-            for (int i = 0; i < session.size(); i++) {
-                System.out.println("date pratique : " + session.get(i).getDate().toString());
-                for (int s = 0; s < part.size(); s++) {
-                    if (session.get(i).getIntervenant().equals(part.get(s).getSessionFormation().getIntervenant())) {
-                        int iDay = Integer.parseInt(session.get(i).getDate().toString().substring(8, 10));
-                        String strDay = session.get(i).getDate().toString().substring(0, 3);
-                        int heureDebut = session.get(i).getHeureDebut();
-                        int duree = session.get(i).getDuree();
+            List<SessionFormation> sessions = srvSession.findByClient(pers);
+            for (int i = 0; i < sessions.size(); i++) {
+                System.out.println("date pratique : " + sessions.get(i).getDate().toString());
+                //for (int s = 0; s < part.size(); s++) {
+                    //if (session.get(i).getIntervenant().equals(part.get(s).getSessionFormation().getIntervenant())) {
+                        //int iDay = Integer.parseInt(sessions.get(i).getDate().toString().substring(8, 10));
+                        String strDay = sessions.get(i).getDate().toString().substring(0, 3);
+                        Calendar cal3 = Calendar.getInstance(Locale.FRENCH);
+                        cal3.setTime(sessions.get(i).getDate());
+                        int iDay = cal3.get(Calendar.DAY_OF_MONTH);
+                        String strMonth = sessions.get(i).getDate().toString().substring(4, 7);
+                        
+                        int heureDebut = sessions.get(i).getHeureDebut();
+                        int duree = sessions.get(i).getDuree();
                         int heureFin = heureDebut + duree;
                         String dureeSession[] = new String[duree];
                         for (int z = 0; z < duree; z++) {
@@ -546,12 +556,12 @@ public class PlanningServlet extends HttpServlet {
                             dureeSession[z] = heureDebut + "" + heureFin;
                             heureDebut += 1;
                         }
+                        //Permet de donné le nom entier a une journée
                         for (int r = 0; r < joursSmall.length; r++) {
                             if (strDay.equals(joursSmall[r])) {
                                 strDay = jours[r];
                             }
                         }
-                        String strMonth = session.get(i).getDate().toString().substring(4, 7);
                         for (int b = 0; b < listMonth.length; b++) {
                             if (strMonth.equals(listMonth[b])) {
                                 for (int a = 0; a < tabJour.length; a++) {
@@ -561,7 +571,7 @@ public class PlanningServlet extends HttpServlet {
                                                 if (strDay.equals(jours[j]) && heures[t] == heureDebut) {
                                                     System.out.println("dureeSession.length : " + dureeSession.length);
                                                     for (int u = 0; u < dureeSession.length; u++) {
-                                                        req.setAttribute(jours[j] + dureeSession[u], session.get(i).getIntervenant().getNom() + " " + session.get(i).getIntervenant().getPrenom() + "</br> Session Pratique");
+                                                        req.setAttribute(jours[j] + dureeSession[u], sessions.get(i).getIntervenant().getNom() + " " + sessions.get(i).getIntervenant().getPrenom() + "</br> Session Pratique");
                                                     }
                                                 }
                                             }
@@ -570,8 +580,8 @@ public class PlanningServlet extends HttpServlet {
                                 }
                             }
                         }
-                    }
-                }
+                    //}
+                //}
             }
         } catch (Exception e) {
             System.out.println("Erreur getAll");
