@@ -363,8 +363,7 @@ public class PlanningServlet extends HttpServlet {
         pratiques = srvPratique.getAll();
 
         if (compte.getRole().equals(srvRole.getByRoleName("CLIENT"))) {
-            setAttributeHoraireTheoriqueClient(theoriques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
-            setAttributeHorairePratiqueClient(pratiques, joursSmall, jours, listMonth, tabJour, heures, new Client(pers), req);
+            setAttributeHoraireClient(joursSmall, jours, listMonth, tabJour, heures, new Client(pers), req);
         } else if (compte.getRole().equals(srvRole.getByRoleName("SERVICE_FORMATION"))) {
             setAttributeHoraireTheoriquePersonnel(theoriques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
             setAttributeHorairePratiquePersonnel(pratiques, joursSmall, jours, listMonth, tabJour, heures, pers, req);
@@ -482,58 +481,7 @@ public class PlanningServlet extends HttpServlet {
         }
     }
 
-    public void setAttributeHoraireTheoriqueClient(List<Theorique> session, String joursSmall[], String jours[], String listMonth[], int tabJour[], int heures[], Personne pers, HttpServletRequest req) {
-        try {
-            List<ParticipationSession> part = srvPart.getByClientId(pers.getId());
-            for (int i = 0; i < session.size(); i++) {
-                System.out.println("date pratique : " + session.get(i).getDate().toString());
-                for (int s = 0; s < part.size(); s++) {
-                    if (session.get(i).getIntervenant().equals(part.get(s).getSessionFormation().getIntervenant())) {
-                        int iDay = Integer.parseInt(session.get(i).getDate().toString().substring(8, 10));
-                        String strDay = session.get(i).getDate().toString().substring(0, 3);
-                        int heureDebut = session.get(i).getHeureDebut();
-                        int duree = session.get(i).getDuree();
-                        int heureFin = heureDebut + duree;
-                        String dureeSession[] = new String[duree];
-                        for (int z = 0; z < duree; z++) {
-                            heureFin = heureDebut + 1;
-                            dureeSession[z] = heureDebut + "" + heureFin;
-                            heureDebut += 1;
-                        }
-                        for (int r = 0; r < joursSmall.length; r++) {
-                            if (strDay.equals(joursSmall[r])) {
-                                strDay = jours[r];
-                            }
-                        }
-                        String strMonth = session.get(i).getDate().toString().substring(4, 7);
-                        for (int b = 0; b < listMonth.length; b++) {
-                            if (strMonth.equals(listMonth[b])) {
-                                for (int a = 0; a < tabJour.length; a++) {
-                                    if (tabJour[a] == iDay) {
-                                        for (int t = 0; t < heures.length; t++) {
-                                            for (int j = 0; j < jours.length; j++) {
-                                                if (strDay.equals(jours[j]) && heures[t] == heureDebut) {
-                                                    System.out.println("dureeSession.length : " + dureeSession.length);
-                                                    for (int u = 0; u < dureeSession.length; u++) {
-                                                        req.setAttribute(jours[j] + dureeSession[u], session.get(i).getIntervenant().getNom() + " " + session.get(i).getIntervenant().getPrenom() + "</br> Session Théorique");
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Erreur getAll");
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public void setAttributeHorairePratiqueClient(List<Pratique> session, String joursSmall[], String jours[], String listMonth[], int tabJour[], int heures[], Client pers, HttpServletRequest req) {
+    public void setAttributeHoraireClient(String joursSmall[], String jours[], String listMonth[], int tabJour[], int heures[], Client pers, HttpServletRequest req) {
         try {
             List<SessionFormation> sessions = srvSession.findByClient(pers);
             for (int i = 0; i < sessions.size(); i++) {

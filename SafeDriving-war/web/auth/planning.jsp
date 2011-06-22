@@ -68,7 +68,7 @@
                 <div id="heures">18h</div>
                 <div id="heures">19h</div>
             </div>
-            <table class="tablePlanning" border="1">
+            <table class="tablePlanning">
                 <thead>
                     <tr>
                         <th>
@@ -94,6 +94,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
                     <tr>
                         <td>${monday89}</td>
                         <td>${tuesday89}</td>
