@@ -9,7 +9,26 @@
 <c:forEach items="${categories}" var="categorie">
     <ul style="list-style: none">
         <li>
-            <input type="checkbox" name="selectedCategories" id="${categorie.id}" value="${categorie.id}"/>
+            <c:choose>
+                <c:when test="${empty article.categories}">
+                    <input type="checkbox" name="selectedCategories" 
+                           id="${categorie.id}" value="${categorie.id}"/>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach items="${article.categories}" var="artCat">
+                        <c:choose>
+                            <c:when test="${categorie.id == artCat.id}">
+                                <input type="checkbox" name="selectedCategories" 
+                                       id="${categorie.id}" value="${categorie.id}" checked="yes"/>
+                            </c:when>
+                            <c:otherwise>
+                                <input type="checkbox" name="selectedCategories" 
+                                       id="${categorie.id}" value="${categorie.id}"/>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
             <label for="${categorie.id}">
                 <c:out value="${categorie.name}"/>
             </label>

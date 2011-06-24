@@ -24,8 +24,9 @@ import javax.persistence.OneToOne;
     @NamedQuery(name = "Client.getNumClient",
     query = "SELECT c FROM Client c WHERE c.numClient = :num")
 })
-@DiscriminatorValue(value="Client")
+@DiscriminatorValue(value = "Client")
 public class Client extends Personne implements Serializable {
+
     @OneToOne
     private Formation formation;
     private static final long serialVersionUID = 1L;
@@ -46,10 +47,24 @@ public class Client extends Personne implements Serializable {
     public void setFormation(Formation formation) {
         this.formation = formation;
     }
-    
+
     @Override
     public String toString() {
         return "com.safedriving.model.Client[ id=" + getId() + " ]";
     }
-    
+
+    public Client() {
+    }
+
+    public Client(Personne pers) {
+
+        this.id = pers.getId();
+        this.nom = pers.getNom();
+        this.prenom = pers.getPrenom();
+        this.adresse = pers.getAdresse();
+        this.codePostal = pers.getCodePostal();
+        this.ville = pers.getVille();
+        this.dateNaissance = pers.getDateNaissance();
+        this.compteForum = pers.getCompteForum();
+    }
 }

@@ -58,6 +58,7 @@ public class RegisterToSessionServlet extends HttpServlet {
                 s.getParticipants().add(cli);
                 
                 srv.refresh(s);
+                resp.sendRedirect("/SafeDriving-war/Home");
             } else {
             }
 

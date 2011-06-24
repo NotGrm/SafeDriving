@@ -107,7 +107,7 @@ public class AddSessionServlet extends HttpServlet {
                 int nbPlaces = Integer.parseInt(nbPlacesString);
 
                 long placeId = Long.parseLong(placeIdString);
-                Lieu l = lieuSrv.getById(placeId);
+                Lieu l = lieuSrv.getById(placeId); 
 
                 SessionFormation s = new SessionFormation();
                 s.setDate(date);
@@ -146,6 +146,9 @@ public class AddSessionServlet extends HttpServlet {
 
                     theoriqueSrv.add(t);
                 }
+                
+                resp.sendRedirect("/SafeDriving-war/auth/Planning?formateur="+pers.getId());
+                
             } else {
                 System.out.println("IL n'ya pas de disponibilité");
             }

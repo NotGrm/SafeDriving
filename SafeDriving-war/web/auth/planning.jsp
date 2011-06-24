@@ -39,12 +39,12 @@
                             </form>
                                     
                             <p>                
-                                <a href="/SafeDriving-war/auth/Planning?week=${weekOfYear-1}&formateur=${currentPersonne.id}"><< Semaine précédente</a> ${month} ${year} Semaine numero ${weekOfYear} <a href="/SafeDriving-war/auth/Planning?week=${weekOfYear+1}&formateur=${currentPersonne.id}">Semaine suivante >></a>
+                                <a href="/SafeDriving-war/auth/Planning?week=${weekOfYear-1}&formateur=${currentPersonne.id}"><< Précédente</a> ${month} ${year} Semaine numero ${weekOfYear} <a href="/SafeDriving-war/auth/Planning?week=${weekOfYear+1}&formateur=${currentPersonne.id}">Suivante >></a>
                             </p>
                         </c:when>
                         <c:otherwise>
                             <p>                
-                                <a href="/SafeDriving-war/auth/Planning?week=${weekOfYear-1}"><< Semaine précédente</a> ${month} ${year} Semaine numero ${weekOfYear} <a href="/SafeDriving-war/auth/Planning?week=${weekOfYear+1}">Semaine suivante >></a>
+                                <a href="/SafeDriving-war/auth/Planning?week=${weekOfYear-1}"><< Précédente</a> ${month} ${year} Semaine numero ${weekOfYear} <a href="/SafeDriving-war/auth/Planning?week=${weekOfYear+1}">Suivante >></a>
                             </p>
                         </c:otherwise>
                     </c:choose>
@@ -68,7 +68,7 @@
                 <div id="heures">18h</div>
                 <div id="heures">19h</div>
             </div>
-            <table class="tablePlanning" border="1">
+            <table class="tablePlanning">
                 <thead>
                     <tr>
                         <th>

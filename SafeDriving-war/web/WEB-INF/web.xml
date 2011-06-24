@@ -124,6 +124,10 @@
         <servlet-name>AddDisponibiliteServlet</servlet-name>
         <servlet-class>com.safedriving.servlet.AddDisponibiliteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ArticleServlet</servlet-name>
+        <servlet-class>com.safedriving.servlet.ArticleServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddPersonnelServlet</servlet-name>
         <url-pattern>/auth/AddPersonnel</url-pattern>
@@ -239,6 +243,10 @@
     <servlet-mapping>
         <servlet-name>AddDisponibiliteServlet</servlet-name>
         <url-pattern>/auth/AddDisponibilite</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ArticleServlet</servlet-name>
+        <url-pattern>/auth/Article</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

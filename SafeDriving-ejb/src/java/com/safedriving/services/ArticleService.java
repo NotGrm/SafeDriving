@@ -28,6 +28,7 @@ public class ArticleService implements ArticleServiceLocal {
 
     @Override
     public void remove(Article article) {
+        article = em.merge(article);
         em.remove(article);
     }
 

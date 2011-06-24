@@ -129,11 +129,12 @@ td{
 .tablePlanning{
     width : 550px;
     text-align: center;
+    background-color: lightgrey;
 }
-.tablePlanning.th{
+.tablePlanning th{
     margin-bottom: 15px;
 }
-.tablePlanning.td{
+.tablePlanning td{
     background-color: #aaaaaa;
     border : 1px solid white;
 }
@@ -142,4 +143,7 @@ td{
 }
 .infoTemp{
     width: 850px;
+}
+table{
+   
 }

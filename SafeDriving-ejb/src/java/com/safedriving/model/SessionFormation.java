@@ -33,7 +33,9 @@ import javax.persistence.Temporal;
     @NamedQuery(name="SessionFormation.findByIntervenant", 
         query="Select c from SessionFormation c where c.intervenant = :intervenant"),
     @NamedQuery(name="SessionFormation.findAllAfterDate", 
-        query="Select c from SessionFormation c where c.dateSession > :date")
+        query="Select c from SessionFormation c where c.dateSession > :date"),
+    @NamedQuery(name="SessionFormation.findAllByClient", 
+        query="Select c from SessionFormation c where :client member of c.participants")
 })
 
 public class SessionFormation implements Serializable {

@@ -10,7 +10,8 @@
 <!DOCTYPE html>
 <%
     ArrayList<String[]> redactionLinks = new ArrayList<String[]>();
-    redactionLinks.add(new String[]{"/SafeDriving-war/auth/AddArticle", "Ajout Article"});
+    //redactionLinks.add(new String[]{"/SafeDriving-war/auth/AddArticle", "Ajout Article"});
+    redactionLinks.add(new String[]{"/SafeDriving-war/auth/Article?method=new", "Ajout Article"});
     redactionLinks.add(new String[]{"/SafeDriving-war/auth/AddCategorie", "Ajout Categorie"});
     redactionLinks.add(new String[]{"/SafeDriving-war/auth/AddTag", "Ajout d'un Tag"});
     pageContext.setAttribute("redactionLinks", redactionLinks);

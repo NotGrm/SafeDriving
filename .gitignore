@@ -7,3 +7,8 @@
 /build/
 /SafeDriving-war/dist/
 /SafeDriving-war/build/
+build/SafeDriving-war.war
+
+build/SafeDriving-ejb.jar
+
+build/SafeDriving-ejb.jar

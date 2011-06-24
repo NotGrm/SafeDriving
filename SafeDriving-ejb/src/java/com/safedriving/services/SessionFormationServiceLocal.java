@@ -4,6 +4,7 @@
  */
 package com.safedriving.services;
 
+import com.safedriving.model.Client;
 import com.safedriving.model.Personnel;
 import com.safedriving.model.SessionFormation;
 import java.util.Date;
@@ -24,5 +25,7 @@ public interface SessionFormationServiceLocal {
     List<SessionFormation> findAllByIntervenant(Personnel intervenant);
 
     List<SessionFormation> getFutureSession(Date date);
+
+    List<SessionFormation> findByClient(Client client);
     
 }

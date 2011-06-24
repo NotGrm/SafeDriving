@@ -34,12 +34,11 @@ public class Filtre implements Filter {
         request.setAttribute("path", httpRequest.getRequestURI());
 
         if (user != null) {
-            System.out.println("utilisateur loggé");
             String roleName = user.getRole().getRoleName();
             String nameFonction = httpRequest.getRequestURI().substring(22);
-            System.out.println("Fonction demandé" + nameFonction);
             boolean access = false;
-            if (nameFonction.equals("AddArticle")) {
+            //if (nameFonction.equals("AddArticle")) {
+            if (nameFonction.equals("Article")) {
                 if (roleName.equals("DIRECTION") || roleName.equals("REDACTION")) {
                     access = true;
                 }

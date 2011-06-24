@@ -19,7 +19,7 @@
             <%@include file="template/menu.jsp" %>
             <section>
                 <h2><c:out value="${article.titre}"/> </h2>
-                <c:out value="${article.text}"/>
+                ${article.text}
             </section>
         </div>
     </body>
